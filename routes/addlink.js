@@ -25,6 +25,7 @@ router.post('/', async (req, res1) => {
     }
     catch(err){
         console.log(err);
+        res1.send(JSON.stringify({sucsess: '0'}));
     }
    
 });
