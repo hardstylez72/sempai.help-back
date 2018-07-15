@@ -14,6 +14,7 @@
     "graphql": "^0.13.2",
     "http-errors": "^1.6.3",
     "jade": "^1.11.0",
+    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
     "pug": "^2.0.3",
@@ -21,7 +22,9 @@
   },
   "proxy": "http://localhost:6000",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.13.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hardstylez72/sempai.help-back.git"

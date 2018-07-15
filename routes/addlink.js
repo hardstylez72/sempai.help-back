@@ -1,12 +1,13 @@
 var express = require('express'); //Подключаем модуль express
 var router = express.Router();    //Подключаем из модуля express объект Router
 var {sequelize, Sequelize} = require('../init');
+const _ = require('lodash');
 
 
 
 router.post('/', async (req, res1) => {
     try {
-        if ((req.body.data.descrVal) || (req.body.data.urlValue)) {
+        if ((_.get(req, 'body.data.descrVal', null)) || (_.get(req, 'body.data.urlValue', null))) {
             var dataFromDb = [];
             if ((req.body.data.descrVal !== 'data') && (req.body.data.urlValue !== 'give'))
                 await sequelize.models.links.create({
