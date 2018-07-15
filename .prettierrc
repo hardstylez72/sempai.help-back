@@ -1,0 +1,11 @@
+{
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "useTabs": true,
+    "parser": "flow",
+    "tabWidth": 4,
+    "bracketSpacing": false,
+    "jsxBracketSameLine": false,
+    "filepath": "./src"
+  }

@@ -9,6 +9,7 @@ var logger = require('morgan');
 const init = require('./init');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const musicStream = require('./routes/musicStream');
 
 const imgUpload = require('./routes/imgUpload');
 var addlink = require('./routes/addlink');
@@ -28,6 +29,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/imgUpload', imgUpload);
 app.use('/addlink', addlink);
+app.use('/radio', musicStream);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
