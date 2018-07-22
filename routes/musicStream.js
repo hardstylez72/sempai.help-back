@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 				fs.createReadStream(path).pipe(res);
 			}
 		} else {
-			console.log(err);
+			console.log(err.message);
 		}
 	} catch (err) {
 		console.log(err);

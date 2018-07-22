@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 const musicStream = require('./routes/musicStream');
 
 const imgUpload = require('./routes/imgUpload');
+const music = require('./routes/music');
 var addlink = require('./routes/addlink');
 var app = express();
 
@@ -25,11 +26,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(err, req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/imgUpload', imgUpload);
 app.use('/addlink', addlink);
 app.use('/radio', musicStream);
+app.use('/music', music);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,6 +49,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

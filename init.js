@@ -19,7 +19,7 @@ const sequelize = new Sequelize(dotenv.parsed.DBSQLNAME, dotenv.parsed.DBSQLUSER
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
         await sequelize.import(__dirname + '/db-models.js');
-        await sequelize.sync();
+        await sequelize.sync({force: true});
       }
       catch(err) {
         console.error(err);

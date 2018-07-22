@@ -8,6 +8,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.9",
+    "directory-tree": "^2.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
@@ -20,7 +21,7 @@
     "pug": "^2.0.3",
     "sequelize": "^4.38.0"
   },
-  "proxy": "http://localhost:6000",
+
   "main": "app.js",
   "devDependencies": {
     "prettier": "1.13.7"

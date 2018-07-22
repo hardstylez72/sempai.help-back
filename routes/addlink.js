@@ -1,34 +1,103 @@
 var express = require('express'); //Подключаем модуль express
 var router = express.Router();    //Подключаем из модуля express объект Router
 var {sequelize, Sequelize} = require('../init');
+const Op = Sequelize.Op;
 const _ = require('lodash');
 
 
-
-router.post('/', async (req, res1) => {
+//Функция добавляет новую запись
+router.put('/',  async (req, res) => {
     try {
-        if ((_.get(req, 'body.data.descrVal', null)) || (_.get(req, 'body.data.urlValue', null))) {
-            var dataFromDb = [];
-            if ((req.body.data.descrVal !== 'data') && (req.body.data.urlValue !== 'give'))
+        if (_.has(req, 'body.data.descr') && 
+            _.has(req, 'body.data.url') &&
+            _.has(req, 'body.data.abstract') &&
+            _.has(req, 'body.data.user')) {
                 await sequelize.models.links.create({
-                    user: 'hardstylez72',
-                    descr: req.body.data.descrVal,
-                    link: req.body.data.urlValue
+                    user: req.body.data.user,
+                    descr: req.body.data.descr,
+                    link: req.body.data.url,
+                    abstract: req.body.data.abstract
                 });
-            dataFromDb = await sequelize.models.links.findAll();
-    
-            res1.send(JSON.stringify({sucsess: '1', articles: dataFromDb}));
-        }
-        else {
+            res.send(JSON.stringify({sucsess: '1'}));
+        } else {
             console.log('Ошибка в формате данных');
-            res1.send(JSON.stringify({sucsess: '0'}));
+            res.send(JSON.stringify({sucsess: '0'}));
         }
-    }
-    catch(err){
+    } catch(err) {
         console.log(err);
-        res1.send(JSON.stringify({sucsess: '0'}));
+        res.send(JSON.stringify({sucsess: '0'}));
     }
-   
 });
+
+//Функция возвращает записи 
+router.post('/',  async (req, res) => {
+    try {
+        if (_.has(req, 'body.data.amount') && 
+            _.has(req, 'body.data.offset')) {
+                //todo: доделать обработку фильтра
+            const dataFromDb = await sequelize.models.links.findAll();
+            res.send(JSON.stringify({sucsess: '1', data: dataFromDb}));
+        } else {
+            console.log('Ошибка в формате данных');
+            res.send(JSON.stringify({sucsess: '0'}));
+        }
+    } catch(err) {
+        console.log(err);
+        res.send(JSON.stringify({sucsess: '0'}));
+    }
+});
+
+
+
+router.delete('/',  async (req, res) => {
+    try {
+        if (_.has(req, 'body.data.id')) {
+                await sequelize.models.links.update({
+                    deleted: true,
+
+                }, {
+                    where: {
+                        key : {
+                            [Op.eq]: req.body.data.id
+                        }
+                    }
+                })
+            res.send(JSON.stringify({sucsess: '1'}));
+        } else {
+            console.log('Ошибка в формате данных');
+            res.send(JSON.stringify({sucsess: '0'}));
+        }
+    } catch(err){
+        console.log(err);
+        res.send(JSON.stringify({sucsess: '0'}));
+    }
+});
+
+router.patch('/',  async (req, res) => { //todo доделать
+    try {
+        if (_.has(req, 'body.data.id')) {
+
+                const bozdo = await sequelize.models.links.findByPrimary(req.body.data.id);
+                await sequelize.models.links.update({
+                    deleted: true,
+
+                }, {
+                    where: {
+                        key : {
+                            [Op.eq]: req.body.data.id
+                        }
+                    }
+                })
+            res.send(JSON.stringify({sucsess: '1'}));
+        } else {
+            console.log('Ошибка в формате данных');
+            res.send(JSON.stringify({sucsess: '0'}));
+        }
+    } catch(err){
+        console.log(err);
+        res.send(JSON.stringify({sucsess: '0'}));
+    }
+});
+
 
 module.exports = router; 
