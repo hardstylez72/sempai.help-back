@@ -3,7 +3,7 @@ var router = express.Router();
 const dirTree = require('directory-tree');
 const _ = require('lodash');
 
-const tree1 = dirTree('/media/hardstylez72/Новый том/music/');
+// const tree1 = dirTree('/media/hardstylez72/Новый том/music/');
 
 // const getWideDash = count => {
 // 	let result = '|';
@@ -97,7 +97,7 @@ const tree1 = dirTree('/media/hardstylez72/Новый том/music/');
 //Функция возвращает записи
 router.post('/', async (req, res) => {
 	try {
-        const tree = dirTree('/media/hardstylez72/Новый том/music/');
+        const tree = dirTree('/media/bozdo/Новый том/music');
         tree.toggled = true;
 		res.send(JSON.stringify({sucsess: '1', data: tree}));
 	} catch (err) {

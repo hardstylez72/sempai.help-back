@@ -31,6 +31,7 @@ router.get('/:base64path', async (req, res) => {
 							'Content-Range': `bytes ${start}-${end}/${fileSize}`,
 							'Accept-Ranges': 'bytes',
 							'Content-Length': chunksize,
+							'Content-type': 'audio/*'
 						};
 						res.writeHead(206, head);
 						if (currentFile !== path && currentFile) {
@@ -42,6 +43,7 @@ router.get('/:base64path', async (req, res) => {
 					} else {
 						const head = {
 							'Content-Length': fileSize,
+							'Content-type': 'audio/*'
 						};
 						res.writeHead(200, head);
 						fs.createReadStream(path).pipe(res);
@@ -57,6 +59,55 @@ router.get('/:base64path', async (req, res) => {
 	}
 });
 
+router.get('/download/:base64path', async (req, res) => {
+	try {
+		const jsonData = Buffer(req.params.base64path, 'base64').toString('utf-8');
+		const data = JSON.parse(jsonData);
+		if (_.has(data, 'path')) {
+			const pathToFile = _.get(data, 'path', null);
+			const isPathExist = await fs.existsSync(`${pathToFile}`);
+			if (isPathExist) {
+				const stat = fs.statSync(pathToFile);
+				const path = pathToFile;
+				const fileSize = stat.size;
+				const range = req.headers.range;
+				if (range) { //todo нужно завести таймаут на закрытие стрима
+					const parts = range.replace(/bytes=/, '').split('-');
+					const start = parseInt(parts[0], 10);
+					const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+					const chunksize = end - start + 1;
+					const file = fs.createReadStream(path, {start, end});
+					const head = {
+						'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+						'Accept-Ranges': 'bytes',
+						'Content-Length': chunksize,
+						'Content-Type': 'audio/flac'
+					};
+					res.writeHead(206, head);
+					if (currentFile !== path && currentFile) {
+						fs.createReadStream(currentFile).close();
+					}
+					file.pipe(res);
+					currentFile = path;
+
+				} else {
+					const head = {
+						'Content-Length': fileSize,
+						'Content-Type': 'audio/flac'
+					};
+					res.writeHead(200, head);
+					fs.createReadStream(path).pipe(res);
+				}
+			} else {
+				console.log(err.message);
+			}
+		} else {
+			console.log(err);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+});
 router.post('/cover/:base64path', async (req, res) => {
 	try {
 		const jsonData = Buffer(req.params.base64path, 'base64').toString('utf-8');

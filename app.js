@@ -1,36 +1,56 @@
-
-
-
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const init = require('./init');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const musicStream = require('./routes/musicStream');
-
-const imgUpload = require('./routes/imgUpload');
-const music = require('./routes/music');
-var addlink = require('./routes/addlink');
-var app = express();
+const
+    createError = require('http-errors'),
+	express = require('express'),
+	path = require('path'),
+	cookieParser = require('cookie-parser'),
+	logger = require('morgan'),
+	init = require('./init'),
+	app = require('./index').app,
+	indexRouter = require('./routes/index'),
+	usersRouter = require('./routes/users'),
+	musicStream = require('./routes/musicStream'),
+	imgUpload = require('./routes/imgUpload'),
+	music = require('./routes/music'),
+	addlink = require('./routes/addlink'),
+	uuidv1 = require('uuid/v1');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(err, req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+// app.use((err, req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
+
+let i = 0;
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+	const pwd = req.body.pwd;
+	const login = req.body.login;
+	// todo Проверка логина и пароля
+	if (req.body.uuid === undefined || req.body.uuid === '') {
+		const uuid = uuidv1();
+		res.status(200);
+		return res.send(JSON.stringify(
+			{sucsess: '1',
+				data: {
+					pwd: '*',
+					login: login,
+					uuid: uuid
+				}
+			}
+		));
+	}
+	next();
 });
+
 
 
 app.use('/', indexRouter);
@@ -39,6 +59,7 @@ app.use('/imgUpload', imgUpload);
 app.use('/addlink', addlink);
 app.use('/radio', musicStream);
 app.use('/music', music);
+
 
 
 // catch 404 and forward to error handler
@@ -61,94 +82,17 @@ app.use(function(err, req, res, next) {
 
 
 
-
-
-var debug = require('debug')('backend:server');
-var http = require('http');
-
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '4000');
-app.set('port', port);
-console.log('Port = ' +port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
-
-
+// const _ = require('lodash');
+//
+// router.post('/', async (req, res) => {
+// 	try {
+//
+// 		res.send(JSON.stringify({sucsess: '1', data: tree}));
+// 	} catch (err) {
+// 		console.log(err);
+// 		res.send(JSON.stringify({sucsess: '0'}));
+// 	}
+// });
 
 
 module.exports = app;
