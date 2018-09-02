@@ -34,8 +34,14 @@ let i = 0;
 app.use((req, res, next) => {
 	const pwd = req.body.pwd;
 	const login = req.body.login;
+	if (req.originalUrl.indexOf('/radio') !== -1) {
+		return next();
+	}
+	if (pwd !== '123' && !req.body.authState)
+		return res.send(JSON.stringify({sucsess: '0'}));
 	// todo Проверка логина и пароля
-	if (req.body.uuid === undefined || req.body.uuid === '') {
+	if ((req.body.uuid === null && req.body.isAuthRequired) && !req.body.authState) {
+
 		const uuid = uuidv1();
 		res.status(200);
 		return res.send(JSON.stringify(
@@ -48,7 +54,7 @@ app.use((req, res, next) => {
 			}
 		));
 	}
-	next();
+	return next();
 });
 
 
