@@ -18,14 +18,14 @@ router.put('/',  async (req, res) => {
                     link: req.body.data.url,
                     abstract: req.body.data.abstract
                 });
-            res.send(JSON.stringify({sucsess: '1'}));
+            res.send(JSON.stringify({success: '1'}));
         } else {
             console.log('Ошибка в формате данных');
-            res.send(JSON.stringify({sucsess: '0'}));
+            res.send(JSON.stringify({success: '0'}));
         }
     } catch(err) {
         console.log(err);
-        res.send(JSON.stringify({sucsess: '0'}));
+        res.send(JSON.stringify({success: '0'}));
     }
 });
 
@@ -36,14 +36,14 @@ router.post('/',  async (req, res) => {
             _.has(req, 'body.data.offset')) {
                 //todo: доделать обработку фильтра
             const dataFromDb = await sequelize.models.links.findAll();
-            res.send(JSON.stringify({sucsess: '1', data: dataFromDb}));
+            res.send(JSON.stringify({success: '1', data: dataFromDb}));
         } else {
             console.log('Ошибка в формате данных');
-            res.send(JSON.stringify({sucsess: '0'}));
+            res.send(JSON.stringify({success: '0'}));
         }
     } catch(err) {
         console.log(err);
-        res.send(JSON.stringify({sucsess: '0'}));
+        res.send(JSON.stringify({success: '0'}));
     }
 });
 
@@ -62,14 +62,14 @@ router.delete('/',  async (req, res) => {
                         }
                     }
                 })
-            res.send(JSON.stringify({sucsess: '1'}));
+            res.send(JSON.stringify({success: '1'}));
         } else {
             console.log('Ошибка в формате данных');
-            res.send(JSON.stringify({sucsess: '0'}));
+            res.send(JSON.stringify({success: '0'}));
         }
     } catch(err){
         console.log(err);
-        res.send(JSON.stringify({sucsess: '0'}));
+        res.send(JSON.stringify({success: '0'}));
     }
 });
 
@@ -88,14 +88,14 @@ router.patch('/',  async (req, res) => { //todo доделать
                         }
                     }
                 })
-            res.send(JSON.stringify({sucsess: '1'}));
+            res.send(JSON.stringify({success: '1'}));
         } else {
             console.log('Ошибка в формате данных');
-            res.send(JSON.stringify({sucsess: '0'}));
+            res.send(JSON.stringify({success: '0'}));
         }
     } catch(err){
         console.log(err);
-        res.send(JSON.stringify({sucsess: '0'}));
+        res.send(JSON.stringify({success: '0'}));
     }
 });
 

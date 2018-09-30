@@ -132,13 +132,13 @@ router.post('/cover/:base64path', async (req, res) => {
 					const img = pathWhithCover + imgs[0];
 					let imgData = await fs.readFileSync(img, 'base64');
 					imgData =`data:image/${prefix};base64,` + imgData ;
-					res.send(JSON.stringify({sucsess: '1', data: imgData}));
+					res.send(JSON.stringify({success: '1', data: imgData}));
 				} else {
-					res.send(JSON.stringify({sucsess: '1', data: ''}));
+					res.send(JSON.stringify({success: '1', data: ''}));
 				}
 		}
 	} catch (err) {
-		res.send(JSON.stringify({sucsess: '0'}));
+		res.send(JSON.stringify({success: '0'}));
 	}
 });
 
