@@ -7,6 +7,7 @@ const authHandler = () => {
         if (userToken) {
             const tokenExist = await redis.get(userToken);
             if (tokenExist) {
+                req.sessionInfo = tokenExist;
                 return next();
             }
         }

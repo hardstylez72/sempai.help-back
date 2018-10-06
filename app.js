@@ -13,7 +13,8 @@ const
 	addlink = require('./routes/addlink'),
 	uuidv1 = require('uuid/v1'),
     login = require('./routes/login'),
-    authHandler = require('./middleWare/auth').authHandler;
+    authHandler = require('./middleWare/auth').authHandler,
+	favorite = require('./routes/favorite');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,8 +32,17 @@ app.use(authHandler());
 //     next();
 // });
 
-
-
+// var options = {
+//     dotfiles: 'ignore',
+//     etag: false,
+//     extensions: ['htm', 'html'],
+//     index: false,
+//     maxAge: '1d',
+//     redirect: false,
+//     setHeaders: function (res, path, stat) {
+//         res.set('x-timestamp', Date.now());
+//     }
+// }
 
 
 
@@ -43,6 +53,7 @@ app.use('/addlink', addlink);
 app.use('/radio', musicStream);
 app.use('/music', music);
 app.use('/login', login);
+app.use('/track', favorite);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

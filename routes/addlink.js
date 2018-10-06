@@ -16,7 +16,8 @@ router.put('/',  async (req, res) => {
                     user: req.body.data.user,
                     descr: req.body.data.descr,
                     link: req.body.data.url,
-                    abstract: req.body.data.abstract
+                    abstract: req.body.data.abstract,
+                    user_id: 1 //todo: доделать сувать все о пользователе в редис
                 });
             res.send(JSON.stringify({success: '1'}));
         } else {

@@ -4,6 +4,7 @@ const uuidv1 = require('uuid/v1');
 const _ = require('lodash');
 const redis = require('../init').redis;
 const dotenv = require('dotenv').config();
+const models = require('../init').sequelize.models;
 
 router.post('/', async (req, res) => {
     try {
@@ -19,16 +20,26 @@ router.post('/', async (req, res) => {
     // todo: смотрим в  в бд
         const password = _.get(req, 'body.pwd', false);
         const login = _.get(req, 'body.login', false);
-    if (password === '1') {
-        const token = uuidv1();
-        await redis.set(token, "valid", 'EX', dotenv.parsed.REDIS_SESSION_LIFE_TIME);
-        res.cookie('is-token-ok', 1);
-        res.cookie('token', token);
-        return res.send(JSON.stringify({success: '1', data: 'ok'}));
-    }
-        res.cookie('is-token-ok', 0);
-        return res.send(JSON.stringify({success: '0', error: {message: 'Введены неверные данные при авторизации'}}));
+        if (password && login) {
+            const user = await models.users.findOne({
+                where: {
+                    name: login,
+                    pwd:  password
+                }
+            });
+            if (!user) {
+                throw new Error('Авторизация: Пользователь не найден');
+            }
+            const token = uuidv1();
+            await redis.set(token, login, 'EX', dotenv.parsed.REDIS_SESSION_LIFE_TIME);
+            res.cookie('is-token-ok', 1);
+            res.cookie('token', token);
+            return res.send(JSON.stringify({success: '1', data: 'ok'}));
+        }
+        throw new Error('Авторизация: Введены неверные данные при авторизации');
+
     } catch (err) {
+        res.cookie('is-token-ok', 0);
         console.log(err);
         const error = {};
         error.message = err.message;
