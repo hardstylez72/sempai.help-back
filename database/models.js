@@ -116,7 +116,6 @@ tastes.belongsTo(tracks,  {constraints: true, foreignKey: 'track_id'});
 tastes.removeAttribute('id');
 
 
-
 sequelize.createSchema('links', { ifNotExists: true });
 sequelize.createSchema('users', { ifNotExists: true });
 sequelize.createSchema('tastes', { ifNotExists: true });

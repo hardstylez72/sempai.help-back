@@ -65,10 +65,15 @@ const connectDB = async () => {
     try {
         await connectDB();
         const models =  sequelize.import('./database/models.js');
-        await sequelize.sync({force: true});
+        await sequelize.sync({force: false});
         await sequelize.models.users.create({
             name: dotenv.parsed.SITE_ADMIN_NAME,
             pwd: dotenv.parsed.SITE_ADMIN_PWD,
+            role_id: 1
+        });
+        await sequelize.models.users.create({
+            name: dotenv.parsed.SITE_ADMIN_NAME_2,
+            pwd: dotenv.parsed.SITE_ADMIN_PWD_2,
             role_id: 1
         });
     } catch (err) {

@@ -5,6 +5,8 @@ const _ = require('lodash');
 const dotenv = require('dotenv').config();
 const redis = require('../init').redis;
 const models = require('../init').sequelize.models;
+const sequelize = require('../init').sequelize;
+const Sequelize = require('../init').Sequelize;
 const allowedMusicTypes = ['.mp3', '.flac'];
 
 router.post('/', async (req, res) => {
@@ -12,7 +14,7 @@ router.post('/', async (req, res) => {
         let tree = {};
         const content = await redis.get(dotenv.parsed.CONTENT_PATH);
         if (!content) {
-        	tree = dirTree(dotenv.parsed.CONTENT_PATH);
+        	tree = dirTree(dotenv.parsed.CONTENT_PATH, {extensions:/\.mp3|\.flac/});
             tree.toggled = true;
             const actualContent = await getContentArray(tree);
             await updateContent(actualContent); //todo: сделать принудительный апдейт
@@ -25,6 +27,28 @@ router.post('/', async (req, res) => {
 		console.log(err);
         return res.send(JSON.stringify({success: '0', error: err}));
 	}
+});
+
+router.get('/favorite', async (req, res) => {
+    try {
+        const result = await sequelize.query(`
+    select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '${req.sessionInfo}' and tastes.tastes.deleted <> true
+        `, {type: Sequelize.QueryTypes.SELECT});
+
+        if (!result) {
+            console.log('fe');
+        }
+        return res.send(JSON.stringify({success: '1', data: result}));
+    } catch (err) {
+        console.log(err);
+        return res.send(JSON.stringify({success: '0', error: err}));
+    }
 });
 
 const getContentArray = async (baseFolderStruct) => {
