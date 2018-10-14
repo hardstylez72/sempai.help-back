@@ -10,7 +10,9 @@ router.post('/', async (req, res) => {
     try {
        // const ip = req.connection._peername.address;
        const userToken = _.get(req, 'cookies.token', false);
-       const tokenExist = await redis.get(userToken);
+       const tokenExist = await redis.get(userToken)
+           .then(data => Promise.resolve(data))
+           .catch(() => Promise.resolve(false));
 
     if (tokenExist) {
         res.cookie('token', userToken);
@@ -31,7 +33,7 @@ router.post('/', async (req, res) => {
                 throw new Error('Авторизация: Пользователь не найден');
             }
             const token = uuidv1();
-            await redis.set(token, login, 'EX', dotenv.parsed.REDIS_SESSION_LIFE_TIME);
+            await redis.set(token, login, 'EX', process.env.REDIS_SESSION_LIFE_TIME);
             res.cookie('is-token-ok', 1);
             res.cookie('token', token);
             return res.send(JSON.stringify({success: '1', data: 'ok'}));

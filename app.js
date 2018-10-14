@@ -16,10 +16,19 @@ const
     authHandler = require('./middleWare/auth').authHandler,
 	favorite = require('./routes/favorite');
 
+const cors = require('cors');
+
+const corsOptions = {
+    origin: 'http://localhost:3000/',
+    credentials: true,
+
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
