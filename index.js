@@ -1,10 +1,11 @@
 const
-	express = require('express'),
-	http = require('http'),
-	app = express(),
-	dotenv = require('dotenv').config(),
-	port = process.env.PORT;
-
+    _ = require('dotenv').config(),
+    express = require('express'),
+    app = express(),
+    http = require('http'),
+    port = process.env.APP_PORT,
+    initRoutes = require('./routes/index'),
+    initMiddleWare = require('./middleWare');
 
 const onError = (error) => {
     if (error.syscall !== 'listen') {
@@ -34,25 +35,18 @@ const onListening = () => {
 
 };
 
-
-
-if (Number(port) === NaN) {
-	throw console.error('Для запуска приложения укажите порт в файле .env');
+try {
+    app.set('port', port);
+    const server = http.createServer(app);
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+    require('./init');
+    initMiddleWare(app);
+    initRoutes(app);
+    console.log(`[SEMPAI.HELP] Приложение запущено на порту: ${port}`);
+} catch (err) {
+    throw new Error(`При запуске приложения произошла ошибка ${err.message}`)
 }
- try {
-     app.set('port', port);
-     const server = http.createServer(app);
-     server.listen(port);
-     server.on('error', onError);
-     server.on('listening', onListening);
-     console.log(`[SEMPAI.HELP] Приложение запущено на порту: ${port}`);
- } catch (err) {
-	 throw new Error(`При запуске приложения произошла ошибка ${err.message}`)
- }
 
-
-
-
-
-
-module.exports.app = app;
+module.exports = app;

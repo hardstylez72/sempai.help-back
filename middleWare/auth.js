@@ -16,8 +16,8 @@ const authHandler = () => {
             return next();
         }
 
-        return res.send(JSON.stringify({success: '0', error: {message: 'Авторизируйтесь'}}));
+        return res.end(JSON.stringify({success: '0', error: {message: 'Авторизируйтесь'}}));
     };
 };
 
-module.exports.authHandler = authHandler;
+module.exports = authHandler;

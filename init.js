@@ -1,6 +1,118 @@
 const Sequelize = require('sequelize');
 const Redis = require('ioredis');
-const dotenv = require('dotenv').config();
+const winston = require('winston');
+const { createLogger, format, transports }  = require('winston');
+const moment = require('moment');
+const path = require('path');
+const fs = require( 'fs' );
+
+const LOG_DIR = 'logs';
+const INFO_LOGS_DIR = LOG_DIR +'/info';
+const WARN_LOGS_DIR = LOG_DIR + '/warn';
+const ERROR_LOGS_DIR = LOG_DIR + '/error';
+const MAX_LOGFILE_SIZE_IN_BYTES = 10000000;
+
+if ( !fs.existsSync( LOG_DIR ) ) {
+    fs.mkdirSync( LOG_DIR );
+}
+if ( !fs.existsSync(INFO_LOGS_DIR) ) {
+    fs.mkdirSync(INFO_LOGS_DIR);
+}
+
+if ( !fs.existsSync(WARN_LOGS_DIR) ) {
+    fs.mkdirSync(WARN_LOGS_DIR);
+}
+
+if ( !fs.existsSync(ERROR_LOGS_DIR) ) {
+    fs.mkdirSync(ERROR_LOGS_DIR);
+}
+
+const loggerToConsole = createLogger({
+
+    level: 'info',
+    format: format.combine(
+        format.colorize(),
+        format.timestamp({
+            format: 'HH:mm:ss:SSS'
+        }),
+        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
+    ),
+    transports: [new transports.Console()]
+});
+const loggerToFilesInfo = createLogger({
+
+    level: 'info',
+    pathname: './logs',
+    format: format.combine(
+        format.timestamp({
+            format: 'MM/DD/YYYY - HH:mm:ss::SSS'
+        }),
+        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
+    ),
+    transports: [
+         new transports.File({
+             filename: path.join(INFO_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
+             maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
+         })
+    ]
+});
+
+const loggerToFilesWarn = createLogger({
+
+    level: 'info',
+    pathname: './logs',
+    format: format.combine(
+        format.timestamp({
+            format: 'MM/DD/YYYY - HH:mm:ss'
+        }),
+        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
+    ),
+    transports: [
+        new transports.File({
+            filename: path.join(WARN_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
+            maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
+        })
+    ]
+});
+
+const loggerToFilesError = createLogger({
+
+    level: 'info',
+    pathname: './logs',
+    format: format.combine(
+        format.timestamp({
+            format: 'MM/DD/YYYY - HH:mm:ss'
+        }),
+        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
+    ),
+    transports: [
+        new transports.File({
+            filename: path.join(ERROR_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
+            maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
+        })
+    ]
+});
+
+const logger = module.exports.logger = {};
+
+logger.info = (data) => {
+    loggerToFilesInfo.info(data);
+    loggerToConsole.info(data);
+};
+
+logger.warn = (data) => {
+    loggerToFilesWarn.warn(data);
+    loggerToConsole.warn(data);
+};
+
+logger.error = (data) => {
+    loggerToFilesError.error(data);
+    loggerToConsole.error(data);
+};
+
+const sequelizeLogHandler = (msg, type) => {
+    logger.info(msg)
+};
 
 // sudo docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U YOUR_DB_USE_USER
 // sudo  docker run -it --rm --link some-postgres:postgres postgres pg_dump -h postgres -U sempai > /home/bozdo/Desktop/dump
@@ -8,17 +120,19 @@ const sequelize = new Sequelize(
     process.env.DB_SQL_NAME,
     process.env.DB_SQL_USER,
     process.env.DB_SQL_PWD, {
+        logging: sequelizeLogHandler,
         host: process.env.DB_SQL_HOST,
         dialect: 'postgres',
-        reconnect: () => {console.log('RECONECT!!!!!!!!!!')},
         operatorsAliases: false,
         pool: {
           max: 5,
           min: 0,
-          acquire: 30000,
-          idle: 10000
+          acquire: 3000,
+          idle: 1000
         },
   });
+
+
 
 const redis = new Redis({
     host: process.env.REDIS_HOST,
@@ -29,33 +143,33 @@ const redis = new Redis({
 });
 
 redis.on("error", err => {
-    console.error("[Redis]: Ошибка", err.message);
+    logger.error("[Redis]: Ошибка", err.message);
 });
 
 redis.on("ready", () => {
-    console.log("[Redis]: Готов к использованию");
+    logger.info("[Redis]: Готов к использованию");
 });
 
 redis.on("connect", () => {
-    console.log("[Redis]: Успешное подключение");
+    logger.info("[Redis]: Успешное подключение");
 });
 
 redis.on("reconnecting", () => {
-    console.log("[Redis]: Повторное подключение");
+    logger.info("[Redis]: Повторное подключение");
 });
 
 redis.on("end", () => {
-    console.log("[Redis]: Соединение закрылось");
+    logger.info("[Redis]: Соединение закрылось");
 });
 
   //trying to establish connection to local database
 const connectDB = async () => {
       try {
-        await sequelize.authenticate();
-        console.log(`[Sequelize]: Успешное подключение к БД ${process.env.DB_SQL_NAME} под юзером ${process.env.DB_SQL_USER}`);
+        await sequelize.authenticate()
+        logger.info(`[Sequelize]: Успешное подключение к БД ${process.env.DB_SQL_NAME} под юзером ${process.env.DB_SQL_USER}`);
       }
       catch(err) {
-        console.error(`[Sequelize]: Ошибка при подключении к БД ${process.env.DB_SQL_NAME} под юзером ${process.env.DB_SQL_USER}`, err.message);
+        logger.error(`[Sequelize]: Ошибка при подключении к БД ${process.env.DB_SQL_NAME} под юзером ${process.env.DB_SQL_USER}`, err.message);
         throw err;
       }
 };
@@ -63,7 +177,7 @@ const connectDB = async () => {
 (async () => {
     try {
         await connectDB();
-        const models =  sequelize.import('./database/models.js');
+        sequelize.import('./database/models.js');
         await sequelize.sync({force: false});
         await sequelize.models.users.create({
             name: process.env.SITE_ADMIN_NAME,
@@ -76,7 +190,7 @@ const connectDB = async () => {
             role_id: 1
         });
     } catch (err) {
-        console.error(err);
+        logger.error(err);
     }
 })();
 
