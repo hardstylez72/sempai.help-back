@@ -6,6 +6,7 @@ const
     port = process.env.APP_PORT,
     initRoutes = require('./routes/index'),
     initMiddleWare = require('./middleWare');
+    logger = require('./init').logger;
 
 const onError = (error) => {
     if (error.syscall !== 'listen') {
@@ -19,11 +20,11 @@ const onError = (error) => {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requires elevated privileges');
+            logger.error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            console.error(bind + ' is already in use');
+            logger.error(bind + ' is already in use');
             process.exit(1);
             break;
         default:
@@ -41,10 +42,10 @@ try {
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
-    require('./init');
-    initMiddleWare(app);
-    initRoutes(app);
-    console.log(`[SEMPAI.HELP] Приложение запущено на порту: ${port}`);
+    initMiddleWare(app, logger);
+    initRoutes(app,  logger);
+    logger.info(`[SEMPAI.HELP] Приложение запущено на порту: ${port}`);
+    require('./socket.io')
 } catch (err) {
     throw new Error(`При запуске приложения произошла ошибка ${err.message}`)
 }

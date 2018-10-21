@@ -27,6 +27,29 @@ if ( !fs.existsSync(ERROR_LOGS_DIR) ) {
     fs.mkdirSync(ERROR_LOGS_DIR);
 }
 
+const BASE_PATH = process.env.CONTENT_PATH;
+const MUSIC_STYLES = [
+    'ELECTRONIC',
+    'DUBSTEP',
+    'DUB',
+    'KAWAI',
+    'CASUAL',
+    'TRIP-HOP',
+    'HIP-HOP',
+    'BRUTAL',
+    'CLOUD',
+    'RAGGE'
+];
+MUSIC_STYLES.forEach(style => {
+    if ( !fs.existsSync(BASE_PATH + '/' + style) ) {
+        fs.mkdirSync(BASE_PATH + '/' + style);
+    }
+});
+
+
+
+
+
 const loggerToConsole = createLogger({
 
     level: 'info',

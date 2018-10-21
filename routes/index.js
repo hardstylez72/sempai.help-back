@@ -1,4 +1,4 @@
-module.exports = initRoutes = (app) => {
+module.exports = initRoutes = (app, logger) => {
 
 const createError = require('http-errors');
 const
@@ -21,11 +21,13 @@ const
     app.use('/track', favorite);
 
     app.use((req, res, next) => {
+        logger.warn(`Ошибка 404 ${{req}}`);
         next(createError(404));
     });
 
 
     app.use(function(err, req, res, next) {
+        logger.warn(`Ошибка 500 ${{req}}`);
         res.locals.message = err.message;
         res.locals.error = req.app.get('env') === 'development' ? err : {};
         res.status(err.status || 500);
