@@ -9,7 +9,8 @@ const
     music = require('../api/music'),
     addlink = require('../api/addlink'),
     login = require('../api/login'),
-    favorite = require('../api/favorite');
+    favorite = require('../api/favorite'),
+    upload = require('../api/music/upload/get');
 
     app.use('/', indexRouter);
     app.use('/users', usersRouter);
@@ -19,6 +20,7 @@ const
     app.use('/music', music);
     app.use('/login', login);
     app.use('/track', favorite);
+    app.use('/music/upload/get', upload);
 
     app.use((req, res, next) => {
         logger.warn(`Ошибка 404 ${{req}}`);

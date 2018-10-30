@@ -1,7 +1,6 @@
 FROM node:8.12.0-alpine
 
-ENV APPDIR /opt/app
-
+ENV APPDIR=/opt/app
 RUN mkdir -p ${APPDIR}
 WORKDIR ${APPDIR}
 
@@ -10,15 +9,16 @@ COPY package.json .
 COPY package-lock.json .
 COPY index.js .
 COPY init.js .
-COPY app.js .
+COPY socket.io.js .
 
-COPY views views
-COPY public public
+COPY api api
+COPY database database
 COPY middleWare middleWare
 COPY routes routes
-COPY database database
+COPY views views
 
 RUN npm i
 EXPOSE 4000
+EXPOSE 4001
 
-CMD [ "node", "app.js" ]
+CMD [ "node", "index.js" ]

@@ -80,6 +80,10 @@ const tracks = sequelize.define('tracks',
             type: Sequelize.STRING(1024),
             allowNull: false
         },
+        uploader_id: {
+            type: Sequelize.INTEGER,
+            allowNull: true
+        },
         deleted: {
             type: Sequelize.BOOLEAN,
             defaultValue: 'false'
