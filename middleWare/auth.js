@@ -12,7 +12,7 @@ const authHandler = () => {
             }
         }
 
-        if (req.url === '/login/') {
+        if (req.url === '/api/login/') {
             return next();
         }
 

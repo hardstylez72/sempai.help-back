@@ -21,8 +21,8 @@ router.post('/', async (req, res) => {
         return res.end(JSON.stringify({success: '1', data: 'ok'}));
     }
     // todo: смотрим в  в бд
-        const password = _.get(req, 'body.pwd', false);
-        const login = _.get(req, 'body.login', false);
+        const password = _.get(req, 'body.data.pwd', false);
+        const login = _.get(req, 'body.data.login', false);
         if (password && login) {
             const user = await models.users.findOne({
                 where: {

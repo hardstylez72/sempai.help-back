@@ -10,7 +10,7 @@ const redis = require('./init').redis;
 const util = require('util');
 const dirTree = require('directory-tree');
 
-const port = 4001;
+const port = process.env.WEB_SOCKET_PORT;
 const app = express();
 
 const server = http.createServer(app);
@@ -208,4 +208,11 @@ const unzipFiles = (socket, data, curStat) => {
 };
 
 
-server.listen(port, () => logger.info(`[SocketIO] Слушает на порту ${port}`));
+server.listen(port);
+server.on('listening', () => {
+    logger.info(`[SocketIO] Слушает на порту ${port}`);
+});
+
+server.on('error', (err) => {
+    logger.error(`[SocketIO] Ошибка при запуске сервера на порту: ${port}, Ошибка: ${err.message}`);
+});

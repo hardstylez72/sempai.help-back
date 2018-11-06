@@ -1,5 +1,6 @@
+require('dotenv').config();
+
 const
-    _ = require('dotenv').config(),
     express = require('express'),
     app = express(),
     http = require('http'),

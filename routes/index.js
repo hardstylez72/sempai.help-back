@@ -12,24 +12,39 @@ const
     favorite = require('../api/favorite'),
     upload = require('../api/music/upload/get');
 
-    app.use('/', indexRouter);
-    app.use('/users', usersRouter);
-    app.use('/imgUpload', imgUpload);
-    app.use('/addlink', addlink);
-    app.use('/radio', musicStream);
-    app.use('/music', music);
-    app.use('/login', login);
-    app.use('/track', favorite);
-    app.use('/music/upload/get', upload);
+    app.use('/api/', indexRouter);
+    app.use('/api/users', usersRouter);
+    app.use('/api/imgUpload', imgUpload);
+    app.use('/api/addlink', addlink);
+    app.use('/api/radio', musicStream);
+    app.use('/api/music', music);
+    app.use('/api/login', login);
+    app.use('/api/track', favorite);
+    app.use('/api/music/upload/get', upload);
 
     app.use((req, res, next) => {
-        logger.warn(`Ошибка 404 ${{req}}`);
+        const data = {
+            url: req.originalUrl,
+            method: req.method,
+            body: req.body,
+            headers: req.headers,
+            cookies: req.cookies
+        };
+        logger.warn(`Ошибка 404 ${JSON.stringify(data)}}`);
+
         next(createError(404));
     });
 
 
     app.use(function(err, req, res, next) {
-        logger.warn(`Ошибка 500 ${{req}}`);
+        const data = {
+            url: req.originalUrl,
+            method: req.method,
+            body: req.body,
+            headers: req.headers,
+            cookies: req.cookies
+        };
+        logger.warn(`Ошибка 500 ${JSON.stringify(data)}`);
         res.locals.message = err.message;
         res.locals.error = req.app.get('env') === 'development' ? err : {};
         res.status(err.status || 500);

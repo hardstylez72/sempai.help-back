@@ -41,7 +41,8 @@ const MUSIC_STYLES = [
     'RAGGE'
 ];
 MUSIC_STYLES.forEach(style => {
-    if ( !fs.existsSync(BASE_PATH + '/' + style) ) {
+    const isExist = fs.existsSync(BASE_PATH + '/' + style);
+    if ( !isExist ) {
         fs.mkdirSync(BASE_PATH + '/' + style);
     }
 });
@@ -146,6 +147,7 @@ const sequelize = new Sequelize(
         logging: sequelizeLogHandler,
         host: process.env.DB_SQL_HOST,
         dialect: 'postgres',
+        reconnect: true,
         operatorsAliases: false,
         pool: {
           max: 5,

@@ -108,9 +108,10 @@ router.get('/download/:base64path', async (req, res) => {
 		console.log(err);
 	}
 });
-router.post('/cover/:base64path', async (req, res) => {
+router.post('/cover/', async (req, res) => {
 	try {
-		const jsonData = Buffer(req.params.base64path, 'base64').toString('utf-8');
+		const path = _.get(req, 'body.data');
+		const jsonData = Buffer(path, 'base64').toString('utf-8');
 		const data = JSON.parse(jsonData);
 		if (_.has(data, 'path')) {
 				const pathToFile = _.get(data, 'path', null);

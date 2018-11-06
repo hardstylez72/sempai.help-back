@@ -8,7 +8,7 @@ const _ = require('lodash');
 //Функция добавляет новую запись
 router.put('/favorite/',  async (req, res) => {
     try {
-        const track = _.get(req, 'body.track', false);
+        const track = _.get(req, 'body.data', false);
         if (track) {
             const trackId = await sequelize.models.tracks.find({
                 attributes: ['id'],
@@ -51,7 +51,7 @@ router.put('/favorite/',  async (req, res) => {
 //Функция добавляет новую запись
 router.post('/favorite/',  async (req, res) => {
     try {
-        const track = _.get(req, 'body.track', false);
+        const track = _.get(req, 'body.data', false);
         if (track) {
             const trackId = await sequelize.models.tracks.find({
                 attributes: ['id'],
@@ -92,7 +92,7 @@ router.post('/favorite/',  async (req, res) => {
 
 router.delete('/favorite/',  async (req, res) => {
     try {
-        const track = _.get(req, 'body.track', false);
+        const track = _.get(req, 'body.data', false);
         if (track) {
             const trackId = await sequelize.models.tracks.find({
                 attributes: ['id'],

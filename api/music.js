@@ -82,17 +82,24 @@ const getContentArray = async (baseFolderStruct) => {
 const updateContent = async (actualContent) => {
 	try {
         const previusContent = await models.tracks.findAll();
-        for (let j = 0; j < actualContent.nameArr.length; j++) {
+        const newFiles = previusContent.filter((el, j) => {
             const isNameFound = previusContent.some(el => actualContent.nameArr[j] === el.dataValues.name);
             const isPathFound = previusContent.some(el => actualContent.nameArr[j] === el.dataValues.name);
             if (!(isPathFound && isNameFound)) {
-                await models.tracks.upsert({ //todo: оптимизировать запись
-                    name: actualContent.nameArr[j],
-                    path: actualContent.pathArr[j],
-                });
+                return false;
             }
+            return true;
+        });
 
-        }
+        const bulk = newFiles.map(el => {
+            return {
+                name: el.name,
+                path: el.path,
+                uploader_id: 1
+            }
+        });
+        await models.tracks.bulkCreate(bulk);
+
 	} catch (err) {
         console.error(err);
 		throw new Error(err.message);

@@ -4,7 +4,6 @@ ENV APPDIR=/opt/app
 RUN mkdir -p ${APPDIR}
 WORKDIR ${APPDIR}
 
-
 COPY package.json .
 COPY package-lock.json .
 COPY index.js .
@@ -18,7 +17,6 @@ COPY routes routes
 COPY views views
 
 RUN npm i
-EXPOSE 4000
-EXPOSE 4001
+EXPOSE 4000 4001
 
 CMD [ "node", "index.js" ]
