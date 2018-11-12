@@ -9,6 +9,7 @@ const models = require('../init').sequelize.models;
 router.post('/', async (req, res) => {
     const { logger } = req.ctx;
     try {
+        console.log('req.body = ', req.body);
        // const ip = req.connection._peername.address;
        const userToken = _.get(req, 'cookies.token', false);
        const tokenExist = await redis.get(userToken)

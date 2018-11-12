@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         	tree = dirTree(process.env.CONTENT_PATH, {extensions:/\.mp3|\.flac/});
             tree.toggled = true;
             const actualContent = await getContentArray(tree);
-            await updateContent(actualContent); //todo: сделать принудительный апдейт
+            //await updateContent(actualContent); //todo: сделать принудительный апдейт
             await redis.set(process.env.CONTENT_PATH, JSON.stringify(tree), 'EX', process.env.REDIS_CONTENT_UPDATE_TIME);
             return res.send(JSON.stringify({success: '1', data: tree}));
 		}

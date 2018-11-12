@@ -13,6 +13,7 @@ const enrichment = () => {
             logger
         };
         req.ctx = ctx;
+
         return next();
     }
 };
