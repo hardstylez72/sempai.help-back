@@ -1,4 +1,6 @@
 module.exports = initMiddleWare = (app) => {
+    const multiparty  = require('connect-multiparty');
+    const multipartMiddleware = multiparty({ uploadDir: process.env.CONTENT_PATH });
 
     const express = require('express');
     const cookieParser = require('cookie-parser');
@@ -12,6 +14,7 @@ module.exports = initMiddleWare = (app) => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
+    app.use(multipartMiddleware);
 
     // Custom middleWare
     app.use(authHandler());

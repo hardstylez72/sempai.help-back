@@ -3,7 +3,6 @@ const router = express.Router();
 const uuidv1 = require('uuid/v1');
 const _ = require('lodash');
 const redis = require('../init').redis;
-const dotenv = require('dotenv').config();
 const models = require('../init').sequelize.models;
 
 router.post('/', async (req, res) => {
@@ -19,7 +18,7 @@ router.post('/', async (req, res) => {
     if (tokenExist) {
         res.cookie('token', userToken);
         res.cookie('is-token-ok', 1);
-        return res.end(JSON.stringify({success: '1', data: 'ok'}));
+        return res.end(JSON.stringify({success: 1, data: 'ok'}));
     }
     // todo: смотрим в  в бд
         const password = _.get(req, 'body.data.pwd', false);

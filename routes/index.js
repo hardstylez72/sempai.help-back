@@ -1,42 +1,47 @@
-const multiparty  = require('connect-multiparty')
-const multipartMiddleware = multiparty({ uploadDir: process.env.CONTENT_PATH })
-const api = require('../api');
 
 
 module.exports = initRoutes = (app, logger) => {
 
 const createError = require('http-errors');
 const
-    indexRouter = require('../api/index'),
-    usersRouter = require('../api/users'),
-    musicStream = require('../api/musicStream'),
     imgUpload = require('../api/imgUpload'),
-    music = require('../api/music'),
     addlink = require('../api/addlink'),
     login = require('../api/login'),
-    favorite = require('../api/favorite'),
     upload = require('../api/music/upload/get'),
     upload2 = require('../api/upload');
 
 
-    app.get('/:api/:service/:object/:subject/:method/', (req, res, next) => {
-        // const func = require();
-        const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
-        console.log(req)
-    });
-
-    app.post('/:api/:version/:object/:subject/:method', async (req, res, next) => {
-        const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
+    app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
         try {
-            const result = await apiMethod(req, req.ctx);
+            const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
+            const result = await apiMethod(req, res, {...req.ctx, mark: req.mark});
+            return
         } catch(err) {
-
+            return
         }
     });
 
-    // app.use('/api/', indexRouter);
+    app.post('/:api/:version/:object/:subject/:method', async (req, res, next) => {
+        try {
+            const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
+            const result = await apiMethod(req, {...req.ctx, mark: req.mark});
+            const response = {
+              success: true,
+              data: result
+            };
+            return res.send(JSON.stringify(response));
+
+        } catch(err) {
+
+            const response = {
+                success: false,
+                error: err
+            };
+            return res.send(JSON.stringify(response));
+        }
+    });
+
     // app.use('/api/upload', indexRouter);
-    // app.use('/api/users', usersRouter);
     // app.use('/api/imgUpload', imgUpload);
     // app.use('/api/addlink', addlink);
     // app.use('/api/radio', musicStream);
@@ -79,12 +84,8 @@ const
     });
 };
 
-
-
 const getApiMethod = (...params) => {
-    const func2 = require('../api/v1/music/all/get');
     const path = '../' + params.reduce((acc, cur) => acc + '/' + cur) + '.js';
     const func = require(path);
-    console.log(path)
-    return func2
+    return func
 };
