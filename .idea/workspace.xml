@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Обновил инфраструктуру" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1811709832">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="env" value="1" />
+          <entry key="js" value="16" />
+          <entry key="www" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JavaScript" value="16" />
+          <entry key="PLAIN_TEXT" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="env" value="15" />
+          <entry key="js" value="983" />
+          <entry key="txt" value="15" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="983" />
+          <entry key="PLAIN_TEXT" value="30" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileColors">
+    <fileColor scope="All" color="285a68" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buildTreeFromFileSystem.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../helpers/buildTreeFromFileSystem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1005">
+              <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../api/v1/music/all/get.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="870">
+              <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refresh.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../api/v1/music/all/refresh.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="975">
+              <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../database/models.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="90" column="14" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3075">
+              <caret line="205" column="45" selection-start-line="205" selection-start-column="45" selection-end-line="205" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../api/v1/music/stream/upload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="91" column="28" lean-forward="true" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../api/v1/track/stream/get.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>errorHandler</find>
+      <find>process.env.CONTENT_PATH</find>
+      <find>sequelize</find>
+      <find>models</find>
+      <find>ELECTRONIC</find>
+      <find>reconnect</find>
+      <find>UPLOAD_SUCCESS</find>
+      <find>imagesPath</find>
+      <find>promisify</find>
+      <find>uploadDir</find>
+      <find>stream</find>
+      <find>socket</find>
+      <find>util</find>
+      <find>Ошибка при удалении буферного</find>
+      <find>curSize</find>
+      <find>getContentArray</find>
+      <find>При распаковке cover.jpg будет загружен на диск</find>
+      <find>../api/inde</find>
+      <find>express</find>
+      <find>'../api/music</find>
+      <find>return imgData;</find>
+      <find>./api/users'</find>
+      <find>info</find>
+      <find>processLastChunk</find>
+      <find>unzipFiles</find>
+      <find>path.</find>
+      <find>unzip</find>
+      <find>Успешное удаление буферного архива</find>
+      <find>Path</find>
+      <find>fullPath</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>success</replace>
+      <replace>DB_SQL_PWD</replace>
+      <replace>DB_SQL_USER</replace>
+      <replace>DB_SQL_NAME</replace>
+      <replace>allowNull</replace>
+      <replace>process.env</replace>
+      <replace>DB_SQL_HOST</replace>
+      <replace>sequelize</replace>
+      <replace>logger.info</replace>
+      <replace>maxLogSizeBytes</replace>
+      <replace>MAX_LOGFILE_SIZE_IN_BYTES</replace>
+      <replace>logger.error</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/../sempai.help-front</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.env.example" />
+        <option value="$PROJECT_DIR$/routes/addlink.js" />
+        <option value="$PROJECT_DIR$/routes/favorite.js" />
+        <option value="$PROJECT_DIR$/routes/login.js" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/routes/music.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/combined.log" />
+        <option value="$PROJECT_DIR$/api/upload/get.js" />
+        <option value="$PROJECT_DIR$/api/music/upload/get.js" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/api/favorite.js" />
+        <option value="$PROJECT_DIR$/api/serverStats/get.js" />
+        <option value="$PROJECT_DIR$/api/music.js" />
+        <option value="$PROJECT_DIR$/socket.io.js" />
+        <option value="$PROJECT_DIR$/middleWare/enrichment.js" />
+        <option value="$PROJECT_DIR$/api/upload2.js" />
+        <option value="$PROJECT_DIR$/api/index.js" />
+        <option value="$PROJECT_DIR$/api/v1/index.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/index.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/all/get/index.js" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/api/v1/music/all/index.js" />
+        <option value="$PROJECT_DIR$/api/login.js" />
+        <option value="$PROJECT_DIR$/middleWare/auth.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/favorite/get.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/upload/get.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/favorite/get.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/favorite/check.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/favorite/delete.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/cover/get.js" />
+        <option value="$PROJECT_DIR$/api/musicStream.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/favorite/add.js" />
+        <option value="$PROJECT_DIR$/api/v1/track/stream/get.js" />
+        <option value="$PROJECT_DIR$/api/upload.js" />
+        <option value="$PROJECT_DIR$/middleWare/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/stream/upload.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/all/refresh.js" />
+        <option value="$PROJECT_DIR$/database/models.js" />
+        <option value="$PROJECT_DIR$/init.js" />
+        <option value="$PROJECT_DIR$/helpers/buildTreeFromFileSystem.js" />
+        <option value="$PROJECT_DIR$/api/v1/music/all/get.js" />
+        <option value="$PROJECT_DIR$/../api/v1/music/all/get.js" />
+        <option value="$PROJECT_DIR$/../.env" />
+        <option value="$PROJECT_DIR$/../api/v1/track/stream/get.js" />
+        <option value="$PROJECT_DIR$/../helpers/buildTreeFromFileSystem.js" />
+        <option value="$PROJECT_DIR$/../api/v1/music/all/refresh.js" />
+        <option value="$PROJECT_DIR$/../api/v1/music/stream/upload.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/../../package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/../../node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/../../package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2560" />
+    <option name="width" value="1920" />
+    <option name="height" value="1053" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+              <item name="all" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="track" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="track" type="462c0819:PsiDirectoryNode" />
+              <item name="stream" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/v1/music/get.js" />
+      <recent name="$PROJECT_DIR$/api/v1/music/all" />
+      <recent name="$PROJECT_DIR$/api/music" />
+      <recent name="$PROJECT_DIR$/database" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/v1/track/favorite" />
+      <recent name="$PROJECT_DIR$/api/v1/track" />
+      <recent name="$PROJECT_DIR$/api/v1/music/upload" />
+      <recent name="$PROJECT_DIR$/api/v1/music/favorite" />
+      <recent name="$PROJECT_DIR$/api/v1/music/all" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.Unnamed">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" node-parameters="-r dotenv" path-to-js-file="index.js" working-dir="$PROJECT_DIR$" />
+    <configuration name="get.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" node-parameters="-r dotenv" path-to-js-file="get.js" working-dir="$PROJECT_DIR$/api/serverStats" />
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+          <option name="startBrowserSettings">
+            <browser url="http://127.0.0.1" />
+          </option>
+        </settings>
+      </deployment>
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.Unnamed" />
+      <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Node.js.get.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.get.js" />
+        <item itemvalue="Docker.Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="" />
+      <created>1535807658153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1535807658153</updated>
+      <workItem from="1535807660053" duration="99000" />
+      <workItem from="1535808853646" duration="1380000" />
+      <workItem from="1535810387462" duration="14463000" />
+      <workItem from="1535896981262" duration="3666000" />
+      <workItem from="1535900887173" duration="6287000" />
+      <workItem from="1535909823684" duration="6165000" />
+      <workItem from="1536782705730" duration="4000" />
+      <workItem from="1538206094198" duration="141000" />
+      <workItem from="1538206255213" duration="204000" />
+      <workItem from="1538207625968" duration="3460000" />
+      <workItem from="1538217529792" duration="111000" />
+      <workItem from="1538217665086" duration="60000" />
+      <workItem from="1538218595953" duration="2965000" />
+      <workItem from="1538226549560" duration="47229000" />
+      <workItem from="1538333052730" duration="89698000" />
+      <workItem from="1540023071824" duration="25753000" />
+      <workItem from="1540059282239" duration="9248000" />
+      <workItem from="1540104637281" duration="70821000" />
+      <workItem from="1541164892840" duration="14245000" />
+      <workItem from="1541225173130" duration="705000" />
+      <workItem from="1541429739658" duration="73730000" />
+      <workItem from="1542047047080" duration="33437000" />
+      <workItem from="1545022125477" duration="6171000" />
+      <workItem from="1545242449641" duration="33000" />
+    </task>
+    <task id="LOCAL-00001" summary="Авторизация 50%">
+      <created>1535919351788</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535919351788</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Добавлен редис Авторизация:80%">
+      <created>1538291023870</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1538291023870</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Добаляет api favorite">
+      <created>1538847276149</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1538847276149</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Добаляет api favorite">
+      <created>1538906153181</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1538906153181</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Обораивает в докер">
+      <created>1539507793891</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1539507793891</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Добавляет логирование">
+      <created>1540042304591</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540042304591</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Добавил аплоад файлов">
+      <created>1540137709332</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1540137709332</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Добавил апи гет для аплода файлов">
+      <created>1540919803896</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1540919803896</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Замени вебсокеты на http запрос при аплоаде">
+      <created>1542001116203</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1542001116203</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Обновил инфраструктуру">
+      <created>1542606717748</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1542606717748</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="410075000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2560" y="0" width="1920" height="1053" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2358839" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49710068" weight="0.32785088" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.2126649" side_tool="true" visible="true" weight="0.21929824" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49446493" weight="0.32686085" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49130204" weight="0.3257821" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8490765" weight="0.32785088" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7873351" weight="0.21929824" />
+      <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49920928" weight="0.32894737" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49973643" weight="0.32972974" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Авторизация 50%" />
+    <MESSAGE value="Добавлен редис Авторизация:80%" />
+    <MESSAGE value="Добаляет api favorite" />
+    <MESSAGE value="Обораивает в докер" />
+    <MESSAGE value="Добавляет логирование" />
+    <MESSAGE value="Добавил аплоад файлов" />
+    <MESSAGE value="Добавил апи гет для аплода файлов" />
+    <MESSAGE value="Замени вебсокеты на http запрос при аплоаде" />
+    <MESSAGE value="Обновил инфраструктуру" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновил инфраструктуру" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/node_modules/cors/lib/index.js</url>
+          <line>227</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/serverStats/get.js</url>
+          <line>14</line>
+          <option name="timeStamp" value="434" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/v1/music/get.js/index.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="607" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/v1/track/favorite/delete.js</url>
+          <line>42</line>
+          <option name="timeStamp" value="656" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/v1/track/favorite/delete.js</url>
+          <line>47</line>
+          <option name="timeStamp" value="658" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/v1/music/all/get.js</url>
+          <line>36</line>
+          <option name="timeStamp" value="707" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../helpers/buildTreeFromFileSystem.js</url>
+          <line>85</line>
+          <option name="timeStamp" value="725" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../helpers/buildTreeFromFileSystem.js</url>
+          <line>91</line>
+          <option name="timeStamp" value="726" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../api/v1/music/all/refresh.js</url>
+          <line>75</line>
+          <option name="timeStamp" value="728" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="730" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../../Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/addlink.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/shelljs/shell.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="30" column="57" lean-forward="true" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/serverStats/.env">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/serverStats/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/cookie-parser/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/multer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-642">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/express/lib/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/body-parser/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/multiparty/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1125">
+          <caret line="129" column="28" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/upload2.js" />
+    <entry file="file://$PROJECT_DIR$/../../node_modules/@types/node/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="4245" column="119" selection-start-line="4245" selection-start-column="113" selection-end-line="4245" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/append-stream/append-stream.js" />
+    <entry file="file://$PROJECT_DIR$/../../node_modules/connect-multiparty/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../socket.io.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/prettier/bin-prettier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="16463" column="42" selection-start-line="16463" selection-start-column="42" selection-end-line="16463" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/rimraf/rimraf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/pullstream/node_modules/readable-stream/lib/_stream_writable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="146" column="31" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/v1/music/get.js/index.js" />
+    <entry file="file://$PROJECT_DIR$/api/index.js" />
+    <entry file="file://$PROJECT_DIR$/api/v1/index.js" />
+    <entry file="file://$PROJECT_DIR$/api/v1/music/all/index.js" />
+    <entry file="file://$PROJECT_DIR$/api/v1/music/index.js" />
+    <entry file="file://$PROJECT_DIR$/../../middleWare/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/music.js" />
+    <entry file="file://$PROJECT_DIR$/../../api/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/music/favorite/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="15" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/favorite.js" />
+    <entry file="file://$PROJECT_DIR$/api/users.js" />
+    <entry file="file://$PROJECT_DIR$/../../api/imgUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-117">
+          <caret line="54" selection-start-line="54" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/track/favorite/check.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/track/cover/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/track/favorite/delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="45" selection-start-line="45" selection-end-line="51" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/music/upload/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../middleWare/enrichment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/musicStream.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-742">
+          <caret line="11" selection-start-line="11" selection-end-line="59" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/upload.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/track/favorite/add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/music/upload/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../node_modules/unzip/unzip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../middleWare/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../database/models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="90" column="14" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3075">
+          <caret line="205" column="45" selection-start-line="205" selection-start-column="45" selection-end-line="205" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/music/all/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../helpers/buildTreeFromFileSystem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/track/stream/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/music/all/refresh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../api/v1/music/stream/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="91" column="28" lean-forward="true" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

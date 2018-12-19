@@ -12,7 +12,7 @@ module.exports = async (req, res, ctx) => {
         }
         
         const pathToFile = _.get(data, 'path', null);
-        const isPathExist = await fs.existsSync(`${pathToFile}`);
+        const isPathExist = await fs.existsSync(pathToFile);
         
         if (!isPathExist) {
             return null;

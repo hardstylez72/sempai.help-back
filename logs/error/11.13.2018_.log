@@ -1,0 +1,90 @@
+[11/13/2018 - 20:49:22] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 20:52:29] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 20:57:05] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 20:58:39] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:58:41] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:58:42] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:58:43] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:58:44] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:59:07] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: Входные данные некорректны
+[11/13/2018 - 20:59:45] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: sequelize is not defined
+[11/13/2018 - 21:00:26] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: result is not defined
+[11/13/2018 - 21:01:53] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: result is not defined
+[11/13/2018 - 21:21:35] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: fs is not defined
+[11/13/2018 - 21:24:32] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 21:24:55] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 21:37:31] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 21:41:25] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.
+[11/13/2018 - 21:42:03] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: _ is not defined
+[11/13/2018 - 21:42:26] [ERROR]: Произошла ошибка при считывании каталога файлов favorite: fs is not defined
+[11/13/2018 - 21:59:03] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 21:59:26] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 22:00:54] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 22:02:23] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 22:02:28] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/13/2018 - 22:11:58] [ERROR]: Cannot read property 'curSize' of undefined
+[11/13/2018 - 22:14:18] [ERROR]: Cannot read property 'curSize' of undefined
+[11/13/2018 - 22:16:04] [ERROR]: Cannot read property 'curSize' of undefined
+[11/13/2018 - 22:17:43] [ERROR]: Cannot read property 'curSize' of undefined
+[11/13/2018 - 22:25:23] [ERROR]: Ошибка при удалении пустой папки. Ошибка: localPathToReadZip is not defined
+[11/13/2018 - 22:26:06] [ERROR]: Ошибка при удалении пустой папки. Ошибка: localPathToReadZip is not defined
+[11/13/2018 - 22:28:26] [ERROR]: Ошибка при удалении пустой папки. Ошибка: localPathToReadZip is not defined
+[11/13/2018 - 22:36:40] [ERROR]: Ошибка при удалении пустой папки. Ошибка: ENOTEMPTY: directory not empty, rmdir '/media/bozdo/Новый том3/music/ELECTRONIC/Wakaan - CONVOY Compilation'
+[11/13/2018 - 22:41:36] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:36] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:36] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:36] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:37] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:41:38] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:06] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:06] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:07] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:46:08] [ERROR]: performance is not defined
+[11/13/2018 - 22:48:31] [ERROR]: Ошибка при удалении пустой папки. Ошибка: localPathToReadZip is not defined
+[11/17/2018 - 17:05:22] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/17/2018 - 17:05:22] [ERROR]: Авторизация: Введены неверные данные при авторизации
+[11/17/2018 - 17:05:23] [ERROR]: Ошибка при удалении пустой папки. Ошибка: ENOTEMPTY: directory not empty, rmdir '/media/bozdo/Новый том3/music/CLOUD/Wakaan - CONVOY Compilation'
+[11/17/2018 - 17:06:05] [ERROR]: Ошибка при удалении пустой папки. Ошибка: localPathToReadZip is not defined
+[11/19/2018 - 20:38:19] [ERROR]: Авторизация: Введены неверные данные при авторизации

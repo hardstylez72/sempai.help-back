@@ -1,0 +1,474 @@
+[11/09/2018 - 08:10:29::357] [INFO]: [SEMPAI.HELP] Приложение запущено на порту: 4000
+[11/09/2018 - 08:10:29::650] [INFO]: [SocketIO] Слушает на порту 4001
+[11/09/2018 - 08:10:29::663] [INFO]: [Redis]: Успешное подключение
+[11/09/2018 - 08:10:29::666] [INFO]: [Redis]: Готов к использованию
+[11/09/2018 - 08:10:29::692] [INFO]: Executing (default): SELECT 1+1 AS result
+[11/09/2018 - 08:10:29::694] [INFO]: [Sequelize]: Успешное подключение к БД sempai под юзером sempai
+[11/09/2018 - 08:10:29::713] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS links;
+[11/09/2018 - 08:10:29::720] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS users;
+[11/09/2018 - 08:10:29::722] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tastes;
+[11/09/2018 - 08:10:29::723] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tracks;
+[11/09/2018 - 08:10:29::726] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "links"."links" ("id"  SERIAL UNIQUE , "link" VARCHAR(1000) NOT NULL, "descr" VARCHAR(4000) NOT NULL, "user_id" INTEGER NOT NULL, "abstract" VARCHAR(200) NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:10:29::729] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'links' AND s.oid = t.relnamespace AND s.nspname = 'links' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:10:29::742] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "users"."users" ("id"  SERIAL UNIQUE , "name" VARCHAR(40) NOT NULL, "pwd" VARCHAR(40) NOT NULL, "role_id" INTEGER NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:10:29::744] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'users' AND s.oid = t.relnamespace AND s.nspname = 'users' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:10:29::752] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tracks"."tracks" ("id"  SERIAL UNIQUE , "name" VARCHAR(1024) NOT NULL, "path" VARCHAR(1024) NOT NULL, "uploader_id" INTEGER, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:10:29::753] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tracks' AND s.oid = t.relnamespace AND s.nspname = 'tracks' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:10:29::769] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tastes"."tastes" ("user_id" INTEGER NOT NULL  REFERENCES "users"."users" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "track_id" INTEGER NOT NULL  REFERENCES "tracks"."tracks" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "deleted" BOOLEAN DEFAULT false, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("user_id","track_id"));
+[11/09/2018 - 08:10:29::775] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tastes' AND s.oid = t.relnamespace AND s.nspname = 'tastes' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:10:29::785] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'1','1',1,false,'2018-11-09 05:10:29.778 +00:00','2018-11-09 05:10:29.778 +00:00') RETURNING *;
+[11/09/2018 - 08:10:29::792] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'2','2',1,false,'2018-11-09 05:10:29.788 +00:00','2018-11-09 05:10:29.788 +00:00') RETURNING *;
+[11/09/2018 - 08:10:29::851] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:10:29::852] [INFO]: User connected
+[11/09/2018 - 08:10:40::703] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 1048576 из 51432502
+[11/09/2018 - 08:10:40::751] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 2097152 из 51432502
+[11/09/2018 - 08:10:40::806] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 3145728 из 51432502
+[11/09/2018 - 08:10:40::855] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 4194304 из 51432502
+[11/09/2018 - 08:10:40::922] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 5242880 из 51432502
+[11/09/2018 - 08:10:40::991] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 6291456 из 51432502
+[11/09/2018 - 08:10:41::007] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 7340032 из 51432502
+[11/09/2018 - 08:10:41::071] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 8388608 из 51432502
+[11/09/2018 - 08:10:41::120] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 9437184 из 51432502
+[11/09/2018 - 08:10:41::163] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 10485760 из 51432502
+[11/09/2018 - 08:10:41::229] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 11534336 из 51432502
+[11/09/2018 - 08:10:41::286] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 12582912 из 51432502
+[11/09/2018 - 08:10:41::336] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 13631488 из 51432502
+[11/09/2018 - 08:10:41::391] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 14680064 из 51432502
+[11/09/2018 - 08:10:41::435] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 15728640 из 51432502
+[11/09/2018 - 08:10:41::495] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 16777216 из 51432502
+[11/09/2018 - 08:10:41::544] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 17825792 из 51432502
+[11/09/2018 - 08:10:41::586] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 18874368 из 51432502
+[11/09/2018 - 08:10:41::641] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 19922944 из 51432502
+[11/09/2018 - 08:10:41::695] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 20971520 из 51432502
+[11/09/2018 - 08:10:41::739] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 22020096 из 51432502
+[11/09/2018 - 08:10:41::794] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 23068672 из 51432502
+[11/09/2018 - 08:10:41::840] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 24117248 из 51432502
+[11/09/2018 - 08:10:41::898] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 25165824 из 51432502
+[11/09/2018 - 08:10:41::955] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 26214400 из 51432502
+[11/09/2018 - 08:10:42::008] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 27262976 из 51432502
+[11/09/2018 - 08:10:42::077] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 28311552 из 51432502
+[11/09/2018 - 08:10:42::127] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 29360128 из 51432502
+[11/09/2018 - 08:10:42::185] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 30408704 из 51432502
+[11/09/2018 - 08:10:42::229] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 31457280 из 51432502
+[11/09/2018 - 08:10:42::296] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 32505856 из 51432502
+[11/09/2018 - 08:10:42::352] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 33554432 из 51432502
+[11/09/2018 - 08:10:42::393] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 34603008 из 51432502
+[11/09/2018 - 08:10:42::441] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 35651584 из 51432502
+[11/09/2018 - 08:10:42::486] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 36700160 из 51432502
+[11/09/2018 - 08:10:42::539] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 37748736 из 51432502
+[11/09/2018 - 08:10:42::586] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 38797312 из 51432502
+[11/09/2018 - 08:10:42::642] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 39845888 из 51432502
+[11/09/2018 - 08:10:42::694] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 40894464 из 51432502
+[11/09/2018 - 08:10:42::756] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 41943040 из 51432502
+[11/09/2018 - 08:10:42::798] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 42991616 из 51432502
+[11/09/2018 - 08:10:42::848] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 44040192 из 51432502
+[11/09/2018 - 08:10:42::905] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 45088768 из 51432502
+[11/09/2018 - 08:10:42::955] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 46137344 из 51432502
+[11/09/2018 - 08:10:43::005] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 47185920 из 51432502
+[11/09/2018 - 08:10:43::055] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 48234496 из 51432502
+[11/09/2018 - 08:10:43::099] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 49283072 из 51432502
+[11/09/2018 - 08:10:43::137] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 50331648 из 51432502
+[11/09/2018 - 08:10:43::182] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51380224 из 51432502
+[11/09/2018 - 08:10:43::185] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51432502 из 51432502
+[11/09/2018 - 08:10:43::201] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3
+[11/09/2018 - 08:10:43::202] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::275] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3
+[11/09/2018 - 08:10:43::275] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::314] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3
+[11/09/2018 - 08:10:43::315] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::361] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3
+[11/09/2018 - 08:10:43::362] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::407] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3
+[11/09/2018 - 08:10:43::408] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::456] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3
+[11/09/2018 - 08:10:43::456] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::497] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3
+[11/09/2018 - 08:10:43::498] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3 будет загружен на диск
+[11/09/2018 - 08:10:43::564] [INFO]: Успешно распакован файл cover.jpg
+[11/09/2018 - 08:10:43::564] [INFO]: При распаковке cover.jpg будет загружен на диск
+[11/09/2018 - 08:11:58::869] [INFO]: [SEMPAI.HELP] Приложение запущено на порту: 4000
+[11/09/2018 - 08:11:59::100] [INFO]: [SocketIO] Слушает на порту 4001
+[11/09/2018 - 08:11:59::109] [INFO]: [Redis]: Успешное подключение
+[11/09/2018 - 08:11:59::112] [INFO]: [Redis]: Готов к использованию
+[11/09/2018 - 08:11:59::141] [INFO]: Executing (default): SELECT 1+1 AS result
+[11/09/2018 - 08:11:59::143] [INFO]: [Sequelize]: Успешное подключение к БД sempai под юзером sempai
+[11/09/2018 - 08:11:59::163] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS links;
+[11/09/2018 - 08:11:59::170] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS users;
+[11/09/2018 - 08:11:59::171] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tastes;
+[11/09/2018 - 08:11:59::176] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tracks;
+[11/09/2018 - 08:11:59::178] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "links"."links" ("id"  SERIAL UNIQUE , "link" VARCHAR(1000) NOT NULL, "descr" VARCHAR(4000) NOT NULL, "user_id" INTEGER NOT NULL, "abstract" VARCHAR(200) NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:11:59::183] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'links' AND s.oid = t.relnamespace AND s.nspname = 'links' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:11:59::192] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "users"."users" ("id"  SERIAL UNIQUE , "name" VARCHAR(40) NOT NULL, "pwd" VARCHAR(40) NOT NULL, "role_id" INTEGER NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:11:59::193] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'users' AND s.oid = t.relnamespace AND s.nspname = 'users' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:11:59::201] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tracks"."tracks" ("id"  SERIAL UNIQUE , "name" VARCHAR(1024) NOT NULL, "path" VARCHAR(1024) NOT NULL, "uploader_id" INTEGER, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:11:59::203] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tracks' AND s.oid = t.relnamespace AND s.nspname = 'tracks' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:11:59::212] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tastes"."tastes" ("user_id" INTEGER NOT NULL  REFERENCES "users"."users" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "track_id" INTEGER NOT NULL  REFERENCES "tracks"."tracks" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "deleted" BOOLEAN DEFAULT false, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("user_id","track_id"));
+[11/09/2018 - 08:11:59::213] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tastes' AND s.oid = t.relnamespace AND s.nspname = 'tastes' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:11:59::226] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'1','1',1,false,'2018-11-09 05:11:59.219 +00:00','2018-11-09 05:11:59.219 +00:00') RETURNING *;
+[11/09/2018 - 08:11:59::234] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'2','2',1,false,'2018-11-09 05:11:59.231 +00:00','2018-11-09 05:11:59.231 +00:00') RETURNING *;
+[11/09/2018 - 08:12:00::602] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:12:00::603] [INFO]: User connected
+[11/09/2018 - 08:12:02::729] [INFO]: user disconnected
+[11/09/2018 - 08:12:12::593] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:12:12::594] [INFO]: User connected
+[11/09/2018 - 08:12:17::480] [INFO]: process.env.CONTENT_PATH = 
+[11/09/2018 - 08:12:17::640] [INFO]: Executing (default): select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '1' and tastes.tastes.deleted <> true
+[11/09/2018 - 08:12:28::202] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 1048576 из 51432502
+[11/09/2018 - 08:12:28::259] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 2097152 из 51432502
+[11/09/2018 - 08:12:28::332] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 3145728 из 51432502
+[11/09/2018 - 08:12:28::376] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 4194304 из 51432502
+[11/09/2018 - 08:12:28::442] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 5242880 из 51432502
+[11/09/2018 - 08:12:28::504] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 6291456 из 51432502
+[11/09/2018 - 08:12:28::554] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 7340032 из 51432502
+[11/09/2018 - 08:12:28::613] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 8388608 из 51432502
+[11/09/2018 - 08:12:28::670] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 9437184 из 51432502
+[11/09/2018 - 08:12:28::730] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 10485760 из 51432502
+[11/09/2018 - 08:12:28::777] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 11534336 из 51432502
+[11/09/2018 - 08:12:28::830] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 12582912 из 51432502
+[11/09/2018 - 08:12:28::884] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 13631488 из 51432502
+[11/09/2018 - 08:12:28::952] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 14680064 из 51432502
+[11/09/2018 - 08:12:29::008] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 15728640 из 51432502
+[11/09/2018 - 08:12:29::073] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 16777216 из 51432502
+[11/09/2018 - 08:12:29::143] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 17825792 из 51432502
+[11/09/2018 - 08:12:29::195] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 18874368 из 51432502
+[11/09/2018 - 08:12:29::266] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 19922944 из 51432502
+[11/09/2018 - 08:12:29::317] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 20971520 из 51432502
+[11/09/2018 - 08:12:29::392] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 22020096 из 51432502
+[11/09/2018 - 08:12:29::445] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 23068672 из 51432502
+[11/09/2018 - 08:12:29::512] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 24117248 из 51432502
+[11/09/2018 - 08:12:29::561] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 25165824 из 51432502
+[11/09/2018 - 08:12:29::616] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 26214400 из 51432502
+[11/09/2018 - 08:12:29::675] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 27262976 из 51432502
+[11/09/2018 - 08:12:29::727] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 28311552 из 51432502
+[11/09/2018 - 08:12:29::792] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 29360128 из 51432502
+[11/09/2018 - 08:12:29::850] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 30408704 из 51432502
+[11/09/2018 - 08:12:29::909] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 31457280 из 51432502
+[11/09/2018 - 08:12:29::959] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 32505856 из 51432502
+[11/09/2018 - 08:12:30::015] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 33554432 из 51432502
+[11/09/2018 - 08:12:30::087] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 34603008 из 51432502
+[11/09/2018 - 08:12:30::143] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 35651584 из 51432502
+[11/09/2018 - 08:12:30::195] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 36700160 из 51432502
+[11/09/2018 - 08:12:30::253] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 37748736 из 51432502
+[11/09/2018 - 08:12:30::303] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 38797312 из 51432502
+[11/09/2018 - 08:12:30::360] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 39845888 из 51432502
+[11/09/2018 - 08:12:30::413] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 40894464 из 51432502
+[11/09/2018 - 08:12:30::466] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 41943040 из 51432502
+[11/09/2018 - 08:12:30::512] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 42991616 из 51432502
+[11/09/2018 - 08:12:30::558] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 44040192 из 51432502
+[11/09/2018 - 08:12:30::613] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 45088768 из 51432502
+[11/09/2018 - 08:12:30::660] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 46137344 из 51432502
+[11/09/2018 - 08:12:30::708] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 47185920 из 51432502
+[11/09/2018 - 08:12:30::751] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 48234496 из 51432502
+[11/09/2018 - 08:12:30::809] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 49283072 из 51432502
+[11/09/2018 - 08:12:30::865] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 50331648 из 51432502
+[11/09/2018 - 08:12:30::906] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51380224 из 51432502
+[11/09/2018 - 08:12:30::910] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51432502 из 51432502
+[11/09/2018 - 08:12:30::923] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3
+[11/09/2018 - 08:12:30::924] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3 будет загружен на диск
+[11/09/2018 - 08:12:30::996] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3
+[11/09/2018 - 08:12:30::997] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::065] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3
+[11/09/2018 - 08:12:31::066] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::110] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3
+[11/09/2018 - 08:12:31::111] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::126] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3
+[11/09/2018 - 08:12:31::126] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::150] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3
+[11/09/2018 - 08:12:31::150] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::182] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3
+[11/09/2018 - 08:12:31::183] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3 будет загружен на диск
+[11/09/2018 - 08:12:31::249] [INFO]: Успешно распакован файл cover.jpg
+[11/09/2018 - 08:12:31::250] [INFO]: При распаковке cover.jpg будет загружен на диск
+[11/09/2018 - 08:13:01::210] [INFO]: [SEMPAI.HELP] Приложение запущено на порту: 4000
+[11/09/2018 - 08:13:01::446] [INFO]: [SocketIO] Слушает на порту 4001
+[11/09/2018 - 08:13:01::462] [INFO]: [Redis]: Успешное подключение
+[11/09/2018 - 08:13:01::466] [INFO]: [Redis]: Готов к использованию
+[11/09/2018 - 08:13:01::490] [INFO]: Executing (default): SELECT 1+1 AS result
+[11/09/2018 - 08:13:01::492] [INFO]: [Sequelize]: Успешное подключение к БД sempai под юзером sempai
+[11/09/2018 - 08:13:01::511] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS links;
+[11/09/2018 - 08:13:01::518] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS users;
+[11/09/2018 - 08:13:01::520] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tastes;
+[11/09/2018 - 08:13:01::522] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tracks;
+[11/09/2018 - 08:13:01::525] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "links"."links" ("id"  SERIAL UNIQUE , "link" VARCHAR(1000) NOT NULL, "descr" VARCHAR(4000) NOT NULL, "user_id" INTEGER NOT NULL, "abstract" VARCHAR(200) NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:13:01::528] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'links' AND s.oid = t.relnamespace AND s.nspname = 'links' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:13:01::538] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "users"."users" ("id"  SERIAL UNIQUE , "name" VARCHAR(40) NOT NULL, "pwd" VARCHAR(40) NOT NULL, "role_id" INTEGER NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:13:01::539] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'users' AND s.oid = t.relnamespace AND s.nspname = 'users' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:13:01::547] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tracks"."tracks" ("id"  SERIAL UNIQUE , "name" VARCHAR(1024) NOT NULL, "path" VARCHAR(1024) NOT NULL, "uploader_id" INTEGER, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:13:01::549] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tracks' AND s.oid = t.relnamespace AND s.nspname = 'tracks' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:13:01::557] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tastes"."tastes" ("user_id" INTEGER NOT NULL  REFERENCES "users"."users" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "track_id" INTEGER NOT NULL  REFERENCES "tracks"."tracks" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "deleted" BOOLEAN DEFAULT false, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("user_id","track_id"));
+[11/09/2018 - 08:13:01::561] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tastes' AND s.oid = t.relnamespace AND s.nspname = 'tastes' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:13:01::573] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'1','1',1,false,'2018-11-09 05:13:01.567 +00:00','2018-11-09 05:13:01.567 +00:00') RETURNING *;
+[11/09/2018 - 08:13:01::579] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'2','2',1,false,'2018-11-09 05:13:01.577 +00:00','2018-11-09 05:13:01.577 +00:00') RETURNING *;
+[11/09/2018 - 08:13:02::248] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:13:02::253] [INFO]: User connected
+[11/09/2018 - 08:13:11::877] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 1048576 из 51432502
+[11/09/2018 - 08:13:11::944] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 2097152 из 51432502
+[11/09/2018 - 08:13:12::006] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 3145728 из 51432502
+[11/09/2018 - 08:13:12::067] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 4194304 из 51432502
+[11/09/2018 - 08:13:12::140] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 5242880 из 51432502
+[11/09/2018 - 08:13:12::186] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 6291456 из 51432502
+[11/09/2018 - 08:13:12::238] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 7340032 из 51432502
+[11/09/2018 - 08:13:12::301] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 8388608 из 51432502
+[11/09/2018 - 08:13:12::392] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 9437184 из 51432502
+[11/09/2018 - 08:13:12::434] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 10485760 из 51432502
+[11/09/2018 - 08:13:12::478] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 11534336 из 51432502
+[11/09/2018 - 08:13:12::533] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 12582912 из 51432502
+[11/09/2018 - 08:13:12::615] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 13631488 из 51432502
+[11/09/2018 - 08:13:12::675] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 14680064 из 51432502
+[11/09/2018 - 08:13:12::739] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 15728640 из 51432502
+[11/09/2018 - 08:13:12::839] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 16777216 из 51432502
+[11/09/2018 - 08:13:12::863] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 17825792 из 51432502
+[11/09/2018 - 08:13:12::916] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 18874368 из 51432502
+[11/09/2018 - 08:13:12::960] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 19922944 из 51432502
+[11/09/2018 - 08:13:13::020] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 20971520 из 51432502
+[11/09/2018 - 08:13:13::086] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 22020096 из 51432502
+[11/09/2018 - 08:13:13::154] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 23068672 из 51432502
+[11/09/2018 - 08:13:13::203] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 24117248 из 51432502
+[11/09/2018 - 08:13:13::244] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 25165824 из 51432502
+[11/09/2018 - 08:13:13::304] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 26214400 из 51432502
+[11/09/2018 - 08:13:13::340] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 27262976 из 51432502
+[11/09/2018 - 08:13:13::407] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 28311552 из 51432502
+[11/09/2018 - 08:13:13::457] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 29360128 из 51432502
+[11/09/2018 - 08:13:13::511] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 30408704 из 51432502
+[11/09/2018 - 08:13:13::588] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 31457280 из 51432502
+[11/09/2018 - 08:13:13::651] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 32505856 из 51432502
+[11/09/2018 - 08:13:13::707] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 33554432 из 51432502
+[11/09/2018 - 08:13:13::755] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 34603008 из 51432502
+[11/09/2018 - 08:13:13::816] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 35651584 из 51432502
+[11/09/2018 - 08:13:13::861] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 36700160 из 51432502
+[11/09/2018 - 08:13:13::923] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 37748736 из 51432502
+[11/09/2018 - 08:13:13::975] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 38797312 из 51432502
+[11/09/2018 - 08:13:14::027] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 39845888 из 51432502
+[11/09/2018 - 08:13:14::076] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 40894464 из 51432502
+[11/09/2018 - 08:13:14::134] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 41943040 из 51432502
+[11/09/2018 - 08:13:14::195] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 42991616 из 51432502
+[11/09/2018 - 08:13:14::238] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 44040192 из 51432502
+[11/09/2018 - 08:13:14::287] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 45088768 из 51432502
+[11/09/2018 - 08:13:14::332] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 46137344 из 51432502
+[11/09/2018 - 08:13:14::383] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 47185920 из 51432502
+[11/09/2018 - 08:13:14::429] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 48234496 из 51432502
+[11/09/2018 - 08:13:14::482] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 49283072 из 51432502
+[11/09/2018 - 08:13:14::523] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 50331648 из 51432502
+[11/09/2018 - 08:13:14::575] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51380224 из 51432502
+[11/09/2018 - 08:13:14::578] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51432502 из 51432502
+[11/09/2018 - 08:13:14::595] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3
+[11/09/2018 - 08:13:14::595] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::634] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3
+[11/09/2018 - 08:13:14::634] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::653] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3
+[11/09/2018 - 08:13:14::654] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::675] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3
+[11/09/2018 - 08:13:14::676] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::721] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3
+[11/09/2018 - 08:13:14::721] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::764] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3
+[11/09/2018 - 08:13:14::764] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::819] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3
+[11/09/2018 - 08:13:14::819] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3 будет загружен на диск
+[11/09/2018 - 08:13:14::861] [INFO]: Успешно распакован файл cover.jpg
+[11/09/2018 - 08:13:14::861] [INFO]: При распаковке cover.jpg будет загружен на диск
+[11/09/2018 - 08:13:53::242] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 1048576 из 51432502
+[11/09/2018 - 08:13:53::300] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 2097152 из 51432502
+[11/09/2018 - 08:13:53::360] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 3145728 из 51432502
+[11/09/2018 - 08:13:53::444] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 4194304 из 51432502
+[11/09/2018 - 08:13:53::515] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 5242880 из 51432502
+[11/09/2018 - 08:13:53::581] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 6291456 из 51432502
+[11/09/2018 - 08:13:53::671] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 7340032 из 51432502
+[11/09/2018 - 08:13:53::735] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 8388608 из 51432502
+[11/09/2018 - 08:13:53::796] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 9437184 из 51432502
+[11/09/2018 - 08:13:53::867] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 10485760 из 51432502
+[11/09/2018 - 08:13:53::928] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 11534336 из 51432502
+[11/09/2018 - 08:13:53::979] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 12582912 из 51432502
+[11/09/2018 - 08:13:54::032] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 13631488 из 51432502
+[11/09/2018 - 08:13:54::104] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 14680064 из 51432502
+[11/09/2018 - 08:13:54::147] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 15728640 из 51432502
+[11/09/2018 - 08:13:54::209] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 16777216 из 51432502
+[11/09/2018 - 08:13:54::251] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 17825792 из 51432502
+[11/09/2018 - 08:13:54::303] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 18874368 из 51432502
+[11/09/2018 - 08:13:54::373] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 19922944 из 51432502
+[11/09/2018 - 08:13:54::443] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 20971520 из 51432502
+[11/09/2018 - 08:13:54::497] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 22020096 из 51432502
+[11/09/2018 - 08:13:54::544] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 23068672 из 51432502
+[11/09/2018 - 08:13:54::603] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 24117248 из 51432502
+[11/09/2018 - 08:13:54::667] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 25165824 из 51432502
+[11/09/2018 - 08:13:54::718] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 26214400 из 51432502
+[11/09/2018 - 08:13:54::782] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 27262976 из 51432502
+[11/09/2018 - 08:13:54::828] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 28311552 из 51432502
+[11/09/2018 - 08:13:54::879] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 29360128 из 51432502
+[11/09/2018 - 08:13:54::944] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 30408704 из 51432502
+[11/09/2018 - 08:13:54::997] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 31457280 из 51432502
+[11/09/2018 - 08:13:55::054] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 32505856 из 51432502
+[11/09/2018 - 08:13:55::113] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 33554432 из 51432502
+[11/09/2018 - 08:13:55::175] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 34603008 из 51432502
+[11/09/2018 - 08:13:55::226] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 35651584 из 51432502
+[11/09/2018 - 08:13:55::275] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 36700160 из 51432502
+[11/09/2018 - 08:13:55::340] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 37748736 из 51432502
+[11/09/2018 - 08:13:55::402] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 38797312 из 51432502
+[11/09/2018 - 08:13:55::453] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 39845888 из 51432502
+[11/09/2018 - 08:13:55::502] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 40894464 из 51432502
+[11/09/2018 - 08:13:55::551] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 41943040 из 51432502
+[11/09/2018 - 08:13:55::599] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 42991616 из 51432502
+[11/09/2018 - 08:13:55::651] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 44040192 из 51432502
+[11/09/2018 - 08:13:55::701] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 45088768 из 51432502
+[11/09/2018 - 08:13:55::754] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 46137344 из 51432502
+[11/09/2018 - 08:13:55::803] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 47185920 из 51432502
+[11/09/2018 - 08:13:55::852] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 48234496 из 51432502
+[11/09/2018 - 08:13:55::906] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 49283072 из 51432502
+[11/09/2018 - 08:13:55::941] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 50331648 из 51432502
+[11/09/2018 - 08:13:55::986] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51380224 из 51432502
+[11/09/2018 - 08:13:55::987] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51432502 из 51432502
+[11/09/2018 - 08:13:55::990] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3
+[11/09/2018 - 08:13:55::990] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::019] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3
+[11/09/2018 - 08:13:56::019] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::039] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3
+[11/09/2018 - 08:13:56::039] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::065] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3
+[11/09/2018 - 08:13:56::065] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::090] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3
+[11/09/2018 - 08:13:56::090] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::154] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3
+[11/09/2018 - 08:13:56::154] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::214] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3
+[11/09/2018 - 08:13:56::215] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3 будет загружен на диск
+[11/09/2018 - 08:13:56::249] [INFO]: Успешно распакован файл cover.jpg
+[11/09/2018 - 08:13:56::249] [INFO]: При распаковке cover.jpg будет загружен на диск
+[11/09/2018 - 08:15:08::916] [INFO]: [SEMPAI.HELP] Приложение запущено на порту: 4000
+[11/09/2018 - 08:15:09::155] [INFO]: [SocketIO] Слушает на порту 4001
+[11/09/2018 - 08:15:09::172] [INFO]: [Redis]: Успешное подключение
+[11/09/2018 - 08:15:09::175] [INFO]: [Redis]: Готов к использованию
+[11/09/2018 - 08:15:09::204] [INFO]: Executing (default): SELECT 1+1 AS result
+[11/09/2018 - 08:15:09::206] [INFO]: [Sequelize]: Успешное подключение к БД sempai под юзером sempai
+[11/09/2018 - 08:15:09::225] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS links;
+[11/09/2018 - 08:15:09::232] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS users;
+[11/09/2018 - 08:15:09::235] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tastes;
+[11/09/2018 - 08:15:09::237] [INFO]: Executing (default): CREATE SCHEMA IF NOT EXISTS tracks;
+[11/09/2018 - 08:15:09::242] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "links"."links" ("id"  SERIAL UNIQUE , "link" VARCHAR(1000) NOT NULL, "descr" VARCHAR(4000) NOT NULL, "user_id" INTEGER NOT NULL, "abstract" VARCHAR(200) NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:15:09::246] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'links' AND s.oid = t.relnamespace AND s.nspname = 'links' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:15:09::260] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "users"."users" ("id"  SERIAL UNIQUE , "name" VARCHAR(40) NOT NULL, "pwd" VARCHAR(40) NOT NULL, "role_id" INTEGER NOT NULL, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:15:09::261] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'users' AND s.oid = t.relnamespace AND s.nspname = 'users' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:15:09::270] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tracks"."tracks" ("id"  SERIAL UNIQUE , "name" VARCHAR(1024) NOT NULL, "path" VARCHAR(1024) NOT NULL, "uploader_id" INTEGER, "deleted" BOOLEAN DEFAULT 'false', "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+[11/09/2018 - 08:15:09::271] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tracks' AND s.oid = t.relnamespace AND s.nspname = 'tracks' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:15:09::277] [INFO]: Executing (default): CREATE TABLE IF NOT EXISTS "tastes"."tastes" ("user_id" INTEGER NOT NULL  REFERENCES "users"."users" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "track_id" INTEGER NOT NULL  REFERENCES "tracks"."tracks" ("id") ON DELETE NO ACTION ON UPDATE CASCADE, "deleted" BOOLEAN DEFAULT false, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("user_id","track_id"));
+[11/09/2018 - 08:15:09::279] [INFO]: Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a, pg_namespace s WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'tastes' AND s.oid = t.relnamespace AND s.nspname = 'tastes' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+[11/09/2018 - 08:15:09::293] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'1','1',1,false,'2018-11-09 05:15:09.287 +00:00','2018-11-09 05:15:09.287 +00:00') RETURNING *;
+[11/09/2018 - 08:15:09::301] [INFO]: Executing (default): INSERT INTO "users"."users" ("id","name","pwd","role_id","deleted","createdAt","updatedAt") VALUES (DEFAULT,'2','2',1,false,'2018-11-09 05:15:09.297 +00:00','2018-11-09 05:15:09.297 +00:00') RETURNING *;
+[11/09/2018 - 08:15:11::105] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:15:11::107] [INFO]: User connected
+[11/09/2018 - 08:15:22::642] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 1048576 из 51432502
+[11/09/2018 - 08:15:22::716] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 2097152 из 51432502
+[11/09/2018 - 08:15:22::782] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 3145728 из 51432502
+[11/09/2018 - 08:15:22::832] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 4194304 из 51432502
+[11/09/2018 - 08:15:22::877] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 5242880 из 51432502
+[11/09/2018 - 08:15:22::947] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 6291456 из 51432502
+[11/09/2018 - 08:15:23::005] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 7340032 из 51432502
+[11/09/2018 - 08:15:23::063] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 8388608 из 51432502
+[11/09/2018 - 08:15:23::123] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 9437184 из 51432502
+[11/09/2018 - 08:15:23::213] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 10485760 из 51432502
+[11/09/2018 - 08:15:23::266] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 11534336 из 51432502
+[11/09/2018 - 08:15:23::307] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 12582912 из 51432502
+[11/09/2018 - 08:15:23::369] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 13631488 из 51432502
+[11/09/2018 - 08:15:23::428] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 14680064 из 51432502
+[11/09/2018 - 08:15:23::529] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 15728640 из 51432502
+[11/09/2018 - 08:15:23::564] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 16777216 из 51432502
+[11/09/2018 - 08:15:23::613] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 17825792 из 51432502
+[11/09/2018 - 08:15:23::674] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 18874368 из 51432502
+[11/09/2018 - 08:15:23::741] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 19922944 из 51432502
+[11/09/2018 - 08:15:23::791] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 20971520 из 51432502
+[11/09/2018 - 08:15:23::855] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 22020096 из 51432502
+[11/09/2018 - 08:15:23::912] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 23068672 из 51432502
+[11/09/2018 - 08:15:23::951] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 24117248 из 51432502
+[11/09/2018 - 08:15:23::989] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 25165824 из 51432502
+[11/09/2018 - 08:15:24::041] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 26214400 из 51432502
+[11/09/2018 - 08:15:24::103] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 27262976 из 51432502
+[11/09/2018 - 08:15:24::169] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 28311552 из 51432502
+[11/09/2018 - 08:15:24::220] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 29360128 из 51432502
+[11/09/2018 - 08:15:24::270] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 30408704 из 51432502
+[11/09/2018 - 08:15:24::319] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 31457280 из 51432502
+[11/09/2018 - 08:15:24::369] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 32505856 из 51432502
+[11/09/2018 - 08:15:24::421] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 33554432 из 51432502
+[11/09/2018 - 08:15:24::474] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 34603008 из 51432502
+[11/09/2018 - 08:15:24::521] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 35651584 из 51432502
+[11/09/2018 - 08:15:24::566] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 36700160 из 51432502
+[11/09/2018 - 08:15:24::608] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 37748736 из 51432502
+[11/09/2018 - 08:15:24::663] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 38797312 из 51432502
+[11/09/2018 - 08:15:24::729] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 39845888 из 51432502
+[11/09/2018 - 08:15:24::791] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 40894464 из 51432502
+[11/09/2018 - 08:15:24::829] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 41943040 из 51432502
+[11/09/2018 - 08:15:24::885] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 42991616 из 51432502
+[11/09/2018 - 08:15:24::947] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 44040192 из 51432502
+[11/09/2018 - 08:15:24::994] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 45088768 из 51432502
+[11/09/2018 - 08:15:25::056] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 46137344 из 51432502
+[11/09/2018 - 08:15:25::108] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 47185920 из 51432502
+[11/09/2018 - 08:15:25::163] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 48234496 из 51432502
+[11/09/2018 - 08:15:25::209] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 49283072 из 51432502
+[11/09/2018 - 08:15:25::252] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 50331648 из 51432502
+[11/09/2018 - 08:15:25::295] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51380224 из 51432502
+[11/09/2018 - 08:15:25::301] [INFO]: Esseks - Esseks - A HOLE IN THE FOURTH WALL.zip UPLOADED: 51432502 из 51432502
+[11/09/2018 - 08:15:25::312] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3
+[11/09/2018 - 08:15:25::313] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 01 Heavy Meta.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::375] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3
+[11/09/2018 - 08:15:25::376] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 02 Bully.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::428] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3
+[11/09/2018 - 08:15:25::429] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 03 Only1.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::487] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3
+[11/09/2018 - 08:15:25::489] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 04 Tunnels Feat. Wax Future.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::543] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3
+[11/09/2018 - 08:15:25::544] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 05 Badness.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::587] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3
+[11/09/2018 - 08:15:25::587] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 06 Through Walls.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::623] [INFO]: Успешно распакован файл Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3
+[11/09/2018 - 08:15:25::624] [INFO]: При распаковке Esseks - Esseks - A HOLE IN THE FOURTH WALL - 07 Little Wires.mp3 будет загружен на диск
+[11/09/2018 - 08:15:25::727] [INFO]: Успешно распакован файл cover.jpg
+[11/09/2018 - 08:15:25::728] [INFO]: При распаковке cover.jpg будет загружен на диск
+[11/09/2018 - 08:15:57::667] [INFO]: user disconnected
+[11/09/2018 - 08:16:05::990] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/09/2018 - 08:16:05::991] [INFO]: User connected
+[11/09/2018 - 08:16:06::071] [INFO]: process.env.CONTENT_PATH = 
+[11/09/2018 - 08:16:06::678] [INFO]: Executing (default): select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '1' and tastes.tastes.deleted <> true
+[11/11/2018 - 10:36:24::174] [INFO]: user disconnected
+[11/11/2018 - 10:36:29::689] [INFO]: Executing (default): SELECT "id", "name", "pwd", "role_id", "deleted", "createdAt", "updatedAt" FROM "users"."users" AS "users" WHERE "users"."name" = '1' AND "users"."pwd" = '1' LIMIT 1;
+[11/11/2018 - 10:36:29::735] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/11/2018 - 10:36:29::735] [INFO]: User connected
+[11/11/2018 - 10:36:31::163] [INFO]: process.env.CONTENT_PATH = 
+[11/11/2018 - 10:36:31::311] [INFO]: Executing (default): select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '1' and tastes.tastes.deleted <> true
+[11/11/2018 - 10:38:11::566] [INFO]: user disconnected
+[11/11/2018 - 10:38:14::846] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/11/2018 - 10:38:14::847] [INFO]: User connected
+[11/11/2018 - 10:38:14::941] [INFO]: process.env.CONTENT_PATH = 
+[11/11/2018 - 10:38:15::312] [INFO]: Executing (default): select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '1' and tastes.tastes.deleted <> true
+[11/11/2018 - 10:38:16::485] [INFO]: user disconnected
+[11/11/2018 - 10:38:19::924] [INFO]: Успешное прохождение авторизации при подключении к сокету
+[11/11/2018 - 10:38:19::924] [INFO]: User connected
+[11/11/2018 - 10:38:20::110] [INFO]: process.env.CONTENT_PATH = 
+[11/11/2018 - 10:38:20::542] [INFO]: Executing (default): select 
+        tracks.tracks."name"
+        ,tracks.tracks."path"
+    from tracks.tracks
+      join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+      join users.users on users.users.id = tastes.tastes.user_id
+      where users.users."name" = '1' and tastes.tastes.deleted <> true

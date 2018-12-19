@@ -73,12 +73,24 @@ const tracks = sequelize.define('tracks',
             primaryKey: true
         },
         name: {
-            type: Sequelize.STRING(1024),
+            type: Sequelize.STRING(2048),
             allowNull: false
         },
+        depth: {
+            type: Sequelize.INTEGER,
+            allowNull: true
+        },
+        isDirectory: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: 'false'
+        },
         path: {
-            type: Sequelize.STRING(1024),
-            allowNull: false
+            type: Sequelize.STRING(2048),
+            allowNull: true
+        },
+        parent: {
+            type: Sequelize.STRING(2048),
+            allowNull: true
         },
         uploader_id: {
             type: Sequelize.INTEGER,

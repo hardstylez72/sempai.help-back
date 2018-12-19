@@ -16,19 +16,20 @@ module.exports = async (req, ctx) => {
     const data = req.body;
     const file = req.files.data;
 
-    const fileInfo = store.get(data.name);
+    let fileInfo = store.get(data.name);
     let progress = 0;
 
     try {
 
         // Если файл не существует
-        if (!store.get(data.name)) {
+        if (!fileInfo) {
             if (!isValid(data)) {
                 return []
             }
             //   logger.info(`Начинается загрузка файла ${data.name} размером ${data.size}`);
 
             prepareFirstChunk(data, file);
+            fileInfo = store.get(data.name);
             progress = 0;
         }
 
@@ -41,17 +42,7 @@ module.exports = async (req, ctx) => {
             return {progress: progress, fileList: fileList};
         }
 
-        //  logger.info(`${data.name} UPLOADED: ${data.curSize} из ${data.data.length}`);
-        //logger.info(`${data.name} UPLOADED: из ${data.data.length - data.curSize}`);
-
         if (fileInfo) {
-            function parseHrtimeToSeconds(hrtime) {
-                var seconds = (hrtime[0] + (hrtime[1] / 1e9)).toFixed(3);
-                return seconds;
-            }
-
-            var elapsedSeconds = parseHrtimeToSeconds(process.hrtime(fileInfo.time));
-            console.log('functionWantToMeasure takes ' + elapsedSeconds + 'seconds');
             progress = Math.round(100*fileInfo.curSize/fileInfo.size);
         }
 
@@ -87,27 +78,22 @@ const prepareFirstChunk = (body, file) => {
         size: data.size,
         curSize: 0,
         pathToSaveZip: pathToSaveZip,
-        name: data.name,
-        time: process.hrtime()
+        name: data.name
     };
     store.set(fileInfo.name, fileInfo)
 };
 
 const processChunk = async (body, file) => {
-    try {
-        const data = body;
-        const fileInfo = store.get(data.name);
 
-        const fileData = await readFile(file.path, {encoding: 'binary'});
-        await unlink(file.path);
-        await appendFile(fileInfo.pathToSaveZip, fileData, {encoding: 'binary'});
+    const data = body;
+    const fileInfo = store.get(data.name);
 
-        fileInfo.curSize = data.curSize;
-        store.set(data.name, fileInfo);
-    } catch(err) {
-        logger.error(err.message)
-    }
+    const fileData = await readFile(file.path, {encoding: 'binary'});
+    await unlink(file.path);
+    await appendFile(fileInfo.pathToSaveZip, fileData, {encoding: 'binary'});
 
+    fileInfo.curSize = data.curSize;
+    store.set(data.name, fileInfo);
 };
 
 const processLastChunk = async (body, file, ctx) => {
@@ -115,7 +101,7 @@ const processLastChunk = async (body, file, ctx) => {
     const data = body;
 
     const fileInfo = store.get(data.name);
-    const result = await unzipFiles(fileInfo, ctx);
+    const result = await unzipFiles(fileInfo, ctx).catch()
     const anyNewFiles = result.files.some(el => el.success);
     if (!anyNewFiles) {
         await remove(result.path.replace('.zip', ''))
@@ -147,7 +133,6 @@ const processLastChunk = async (body, file, ctx) => {
 
 
 const unzipFiles = async (data, ctx) => {
-//npm install extract-zip --save
     const { logger } = ctx;
     return new Promise((resolve, reject) => {
         const uploadedFiles = [];
@@ -179,6 +164,9 @@ const unzipFiles = async (data, ctx) => {
                     const wrStream = fs.createWriteStream(localPathToExtractZip + '/' + fileName);
                     wrStream.on('close', () => {
                         uploadedFiles.push({file: fileName, success: true});
+                    });
+					wrStream.on('error', (err) => {
+						reject({path: null, files: null})
                     });
                     entry.pipe(wrStream);
                 } else {
