@@ -6,7 +6,7 @@ const
     http = require('http'),
     port = process.env.APP_PORT,
     initRoutes = require('./routes/index'),
-    initMiddleWare = require('./middleWare');
+    initMiddleWare = require('./middleWare').initMiddleWare;
     logger = require('./init').logger;
 
 const onError = (error) => {
@@ -18,7 +18,6 @@ const onError = (error) => {
         ? 'Pipe ' + port
         : 'Port ' + port;
 
-    // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
             logger.error(bind + ' requires elevated privileges');
@@ -46,9 +45,8 @@ try {
     initMiddleWare(app, logger);
     initRoutes(app,  logger);
     logger.info(`[SEMPAI.HELP] Приложение запущено на порту: ${port}`);
-    require('./socket.io')
 } catch (err) {
-    throw new Error(`При запуске приложения произошла ошибка ${err.message}`)
+    throw new Error(`При запуске приложения произошла ошибка ${err}`)
 }
 
 module.exports = app;

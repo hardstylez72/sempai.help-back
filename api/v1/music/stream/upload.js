@@ -14,7 +14,7 @@ module.exports = async (req, ctx) => {
 
     const { logger } = ctx;
     const data = req.body;
-    const file = req.files.data;
+    const file = req.files[0];
 
     let fileInfo = store.get(data.name);
     let progress = 0;
@@ -46,11 +46,11 @@ module.exports = async (req, ctx) => {
             progress = Math.round(100*fileInfo.curSize/fileInfo.size);
         }
 
+        return {progress: progress, fileList: []};
     } catch(err) {
-        logger.error(err.message)
+        logger.error(err)
     }
 
-    return {progress: progress, fileList: []};
 };
 
 
@@ -88,8 +88,7 @@ const processChunk = async (body, file) => {
     const data = body;
     const fileInfo = store.get(data.name);
 
-    const fileData = await readFile(file.path, {encoding: 'binary'});
-    await unlink(file.path);
+    const fileData = file.buffer;
     await appendFile(fileInfo.pathToSaveZip, fileData, {encoding: 'binary'});
 
     fileInfo.curSize = data.curSize;
@@ -101,34 +100,41 @@ const processLastChunk = async (body, file, ctx) => {
     const data = body;
 
     const fileInfo = store.get(data.name);
-    const result = await unzipFiles(fileInfo, ctx).catch()
+    const result = await unzipFiles(fileInfo, ctx).catch(async err => {
+        logger.error(err);
+        await unlink(fileInfo.pathToSaveZip)
+            .then(async () => {
+                logger.info(`Успешное удаление буферного архива ${fileInfo.pathToSaveZip}`);
+            })
+            .catch(async err => {
+                const log = `Ошибка при удалении буферного архива. Ошибка: ${err}`;
+                logger.error(log);
+            });
+        throw err;
+    });
     const anyNewFiles = result.files.some(el => el.success);
     if (!anyNewFiles) {
-        await remove(result.path.replace('.zip', ''))
-            .then(() => {
-                logger.info(`Успешное удаление ${localPathToReadZip.replace('.zip', '')}`);
-                return Promise.resolve()
+        await remove(fileInfo.pathToSaveZip.replace('.zip', ''))
+            .then(async () => {
+                logger.info(`Успешное удаление ${fileInfo.pathToSaveZip.replace('.zip', '')}`);
             })
-            .catch(err => {
-                const log = `Ошибка при удалении пустой папки. Ошибка: ${err.message}`;
+            .catch(async err => {
+                const log = `Ошибка при удалении пустой папки. Ошибка: ${err}`;
                 logger.error(log);
-                return Promise.resolve()
             });
     }
 
-    await unlink(result.path)
-        .then(() => {
-            logger.info(`Успешное удаление буферного архива ${result.path}`);
-            return Promise.resolve()
+    await unlink(fileInfo.pathToSaveZip)
+        .then(async () => {
+            logger.info(`Успешное удаление буферного архива ${fileInfo.pathToSaveZip}`);
         })
-        .catch(err => {
-            const log = `Ошибка при удалении буферного архива. Ошибка: ${err.message}`;
+        .catch(async err => {
+            const log = `Ошибка при удалении буферного архива. Ошибка: ${err}`;
             logger.error(log);
-            return Promise.resolve()
         });
 
     store.delete(data.name);
-    return Promise.resolve(result.files)
+    return result.files;
 };
 
 
@@ -146,14 +152,14 @@ const unzipFiles = async (data, ctx) => {
         stream.on('error', (err) => {
             const log = `Распаковка архива ${localPathToReadZip} завершена с ошибкой ${err.message}`;
             logger.error(log);
-            reject({path: null, files: null})
+            reject(err)
         });
 
         stream.pipe(unzip.Parse()
             .on('error', (err) => {
                 const log = `Распаковка архива ${localPathToReadZip} завершена с ошибкой ${err.message}`;
                 logger.error(log);
-                reject({path: null, files: null})
+                reject(err)
             })
         )
             .on('entry', (entry) => {
@@ -161,12 +167,12 @@ const unzipFiles = async (data, ctx) => {
                 logger.info(`Успешно распакован файл ${fileName}`);
                 if (fileName && fileName.match(/\.mp3|mp4|gif|png|jpeg|jpg|bmp/) !== null) {
                     logger.info(`При распаковке ${fileName} будет загружен на диск`);
-                    const wrStream = fs.createWriteStream(localPathToExtractZip + '/' + fileName);
+                    const wrStream =  fs.createWriteStream(localPathToExtractZip + '/' + fileName);
                     wrStream.on('close', () => {
                         uploadedFiles.push({file: fileName, success: true});
                     });
-					wrStream.on('error', (err) => {
-						reject({path: null, files: null})
+					wrStream.on('error', err => {
+						reject(err)
                     });
                     entry.pipe(wrStream);
                 } else {

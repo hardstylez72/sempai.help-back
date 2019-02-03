@@ -1,10 +1,8 @@
-
 const _ = require('lodash');
 const buildTree = require('../../../../helpers/buildTreeFromFileSystem').buildTree;
 
-
 module.exports = async (data, ctx) => {
-    const { logger, redis, seq, Seq } = ctx;
+    const { logger } = ctx;
     try {
         logger.info(`Осуществляется считывание каталога файлов по адресу: ${process.env.CONTENT_PATH}`);
         const actualContent = [];
@@ -15,37 +13,11 @@ module.exports = async (data, ctx) => {
         logger.info(`Cчитывание каталога файлов по адресу: ${process.env.CONTENT_PATH} прошло успешно`);
         tree.toggled = true;
         await updateContent(actualContent, ctx);
-        await redis.set(process.env.CONTENT_PATH, JSON.stringify(tree), 'EX', process.env.REDIS_CONTENT_UPDATE_TIME);
-        return tree;
 
     } catch (err) {
         logger.error(`Произошла ошибка при считывании каталога файлов: ${err.message}`);
         throw err;
     }
-};
-
-const getContentArray = async (baseFolderStruct) => {
-    if (!baseFolderStruct) {
-        throw new Error('Парсинг каталога файлов: Ошибка: пустой объект')
-    }
-    const pathArr = [];
-    const nameArr = [];
-    (function searchInTree(node) {
-        if (node.children) {
-            for (let index = 0; index < node.children.length; index++) {
-                let el = node.children[index];
-                // const isTypeAllowed = allowedMusicTypes.some(type => type ===  el.extension);
-                // if (el.type === 'file' && isTypeAllowed) {
-                //     pathArr.push(el.path);
-                //     nameArr.push(el.name);
-                // }
-                pathArr.push(el.path);
-                nameArr.push(el.name);
-                searchInTree(el);
-            }
-        }
-    })(baseFolderStruct);
-    return Promise.resolve({pathArr: pathArr, nameArr: nameArr});
 };
 
 const updateContent = async (actualContent, ctx) => {

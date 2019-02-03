@@ -3,12 +3,13 @@
 module.exports = initRoutes = (app, logger) => {
 
 const createError = require('http-errors');
-const
-    imgUpload = require('../api/imgUpload'),
-    addlink = require('../api/addlink'),
-    login = require('../api/login'),
-    upload = require('../api/music/upload/get'),
-    upload2 = require('../api/upload');
+const destinations = require('../api/destinations');
+const multer = require('multer');
+const config = require('../config').config;
+const storage = multer.memoryStorage();
+const fileUpload = multer({storage: storage});
+const login = require('../api/login');
+
 
 
     app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
@@ -21,9 +22,10 @@ const
         }
     });
 
-    app.post('/:api/:version/:object/:subject/:method', async (req, res, next) => {
+    app.post('/:api/:version/:object/:subject/:method', fileUpload.array('files', config.MAX_COUNT_OF_FILES_CAN_BE_DOWNLOADED_WITH_MULTER), async (req, res, next) => {
         try {
             const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
+
             const result = await apiMethod(req, {...req.ctx, mark: req.mark});
             const response = {
               success: true,
@@ -41,18 +43,7 @@ const
         }
     });
 
-    // app.use('/api/upload', indexRouter);
-    // app.use('/api/imgUpload', imgUpload);
-    // app.use('/api/addlink', addlink);
-    // app.use('/api/radio', musicStream);
-    // app.use('/api/music', music);
     app.use('/api/login', login);
-    // app.use('/api/track', favorite);
-    // app.use('/api/upload', multipartMiddleware, upload2);
-    // app.use('/api/music/upload/get', upload);
-
-
-
 
     app.use((req, res, next) => {
         const data = {
@@ -68,7 +59,7 @@ const
     });
 
 
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
         const data = {
             url: req.originalUrl,
             method: req.method,

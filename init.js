@@ -40,15 +40,13 @@ const MUSIC_STYLES = [
     'CLOUD',
     'RAGGE'
 ];
+
 MUSIC_STYLES.forEach(style => {
     const isExist = fs.existsSync(BASE_PATH + '/' + style);
     if ( !isExist ) {
         fs.mkdirSync(BASE_PATH + '/' + style);
     }
 });
-
-
-
 
 
 const loggerToConsole = createLogger({
@@ -138,8 +136,6 @@ const sequelizeLogHandler = (msg, type) => {
     logger.info(msg)
 };
 
-// sudo docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U YOUR_DB_USE_USER
-// sudo  docker run -it --rm --link some-postgres:postgres postgres pg_dump -h postgres -U sempai > /home/bozdo/Desktop/dump
 const sequelize = new Sequelize(
     process.env.DB_SQL_NAME,
     process.env.DB_SQL_USER,
@@ -190,7 +186,7 @@ redis.on("end", () => {
   //trying to establish connection to local database
 const connectDB = async () => {
       try {
-        await sequelize.authenticate()
+        await sequelize.authenticate();
         logger.info(`[Sequelize]: Успешное подключение к БД ${process.env.DB_SQL_NAME} под юзером ${process.env.DB_SQL_USER}`);
       }
       catch(err) {
