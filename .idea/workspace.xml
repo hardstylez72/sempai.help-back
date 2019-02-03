@@ -1,23 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Обновил инфраструктуру">
-      <change afterPath="$PROJECT_DIR$/api/destinations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/v1/destinations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/v1/music/all/destinations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/v1/music/destinations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
+    <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Рефакторит код загрузки главного дерева, обновил аплоад файлов">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/music/all/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/music/all/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/music/all/refresh.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/music/all/refresh.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/music/stream/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/music/stream/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleWare/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleWare/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleWare/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleWare/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/10.20.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/10.21.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/10.22.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/10.27.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/10.30.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.01.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.02.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.03.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.05.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.06.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.08.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.09.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.11.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.12.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.13.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/11.19.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error/12.17.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/10.20.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/10.21.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/10.22.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/10.27.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/10.30.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.01.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.02.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.03.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.05.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.06.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.08.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.09.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.11.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.12.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.13.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/11.19.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info/12.17.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/10.20.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/10.21.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/10.22.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/10.27.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/10.30.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.01.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.02.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.03.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.05.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.06.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.08.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.09.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.11.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.12.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.13.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/11.19.2018_.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn/12.17.2018_.log" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -117,11 +154,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/v1/music/stream/upload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="166" column="67" lean-forward="true" selection-start-line="166" selection-start-column="67" selection-end-line="166" selection-end-column="67" />
+            <state relative-caret-position="354">
+              <caret line="165" column="44" lean-forward="true" selection-start-line="165" selection-start-column="44" selection-end-line="165" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -149,15 +195,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="15" column="25" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -221,7 +258,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/combined.log" />
         <option value="$PROJECT_DIR$/api/upload/get.js" />
         <option value="$PROJECT_DIR$/api/music/upload/get.js" />
@@ -272,6 +308,7 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/middleWare/auth.js" />
         <option value="$PROJECT_DIR$/api/v1/music/stream/upload.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -459,7 +496,7 @@
       <workItem from="1547062574289" duration="4130000" />
       <workItem from="1548499306739" duration="1000000" />
       <workItem from="1549189038006" duration="15069000" />
-      <workItem from="1549207743043" duration="8634000" />
+      <workItem from="1549207743043" duration="8915000" />
     </task>
     <task id="LOCAL-00001" summary="Авторизация 50%">
       <created>1535919351788</created>
@@ -531,11 +568,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542606717748</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Рефакторит код загрузки главного дерева, обновил аплоад файлов">
+      <created>1549224909572</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1549224909572</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440280000" />
+    <option name="totallyTimeSpent" value="440561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -550,7 +594,7 @@
     <frame x="2560" y="-1" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23827095" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23827095" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49710068" weight="0.32785088" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.58777016" side_tool="true" visible="true" weight="0.34978992" />
@@ -560,7 +604,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4544017" weight="0.41491598" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.41222984" visible="true" weight="0.34978992" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.41222984" visible="true" weight="0.34978992" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49920928" weight="0.32894737" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -588,7 +632,8 @@
     <MESSAGE value="Добавил апи гет для аплода файлов" />
     <MESSAGE value="Замени вебсокеты на http запрос при аплоаде" />
     <MESSAGE value="Обновил инфраструктуру" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновил инфраструктуру" />
+    <MESSAGE value="Рефакторит код загрузки главного дерева, обновил аплоад файлов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Рефакторит код загрузки главного дерева, обновил аплоад файлов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -716,9 +761,6 @@
           <caret line="197" column="14" selection-start-line="197" selection-start-column="14" selection-end-line="197" selection-end-column="14" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/models.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -877,8 +919,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/v1/music/stream/upload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="166" column="67" lean-forward="true" selection-start-line="166" selection-start-column="67" selection-end-line="166" selection-end-column="67" />
+        <state relative-caret-position="354">
+          <caret line="165" column="44" lean-forward="true" selection-start-line="165" selection-start-column="44" selection-end-line="165" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

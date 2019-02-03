@@ -1,9 +1,0 @@
-[11/19/2018 - 21:40:00] [ERROR]: Произошла ошибка при считывании каталога файлов: allowedMusicTypes is not defined
-[11/19/2018 - 21:59:26] [ERROR]: Произошла ошибка при считывании каталога файлов: actualContent is not defined
-[11/19/2018 - 21:59:57] [ERROR]: Произошла ошибка при считывании каталога файлов: actualContent is not defined
-[11/19/2018 - 22:06:08] [ERROR]: Произошла ошибка при считывании каталога файлов: null value in column "path" violates not-null constraint
-[11/19/2018 - 22:08:19] [ERROR]: Произошла ошибка при считывании каталога файлов: null value in column "parent" violates not-null constraint
-[11/19/2018 - 22:19:33] [ERROR]: Авторизация: Введены неверные данные при авторизации
-[11/19/2018 - 23:29:41] [ERROR]: Произошла ошибка при считывании каталога файлов: Cannot read property 'dataValues' of undefined
-[11/19/2018 - 23:31:04] [ERROR]: Произошла ошибка при считывании каталога файлов: Cannot read property 'dataValues' of undefined
-[11/19/2018 - 23:32:13] [ERROR]: Произошла ошибка при считывании каталога файлов: Cannot read property 'dataValues' of undefined
