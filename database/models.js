@@ -69,40 +69,46 @@ const tracks = sequelize.define('tracks',
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            unique: true,
             primaryKey: true
         },
         name: {
             type: Sequelize.STRING(2048),
-            allowNull: false
+            allowNull: false,
+            unique: 'compositeIndex',
         },
-        depth: {
+        path_depth: {
             type: Sequelize.INTEGER,
             allowNull: true
         },
-        isDirectory: {
+        is_directory: {
             type: Sequelize.BOOLEAN,
             defaultValue: 'false'
         },
         path: {
             type: Sequelize.STRING(2048),
-            allowNull: true
+            allowNull: true,
+            unique: 'compositeIndex',
         },
-        parent: {
+        parent_path: {
             type: Sequelize.STRING(2048),
             allowNull: true
         },
-        uploader_id: {
+        user_id: {
             type: Sequelize.INTEGER,
             allowNull: true
         },
-        deleted: {
+        is_deleted: {
             type: Sequelize.BOOLEAN,
             defaultValue: 'false'
         }
     },
     { schema: 'tracks' }
 );
+
+// sequelize.queryInterface.addConstraint('tracks', ['name', 'path'], {
+//     type: 'primary key',
+//     name: 'tracks_pkey'
+// });
 
 // Таблица связи пользователей и треков
 const tastes = sequelize.define('tastes',
@@ -127,6 +133,7 @@ const tastes = sequelize.define('tastes',
     }
 );
 
+tracks.belongsTo(users,  {constraints: true, foreignKey: 'user_id'});
 tastes.belongsTo(users,  {constraints: true, foreignKey: 'user_id'});
 tastes.belongsTo(tracks,  {constraints: true, foreignKey: 'track_id'});
 tastes.removeAttribute('id');

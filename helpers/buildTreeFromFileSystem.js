@@ -8,7 +8,7 @@ const exists = util.promisify(fs.exists);
 const CONTENT_PATH= '/media/bozdo/Новый том3/music';
 
 
-const buildTree = async (path, userCallBack = null) => {
+const buildTree = async (path, options, userCallBack = null) => {
     if (!await exists(path)) {
         throw new Error(`${path} is not path`)
     }
@@ -19,13 +19,13 @@ const buildTree = async (path, userCallBack = null) => {
         root: true
     };
     let startDepth = 0;
-    await buildPath(path, startDepth, tree, 0, userCallBack);
+    await buildPath(path, startDepth, tree, 0, options, userCallBack);
 
     return tree;
 };
 
 
-const buildPath = async (absPath, depth, tree, index, userCallBack) => {
+const buildPath = async (absPath, depth, tree, index, options, userCallBack) => {
 
     if (!tree.root) {
         tree = tree[index];
@@ -78,7 +78,7 @@ const buildPath = async (absPath, depth, tree, index, userCallBack) => {
             continue;
         }
 
-        await buildPath(fullPath, depth, tree.children, i, userCallBack);
+        await buildPath(fullPath, depth, tree.children, i, options, userCallBack);
     }
 };
 

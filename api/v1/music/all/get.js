@@ -25,13 +25,13 @@ const getPathName = req => {
 const getRootFolderContent = async seq => {
     const data =  await seq.query(`
             select t.name
-                 , t.parent
+                 , t.parent_path as parent
                  , t.path
-                 , t."isDirectory"
-                 , t.depth
+                 , t."is_directory" as "isDirectory"
+                 , t.path_depth as depth
               from tracks.tracks t
-             where t.depth = 1
-               and t.deleted <> true;`);
+             where t.path_depth = 1
+               and t.is_deleted <> true;`);
 
     const rows = data[0].map(row => {
         if (row.isDirectory) {
@@ -52,13 +52,13 @@ const getRootFolderContent = async seq => {
 const getFolderContent = async (seq, path) => {
     const data =  await seq.query(`
             select t.name
-                 , t.parent
+                 , t.parent_path as parent
                  , t.path
-                 , t."isDirectory"
-                 , t.depth
+                 , t."is_directory" as "isDirectory"
+                 , t.path_depth as depth
               from tracks.tracks t
-             where t.parent = '${path}'
-               and t.deleted <> true;`);
+             where t.parent_path = '${path}'
+               and t.is_deleted <> true;`);
 
     const rows = data[0].map(row => {
         if (row.isDirectory) {
