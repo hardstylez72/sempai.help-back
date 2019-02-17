@@ -13,9 +13,11 @@ const authHandler = () => {
         };
         const userToken = _.get(req, 'cookies.token', false);
         if (userToken) {
-            const tokenExist = await redis.get(userToken);
-            if (tokenExist) {
-                req.mark.sessionInfo = tokenExist;
+            const token = await redis.get(userToken);
+            if (token) {
+                const userInfo = JSON.parse(token);
+                req.mark.sessionInfo = userInfo.login;
+                req.mark.user = userInfo;
                 return next();
             }
         }

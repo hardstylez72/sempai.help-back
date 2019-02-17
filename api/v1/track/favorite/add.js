@@ -19,7 +19,7 @@ module.exports = async (req, ctx) => {
             const userId = await seq.models.users.find({
                 attributes: ['id'],
                 where: {
-                    name: mark.sessionInfo,
+                    login: mark.sessionInfo,
                 }
             });
             if (!(trackId && userId)) {

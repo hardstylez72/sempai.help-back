@@ -1,39 +1,86 @@
 const fs = require('fs');
+const fsExtra = require('fs-extra')
 const path = require('path');
 const ROOT_PATH = process.env.CONTENT_PATH;
 const util = require('util');
 const unzip = require('unzip');
 const unlink = util.promisify(fs.unlink);
-const readFile = util.promisify(fs.readFile);
 const appendFile = util.promisify(fs.appendFile);
-const remove = util.promisify(fs.rmdir);
+const remove = util.promisify(fsExtra.remove);
+const updateContent = require('services/musicService').updateContent;
 
 const store = new Map();
+let isCollectorRunnging = false;
+
+const autoFileGarbageCollector = (store, ctx) => {
+    const { moment, _ } = ctx;
+    const id = setInterval(() => {
+        let count = 0;
+        try {
+            store.forEach((val, key, map) => {
+                count++;
+                const now = new moment();
+                let startTime = _.get(val, 'startTime', false);
+                if (!startTime) {
+                    return;
+                }
+
+                const diff = moment.duration(now.diff(startTime)).asMinutes();
+                if (diff.toString() > process.env.MAX_UPLOAD_TIME_IN_MINUTES) {
+                    deleteFile(val.pathToSaveZip, ctx);
+                    remove(val.pathToSaveZip.replace('.zip', '')).catch(console.log);
+                    store.delete(key);
+                }
+            });
+            if (count === 0) {
+                clearInterval(id);
+                isCollectorRunnging = false;
+            }
+        } catch (e) {
+            console.log(e);
+        }
+
+    }, 1000);
+};
+
 
 module.exports = async (req, ctx) => {
 
-    const { logger } = ctx;
+    if (!isCollectorRunnging) {
+        isCollectorRunnging = true;
+        autoFileGarbageCollector(store, ctx);
+    }
+
+    const { logger, _ } = ctx;
     const data = req.body;
+    let fileInfo = store.get(data.name);
+    const isFirstChunk = !fileInfo;
+
+    if (_.get(data,'data.cmd', null) === 'ABORT') {
+        if (store.get(data.data.name)) {
+            store.set(data.data.name, {isAborted: true, ...store.get(data.data.name)});
+        }
+        return;
+    }
+
     const file = req.files[0];
 
-    let fileInfo = store.get(data.name);
     let progress = 0;
 
     try {
-
-        // Если файл не существует
-        if (!fileInfo) {
+        if (isFirstChunk) {
             if (!isValid(data)) {
-                return []
+                throw new Error(`Ошибка при загрузке файлов`);
             }
-            //   logger.info(`Начинается загрузка файла ${data.name} размером ${data.size}`);
-
-            prepareFirstChunk(data, file);
+            prepareFirstChunk(data, file, ctx);
             fileInfo = store.get(data.name);
             progress = 0;
         }
 
-        await processChunk(data, file);
+        const isAborted = await processChunk(data, file, ctx);
+        if (isAborted) {
+            return {isAborted: true};
+        }
 
         if (Number(data.curSize) >= Number(data.size)) {
             //  logger.info(`Заканчивается загрузка файла ${data.name} размером ${data.size}`);
@@ -46,15 +93,16 @@ module.exports = async (req, ctx) => {
             progress = Math.round(100*fileInfo.curSize/fileInfo.size);
         }
 
-        return {progress: progress, fileList: []};
+        return {
+            progress: progress,
+            fileList: []
+        };
     } catch(err) {
-        logger.error(err)
+        logger.error(err);
+        throw err;
     }
 
 };
-
-
-
 
 const isValid = body => {
     const data = body;
@@ -69,32 +117,55 @@ const isValid = body => {
     return true;
 };
 
-const prepareFirstChunk = (body, file) => {
+const prepareFirstChunk = (body, file, ctx) => {
+    const { moment } = ctx;
     const data = body;
-
     const pathToSaveZip = path.join(ROOT_PATH, data.path, data.name);
 
     const fileInfo = {
         size: data.size,
         curSize: 0,
         pathToSaveZip: pathToSaveZip,
-        name: data.name
+        name: data.name,
+        startTime: new moment()
     };
     store.set(fileInfo.name, fileInfo)
 };
 
-const processChunk = async (body, file) => {
+const processChunk = async (body, file, ctx) => {
 
+    const { logger } = ctx;
     const data = body;
     const fileInfo = store.get(data.name);
-
     const fileData = file.buffer;
     await appendFile(fileInfo.pathToSaveZip, fileData, {encoding: 'binary'});
 
     fileInfo.curSize = data.curSize;
+
+    const newFileInfo = store.get(data.name);
+
+    if (newFileInfo.isAborted) {
+        await deleteFile(fileInfo.pathToSaveZip, ctx);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
+        store.delete(newFileInfo.name);
+        return {isAborted: true};
+    }
+
     store.set(data.name, fileInfo);
 };
 
+const deleteFile = async (name, ctx) => {
+    const { logger } = ctx;
+    await unlink(name)
+        .then(async () => {
+            logger.info(`Успешное удаление буферного архива ${name}`);
+        })
+        .catch(async err => {
+            const log = `Ошибка при удалении буферного архива. Ошибка: ${err}`;
+            logger.error(log);
+        });
+
+};
 const processLastChunk = async (body, file, ctx) => {
     const { logger } = ctx;
     const data = body;
@@ -102,38 +173,49 @@ const processLastChunk = async (body, file, ctx) => {
     const fileInfo = store.get(data.name);
     const result = await unzipFiles(fileInfo, ctx).catch(async err => {
         logger.error(err);
-        await unlink(fileInfo.pathToSaveZip)
-            .then(async () => {
-                logger.info(`Успешное удаление буферного архива ${fileInfo.pathToSaveZip}`);
-            })
-            .catch(async err => {
-                const log = `Ошибка при удалении буферного архива. Ошибка: ${err}`;
-                logger.error(log);
-            });
+        await deleteFile(fileInfo.pathToSaveZip, ctx);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
         throw err;
     });
-    const anyNewFiles = result.files.some(el => el.success);
-    if (!anyNewFiles) {
-        await remove(fileInfo.pathToSaveZip.replace('.zip', ''))
-            .then(async () => {
-                logger.info(`Успешное удаление ${fileInfo.pathToSaveZip.replace('.zip', '')}`);
-            })
-            .catch(async err => {
-                const log = `Ошибка при удалении пустой папки. Ошибка: ${err}`;
-                logger.error(log);
-            });
-    }
+    const newFileInfo = store.get(data.name);
 
-    await unlink(fileInfo.pathToSaveZip)
-        .then(async () => {
-            logger.info(`Успешное удаление буферного архива ${fileInfo.pathToSaveZip}`);
-        })
-        .catch(async err => {
-            const log = `Ошибка при удалении буферного архива. Ошибка: ${err}`;
-            logger.error(log);
-        });
+    const anyNewFiles = result.files.some(el => el.success);
+    if (!anyNewFiles || newFileInfo.isAborted) {
+        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
+    }
+    await deleteFile(fileInfo.pathToSaveZip, ctx);
 
     store.delete(data.name);
+
+    try {
+        const parentPath = result.path.slice(0, result.path.lastIndexOf('/'));
+        const actualContent = result.files.map(el => {
+            if (el.success) {
+                return {
+                    name: el.file,
+                    path: result.path.replace('.zip', `/${el.file}`),
+                    parent: parentPath,
+                    depth: 3,
+                    isDirectory: false,
+                    userId: ctx.mark.user.id
+                }
+            }
+        }).filter(el => el !== undefined);
+        actualContent.push({
+            name: result.path.replace('.zip', '').slice(result.path.lastIndexOf('/') + 1, result.path.length),
+            path: result.path.replace('.zip', ''),
+            parent: parentPath,
+            depth: 3,
+            isDirectory: true,
+            userId: ctx.mark.user.id
+        });
+        await updateContent(actualContent, ctx);
+    } catch (e) {
+        await deleteFile(fileInfo.pathToSaveZip, ctx);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
+        throw e;
+    }
+
     return result.files;
 };
 
@@ -162,7 +244,7 @@ const unzipFiles = async (data, ctx) => {
                 reject(err)
             })
         )
-            .on('entry', (entry) => {
+            .on('entry', entry => {
                 const fileName = entry.path;
                 logger.info(`Успешно распакован файл ${fileName}`);
                 if (fileName && fileName.match(/\.mp3|mp4|gif|png|jpeg|jpg|bmp/) !== null) {
@@ -191,34 +273,3 @@ const unzipFiles = async (data, ctx) => {
             })
     })
 };
-
-
-
-
-
-
-
-//  socket.emit('UPLOAD_SUCCESS', uploadedFiles); todo
-
-// const files = dirTree(localPathToExtractZip).children;
-//
-// try {
-//     const userId = await seq.users.find({
-//         attributes: ['id'],
-//         where: {
-//             name: socket.ctx.sessionInfo,
-//         }
-//     });
-//
-//     const bulk = files.map(el => {
-//         return {
-//             name: el.name,
-//             path: el.path,
-//             uploader_id: userId.dataValues.id
-//         }
-//     });
-//     await seq.tracks.bulkCreate(bulk);
-
-// } catch (err) {
-//     logger.error(`Ошибка при записи кастомного контента в бд ${err.message}`)
-// }

@@ -37,7 +37,10 @@ const login = require('../api/login');
 
             const response = {
                 success: false,
-                error: err
+                error: {
+                    message: err.message,
+                    stack: err.stack
+                }
             };
             return res.send(JSON.stringify(response));
         }

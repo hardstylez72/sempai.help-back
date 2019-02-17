@@ -199,15 +199,15 @@ const connectDB = async () => {
     try {
         await connectDB();
         sequelize.import('./database/models.js');
-        await sequelize.sync({force: false});
+        await sequelize.sync({force: true});
         await sequelize.models.users.create({
-            name: process.env.SITE_ADMIN_NAME,
-            pwd: process.env.SITE_ADMIN_PWD,
+            login: process.env.SITE_ADMIN_NAME,
+            password: process.env.SITE_ADMIN_PWD,
             role_id: 1
         });
         await sequelize.models.users.create({
-            name: process.env.SITE_ADMIN_NAME_2,
-            pwd: process.env.SITE_ADMIN_PWD_2,
+            login: process.env.SITE_ADMIN_NAME_2,
+            password: process.env.SITE_ADMIN_PWD_2,
             role_id: 1
         });
     } catch (err) {

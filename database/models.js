@@ -42,19 +42,21 @@ const users = sequelize.define('users',
             unique: true,
             primaryKey: true
         },
-        name: {
+        login: {
             type: Sequelize.STRING(40),
-            allowNull: false
+            allowNull: false,
+            unique: 'compositeIndex'
         },
-        pwd: {
+        password: {
             type: Sequelize.STRING(40),
-            allowNull: false
+            allowNull: false,
+            unique: 'compositeIndex'
         },
         role_id: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        deleted: {
+        is_deleted: {
             type: Sequelize.BOOLEAN,
             defaultValue: 'false'
         }

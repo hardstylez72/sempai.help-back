@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const moment = require('moment');
 const redis = require('../init').redis;
 const seq = require('../init').sequelize;
 const Seq = require('../init').Sequelize;
@@ -10,7 +11,9 @@ const enrichment = () => {
             redis,
             seq,
             Seq,
-            logger
+            logger,
+            _,
+            moment,
         };
         req.ctx = ctx;
 

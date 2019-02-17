@@ -12,7 +12,7 @@ module.exports = async (data, ctx) => {
         from tracks.tracks
           join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
           join users.users on users.users.id = tastes.tastes.user_id
-          where users.users."name" = '${mark.sessionInfo}' and tastes.tastes.deleted <> true
+          where users.users."login" = '${mark.sessionInfo}' and tastes.tastes.deleted <> true
             `, {type: Seq.QueryTypes.SELECT});
 
         logger.info(`Успешно считано ${result.length} файлов favorite из БД`);
