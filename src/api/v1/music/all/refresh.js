@@ -1,5 +1,5 @@
 const buildTree = require('../../../../helpers/buildTreeFromFileSystem').buildTree;
-const updateContent = require('services/musicService').updateContent;
+const updateContent = require('src/services/musicService').updateContent;
 
 module.exports = async (data, ctx) => {
     const { logger } = ctx;

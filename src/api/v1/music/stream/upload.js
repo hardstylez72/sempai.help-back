@@ -7,7 +7,7 @@ const unzip = require('unzip');
 const unlink = util.promisify(fs.unlink);
 const appendFile = util.promisify(fs.appendFile);
 const remove = util.promisify(fsExtra.remove);
-const updateContent = require('services/musicService').updateContent;
+const updateContent = require('src/services/musicService').updateContent;
 
 const store = new Map();
 let isCollectorRunnging = false;

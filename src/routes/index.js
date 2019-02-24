@@ -5,7 +5,7 @@ module.exports = initRoutes = (app, logger) => {
 const createError = require('http-errors');
 const destinations = require('../api/destinations');
 const multer = require('multer');
-const config = require('../config').config;
+const config = require('../config/index').config;
 const storage = multer.memoryStorage();
 const fileUpload = multer({storage: storage});
 const login = require('../api/login');

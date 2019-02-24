@@ -4,9 +4,9 @@ const socketIO = require('socket.io');
 const fs = require('fs');
 const unzip = require('unzip');
 const _ = require('lodash');
-const logger = require('./init').logger;
-const seq = require('./init').sequelize.models;
-const redis = require('./init').redis;
+const logger = require('./src/init').logger;
+const seq = require('./src/init').sequelize.models;
+const redis = require('./src/init').redis;
 const util = require('util');
 const dirTree = require('directory-tree');
 

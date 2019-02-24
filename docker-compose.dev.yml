@@ -1,6 +1,18 @@
   version: '3.3'
 
   services:
+    backend:
+      restart: always
+      build: .
+      ports:
+        - 4000:4000
+      env_file:
+        - .env
+      volumes:
+        - ${CONTENT_PATH}:${CONTENT_PATH}
+      depends_on:
+        - redis
+        - postgres
     redis:
       image: "redis:4-alpine"
       env_file:
@@ -11,8 +23,6 @@
       command: --requirepass ${REDIS_PWD}
     postgres:
       image: postgres
-      env_file:
-        - .env
       restart: always
       ports:
         - 5432:5432

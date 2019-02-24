@@ -4,9 +4,11 @@ const uuidv1 = require('uuid/v1');
 
 const authHandler = () => {
     return async (req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-        res.setHeader('Access-Control-Allow-Credentials', true);
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        if (process.env.NODE_ENV !== 'prod') {
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+            res.setHeader('Access-Control-Allow-Credentials', true);
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        }
 
         req.mark = {
             requestId: uuidv1()

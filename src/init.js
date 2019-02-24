@@ -61,74 +61,18 @@ const loggerToConsole = createLogger({
     ),
     transports: [new transports.Console()]
 });
-const loggerToFilesInfo = createLogger({
-
-    level: 'info',
-    pathname: './logs',
-    format: format.combine(
-        format.timestamp({
-            format: 'MM/DD/YYYY - HH:mm:ss::SSS'
-        }),
-        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
-    ),
-    transports: [
-         new transports.File({
-             filename: path.join(INFO_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
-             maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
-         })
-    ]
-});
-
-const loggerToFilesWarn = createLogger({
-
-    level: 'info',
-    pathname: './logs',
-    format: format.combine(
-        format.timestamp({
-            format: 'MM/DD/YYYY - HH:mm:ss'
-        }),
-        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
-    ),
-    transports: [
-        new transports.File({
-            filename: path.join(WARN_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
-            maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
-        })
-    ]
-});
-
-const loggerToFilesError = createLogger({
-
-    level: 'info',
-    pathname: './logs',
-    format: format.combine(
-        format.timestamp({
-            format: 'MM/DD/YYYY - HH:mm:ss'
-        }),
-        format.printf(info => `[${info.timestamp}] ${info.level.replace('info', '[INFO]').replace('error', '[ERROR]').replace('warn', '[WARN]')}: ${info.message}`)
-    ),
-    transports: [
-        new transports.File({
-            filename: path.join(ERROR_LOGS_DIR, `${moment().format('MM.DD.YYYY')}_.log`) ,
-            maxsize: MAX_LOGFILE_SIZE_IN_BYTES,
-        })
-    ]
-});
 
 const logger = module.exports.logger = {};
 
 logger.info = (data) => {
-    loggerToFilesInfo.info(data);
     loggerToConsole.info(data);
 };
 
 logger.warn = (data) => {
-    loggerToFilesWarn.warn(data);
     loggerToConsole.warn(data);
 };
 
 logger.error = (data) => {
-    loggerToFilesError.error(data);
     loggerToConsole.error(data);
 };
 
@@ -164,7 +108,7 @@ const redis = new Redis({
 });
 
 redis.on("error", err => {
-    logger.error("[Redis]: Ошибка", err.message);
+    logger.error(err);
 });
 
 redis.on("ready", () => {
@@ -199,7 +143,7 @@ const connectDB = async () => {
     try {
         await connectDB();
         sequelize.import('./database/models.js');
-        await sequelize.sync({force: true});
+        await sequelize.sync({force: false});
         await sequelize.models.users.create({
             login: process.env.SITE_ADMIN_NAME,
             password: process.env.SITE_ADMIN_PWD,
@@ -208,6 +152,16 @@ const connectDB = async () => {
         await sequelize.models.users.create({
             login: process.env.SITE_ADMIN_NAME_2,
             password: process.env.SITE_ADMIN_PWD_2,
+            role_id: 1
+        });
+        await sequelize.models.users.create({
+            login: process.env.SITE_ADMIN_NAME_3,
+            password: process.env.SITE_ADMIN_PWD_3,
+            role_id: 1
+        });
+        await sequelize.models.users.create({
+            login: process.env.SITE_ADMIN_NAME_4,
+            password: process.env.SITE_ADMIN_PWD_4,
             role_id: 1
         });
     } catch (err) {
