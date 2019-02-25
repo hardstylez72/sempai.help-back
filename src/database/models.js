@@ -1,77 +1,78 @@
-const {sequelize, Sequelize} = require('../init');
+const { sequelize, Sequelize } = require('../init');
 
 //Table Links (link, descr, user)
-const links = sequelize.define('links',
+const links = sequelize.define(
+    'links',
     {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             unique: true,
-            primaryKey: true
+            primaryKey: true,
         },
         link: {
             type: Sequelize.STRING(1000),
-            allowNull: false
+            allowNull: false,
         },
         descr: {
             type: Sequelize.STRING(4000),
-            allowNull: false
+            allowNull: false,
         },
         user_id: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         abstract: {
             type: Sequelize.STRING(200),
-            allowNull: false
+            allowNull: false,
         },
         deleted: {
             type: Sequelize.BOOLEAN,
-            defaultValue: 'false'
-        }
+            defaultValue: 'false',
+        },
     },
     { schema: 'links' }
 );
 
 //Table Users (userName, userRole)
-const users = sequelize.define('users',
+const users = sequelize.define(
+    'users',
     {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             unique: true,
-            primaryKey: true
+            primaryKey: true,
         },
         login: {
             type: Sequelize.STRING(40),
             allowNull: false,
-            unique: 'compositeIndex'
+            unique: 'compositeIndex',
         },
         password: {
             type: Sequelize.STRING(40),
             allowNull: false,
-            unique: 'compositeIndex'
+            unique: 'compositeIndex',
         },
         role_id: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         is_deleted: {
             type: Sequelize.BOOLEAN,
-            defaultValue: 'false'
-        }
+            defaultValue: 'false',
+        },
     },
     { schema: 'users' }
 );
 
-
-
-const tracks = sequelize.define('tracks',
+const tracks = sequelize.define(
+    'tracks',
     {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         name: {
             type: Sequelize.STRING(2048),
@@ -80,11 +81,11 @@ const tracks = sequelize.define('tracks',
         },
         path_depth: {
             type: Sequelize.INTEGER,
-            allowNull: true
+            allowNull: true,
         },
         is_directory: {
             type: Sequelize.BOOLEAN,
-            defaultValue: 'false'
+            defaultValue: 'false',
         },
         path: {
             type: Sequelize.STRING(2048),
@@ -93,16 +94,16 @@ const tracks = sequelize.define('tracks',
         },
         parent_path: {
             type: Sequelize.STRING(2048),
-            allowNull: true
+            allowNull: true,
         },
         user_id: {
             type: Sequelize.INTEGER,
-            allowNull: true
+            allowNull: true,
         },
         is_deleted: {
             type: Sequelize.BOOLEAN,
-            defaultValue: 'false'
-        }
+            defaultValue: 'false',
+        },
     },
     { schema: 'tracks' }
 );
@@ -113,7 +114,8 @@ const tracks = sequelize.define('tracks',
 // });
 
 // Таблица связи пользователей и треков
-const tastes = sequelize.define('tastes',
+const tastes = sequelize.define(
+    'tastes',
     {
         user_id: {
             type: Sequelize.INTEGER,
@@ -127,19 +129,18 @@ const tastes = sequelize.define('tastes',
         },
         deleted: {
             type: Sequelize.BOOLEAN,
-            defaultValue: false
-        }
+            defaultValue: false,
+        },
     },
     {
         schema: 'tastes',
     }
 );
 
-tracks.belongsTo(users,  {constraints: true, foreignKey: 'user_id'});
-tastes.belongsTo(users,  {constraints: true, foreignKey: 'user_id'});
-tastes.belongsTo(tracks,  {constraints: true, foreignKey: 'track_id'});
+tracks.belongsTo(users, { constraints: true, foreignKey: 'user_id' });
+tastes.belongsTo(users, { constraints: true, foreignKey: 'user_id' });
+tastes.belongsTo(tracks, { constraints: true, foreignKey: 'track_id' });
 tastes.removeAttribute('id');
-
 
 sequelize.createSchema('links', { ifNotExists: true });
 sequelize.createSchema('users', { ifNotExists: true });

@@ -1,3 +1,3 @@
 module.exports = {
-    all: require('./all/destinations.js')
+    all: require('./all/destinations.js'),
 };

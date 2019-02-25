@@ -5,18 +5,17 @@ const readdir = util.promisify(fs.readdir);
 const lstat = util.promisify(fs.lstat);
 const exists = util.promisify(fs.exists);
 
-const CONTENT_PATH= '/media/bozdo/Новый том3/music';
-
+const CONTENT_PATH = '/media/bozdo/Новый том3/music';
 
 const buildTree = async (path, options, userCallBack = null) => {
-    if (!await exists(path)) {
-        throw new Error(`${path} is not path`)
+    if (!(await exists(path))) {
+        throw new Error(`${path} is not path`);
     }
 
     const tree = {
-        name: "Content",
+        name: 'Content',
         parentPath: null,
-        root: true
+        root: true,
     };
     let startDepth = 0;
     await buildPath(path, startDepth, tree, 0, options, userCallBack);
@@ -24,9 +23,7 @@ const buildTree = async (path, options, userCallBack = null) => {
     return tree;
 };
 
-
 const buildPath = async (absPath, depth, tree, index, options, userCallBack) => {
-
     if (!tree.root) {
         tree = tree[index];
     }
@@ -38,8 +35,8 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
     depth++;
     tree.children = (await readdir(absPath)).map(el => {
         return {
-            name: el
-        }
+            name: el,
+        };
     });
 
     if (tree.children.length === 0) {
@@ -47,7 +44,6 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
     }
 
     for (let i = 0; i < tree.children.length; i++) {
-
         const cur = tree.children[i].name;
         const fullPath = path.join(absPath, cur);
         const isDir = (await lstat(fullPath)).isDirectory();
@@ -59,7 +55,7 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
                 fullPath: absPath + '/' + cur,
                 isDirectory: isDir,
                 name: cur,
-                depth: depth
+                depth: depth,
             };
 
             userData = userCallBack(data);
@@ -69,7 +65,6 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
             } else {
                 enrichment(absPath, isDir, cur, tree.children, i, depth);
             }
-
         } else {
             enrichment(absPath, isDir, cur, tree.children, i, depth);
         }
@@ -88,7 +83,7 @@ const enrichment = (path, isDirectory, cur, tree, index, depth) => {
         name: cur,
         path: path + '/' + cur,
         parent: path,
-        depth: depth
+        depth: depth,
     };
 };
 

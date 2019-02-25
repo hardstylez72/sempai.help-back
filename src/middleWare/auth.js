@@ -1,9 +1,7 @@
-const _ = require('lodash');
-const redis = require('../init').redis;
-const uuidv1 = require('uuid/v1');
-
 const authHandler = () => {
     return async (req, res, next) => {
+        const { redis, libs } = req.ctx;
+        const { _, uuidv1 } = libs;
         if (process.env.NODE_ENV !== 'prod') {
             res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             res.setHeader('Access-Control-Allow-Credentials', true);
@@ -11,7 +9,7 @@ const authHandler = () => {
         }
 
         req.mark = {
-            requestId: uuidv1()
+            requestId: uuidv1(),
         };
         const userToken = _.get(req, 'cookies.token', false);
         if (userToken) {
@@ -28,7 +26,7 @@ const authHandler = () => {
             return next();
         }
 
-        return res.end(JSON.stringify({success: '0', error: {message: 'Авторизируйтесь'}}));
+        return res.end(JSON.stringify({ success: '0', error: { message: 'Авторизируйтесь' } }));
     };
 };
 

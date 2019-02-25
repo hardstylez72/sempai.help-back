@@ -1,8 +1,8 @@
 const buildTree = require('../../../../helpers/buildTreeFromFileSystem').buildTree;
-const updateContent = require('src/services/musicService').updateContent;
 
 module.exports = async (data, ctx) => {
-    const { logger } = ctx;
+    const { logger, storage } = ctx;
+    const { update } = storage.db.musicCatalog;
     try {
         logger.info(`Осуществляется считывание каталога файлов по адресу: ${process.env.CONTENT_PATH}`);
         const actualContent = [];
@@ -20,11 +20,10 @@ module.exports = async (data, ctx) => {
                 parent: el.parentPath,
                 depth: el.depth,
                 isDirectory: el.isDirectory,
-                userId: 1
-            }
+                userId: 1,
+            };
         });
-        await updateContent(normalizedActualContent, ctx);
-
+        await update(normalizedActualContent, ctx);
     } catch (err) {
         const log = `Произошла ошибка при считывании каталога файлов: ${err.message}`;
         logger.error(log);

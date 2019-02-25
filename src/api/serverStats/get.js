@@ -1,7 +1,6 @@
 const shell = require('shelljs');
 require('dotenv').config();
 
-
 let res = shell.exec(`df '${process.env.CONTENT_PATH}' -m --output=used,pcent,size`);
 res = res
     .split('\n')
@@ -12,4 +11,4 @@ res = res
     })
     .filter(el => el.length !== 0);
 
-console.log(res)
+console.log(res);

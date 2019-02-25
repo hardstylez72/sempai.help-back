@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 module.exports = async (req, ctx) => {
     const { logger, seq } = ctx;
     try {
@@ -23,7 +21,7 @@ const getPathName = req => {
 };
 
 const getRootFolderContent = async seq => {
-    const data =  await seq.query(`
+    const data = await seq.query(`
             select t.name
                  , t.parent_path as parent
                  , t.path
@@ -42,15 +40,15 @@ const getRootFolderContent = async seq => {
 
     return {
         toggled: true,
-        name: "Content",
+        name: 'Content',
         parentPath: null,
         root: true,
-        children: rows
+        children: rows,
     };
 };
 
 const getFolderContent = async (seq, path) => {
-    const data =  await seq.query(`
+    const data = await seq.query(`
             select t.name
                  , t.parent_path as parent
                  , t.path

@@ -1,11 +1,19 @@
 {
-    "printWidth": 100,
+    "printWidth": 170,
     "singleQuote": true,
-    "trailingComma": "all",
-    "useTabs": true,
+    "trailingComma": "es5",
+    "useTabs": false,
     "parser": "flow",
     "tabWidth": 4,
-    "bracketSpacing": false,
+    "bracketSpacing": true,
     "jsxBracketSameLine": false,
-    "filepath": "./src"
+    "filepath": ".",
+    "overrides": [
+        {
+            "files": ["*.js", "*.json"],
+            "options": {
+                "parser": "flow"
+            }
+        }
+    ]
   }

@@ -18,7 +18,7 @@ const enrichment = () => {
         req.ctx = ctx;
 
         return next();
-    }
+    };
 };
 
 module.exports = enrichment;

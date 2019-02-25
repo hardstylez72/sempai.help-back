@@ -1,24 +1,22 @@
-
-
 module.exports = initRoutes = (app, logger) => {
-
-const createError = require('http-errors');
-const destinations = require('../api/destinations');
-const multer = require('multer');
-const config = require('../config/index').config;
-const storage = multer.memoryStorage();
-const fileUpload = multer({storage: storage});
-const login = require('../api/login');
-
-
+    const createError = require('http-errors');
+    const destinations = require('../api/destinations');
+    const multer = require('multer');
+    const config = require('../config/index').config;
+    const storage = multer.memoryStorage();
+    const fileUpload = multer({ storage: storage });
+    const login = require('../api/login');
 
     app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
         try {
             const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
-            const result = await apiMethod(req, res, {...req.ctx, mark: req.mark});
-            return
-        } catch(err) {
-            return
+            const result = await apiMethod(req, res, {
+                ...req.ctx,
+                mark: req.mark,
+            });
+            return;
+        } catch (err) {
+            return;
         }
     });
 
@@ -26,21 +24,19 @@ const login = require('../api/login');
         try {
             const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
 
-            const result = await apiMethod(req, {...req.ctx, mark: req.mark});
+            const result = await apiMethod(req, { ...req.ctx, mark: req.mark });
             const response = {
-              success: true,
-              data: result
+                success: true,
+                data: result,
             };
             return res.send(JSON.stringify(response));
-
-        } catch(err) {
-
+        } catch (err) {
             const response = {
                 success: false,
                 error: {
                     message: err.message,
-                    stack: err.stack
-                }
+                    stack: err.stack,
+                },
             };
             return res.send(JSON.stringify(response));
         }
@@ -54,13 +50,12 @@ const login = require('../api/login');
             method: req.method,
             body: req.body,
             headers: req.headers,
-            cookies: req.cookies
+            cookies: req.cookies,
         };
         logger.warn(`Ошибка 404 ${JSON.stringify(data)}}`);
 
         next(createError(404));
     });
-
 
     app.use((err, req, res, next) => {
         const data = {
@@ -68,18 +63,17 @@ const login = require('../api/login');
             method: req.method,
             body: req.body,
             headers: req.headers,
-            cookies: req.cookies
+            cookies: req.cookies,
         };
         logger.warn(`Ошибка 500 ${JSON.stringify(data)}`);
         res.locals.message = err.message;
         res.locals.error = req.app.get('env') === 'development' ? err : {};
         res.status(err.status || 500);
-        res.render('error');
     });
 };
 
 const getApiMethod = (...params) => {
     const path = '../' + params.reduce((acc, cur) => acc + '/' + cur) + '.js';
     const func = require(path);
-    return func
+    return func;
 };

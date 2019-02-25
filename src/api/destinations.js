@@ -1,3 +1,3 @@
 module.exports = {
-    v1: require('./v1/destinations')
+    v1: require('./v1/destinations'),
 };

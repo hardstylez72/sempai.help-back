@@ -1,9 +1,10 @@
-module.exports.updateContent = async (actualContent, ctx) => {
-    const { logger, seq } = ctx;
+module.exports = async (actualContent, ctx) => {
+    const { logger, db } = ctx;
     logger.info(`Начинается обновление каталога файлов, количество новых фалов: ${actualContent.length}`);
 
-
-    await seq.query(`
+    const content = JSON.stringify(actualContent);
+    await db.query(
+        `
    begin;
 
 create temp table tmp(
@@ -29,7 +30,7 @@ insert into tmp
 	      , now() as "createdAt"
 	      , now() as "updatedAt"
 	   from (select *
-	           from json_array_elements('${JSON.stringify(actualContent).replace(/'/g, "\'\'")}')
+	           from json_array_elements($1)
 ) as buf;
 		   
 insert into tracks.tracks ("name"
@@ -53,5 +54,7 @@ insert into tracks.tracks ("name"
 		           from tmp
 		           on conflict do nothing;
 
-commit; `);
+commit;`,
+        [content]
+    );
 };
