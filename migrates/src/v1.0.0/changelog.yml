@@ -1,0 +1,17 @@
+databaseChangeLog:
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-users.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-tracks.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-tastes.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-links.sql

@@ -1,25 +1,10 @@
 version: '3.4'
 
 services:
-  ccs-migrates:
-    image: webdevops/liquibase:postgres
-    environment:
-      - LIQUIBASE_URL=jdbc:postgresql://localhost:5432/sempai
-      - LIQUIBASE_PASSWORD=54654654
-      - LIQUIBASE_USERNAME=sempai
-      - LIQUIBASE_CHANGELOG=changelog.yml
-#      - LIQUIBASE_URL=jdbc:postgresql://${PG_HOST}:${PG_PORT}/${PG_DATABASE}
-#      - LIQUIBASE_USERNAME=${PG_USER}
-#      - LIQUIBASE_PASSWORD=${PG_PASSWORD}
-#    env_file: .env
-#    command: "env"
-    command: "update"
+  sempai-migrates:
+    env_file:
+      - ../.env
+    image: "hardstylez72/liquibase-postgres:latest"
     volumes:
-      - .:/liquibase
-
-./liquibase --driver=org.postgresql.Driver \
-     --changeLogFile=/home/hs/Desktop/workspace/sempai.help-back/migrates/changelog.yml \
-     --url="jdbc:postgresql://localhost:5432/sempai" \
-     --username=sempai \
-     --password=54654654 \
-     migrate
+      - ./src:/workspace
+    network_mode: 'host'
