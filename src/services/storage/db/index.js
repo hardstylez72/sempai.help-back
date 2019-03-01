@@ -49,9 +49,7 @@ module.exports = class DatabaseConnection {
         const isConnected = await this.connect();
         if (!isConnected) {
             this.retryCounter++;
-            if (this.retryCounter > this.retryMaxCount && this.retryMaxCount !== -1) {
-                throw new Error('Не удалось подключиться за отведенное число попыток');
-            }
+            if (this.retryCounter > this.retryMaxCount && this.retryMaxCount !== -1) throw new Error('Не удалось подключиться за отведенное число попыток');
 
             await new Promise(resolve => setTimeout(resolve, this.retryConnectionTimeoutMs));
             await this.init();

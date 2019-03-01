@@ -34,9 +34,8 @@ router.post('/', async (req, res) => {
                 [password, login]
             );
 
-            if (user.rowCount === 0) {
-                throw new Error('Авторизация: Пользователь не найден');
-            }
+            if (user.rowCount === 0) throw new Error('Авторизация: Пользователь не найден');
+
             const token = uuidv1();
             await redis.set(token, JSON.stringify(user.rows[0]), 'EX', process.env.REDIS_SESSION_LIFE_TIME);
             res.cookie('is-token-ok', 1);

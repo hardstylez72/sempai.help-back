@@ -30,20 +30,16 @@ router.post('/', function(req, res) {
         console.log(hash);
         getFilesWithProps(fileDir, type, (err, files) => {
             if (err) resHandler(err, res);
-            else {
+            else
                 isImgAlreadyExist(fileDir, files, hash, (err, result) => {
                     if (err) resHandler(err, res);
-                    else {
-                        if (result) resHandler(null, res);
-                        else {
-                            writeNewImg(fileDir, type, base64Data, err => {
-                                if (err) resHandler(err, res);
-                                else resHandler(null, res);
-                            });
-                        }
-                    }
+                    else if (result) resHandler(null, res);
+                    else
+                        writeNewImg(fileDir, type, base64Data, err => {
+                            if (err) resHandler(err, res);
+                            else resHandler(null, res);
+                        });
                 });
-            }
         });
     } else res.json(JSON.stringify({ answ: 'err' }));
 });
@@ -62,20 +58,19 @@ function writeNewImg(path, type, file, cb) {
 function isImgAlreadyExist(path, files, hash, cb) {
     let i = 0;
     if (files.length === 0) return cb(null, false);
-    else {
-        fs.readFile(path + files[i], 'base64', isImgAlreadyExistCallBack);
-        function isImgAlreadyExistCallBack(err, data) {
-            if (err) cb(err, false);
-            else {
-                if (i === files.length) return cb(null, false);
-                i++;
-                let hashBuffer = crypto
-                    .createHash('md5')
-                    .update(data)
-                    .digest('hex');
-                if (hashBuffer === hash) return cb(null, true);
-                else return fs.readFile(path + files[i], 'base64', isImgAlreadyExistCallBack);
-            }
+
+    fs.readFile(path + files[i], 'base64', isImgAlreadyExistCallBack);
+    function isImgAlreadyExistCallBack(err, data) {
+        if (err) cb(err, false);
+        else {
+            if (i === files.length) return cb(null, false);
+            i++;
+            let hashBuffer = crypto
+                .createHash('md5')
+                .update(data)
+                .digest('hex');
+            if (hashBuffer === hash) return cb(null, true);
+            return fs.readFile(path + files[i], 'base64', isImgAlreadyExistCallBack);
         }
     }
 }
@@ -84,14 +79,13 @@ function getFilesWithProps(path, type, cb) {
     if (path == undefined || type == undefined || cb == undefined) return cb('Input params are not valid', null);
     fs.readdir(path, (err, files) => {
         if (err) return cb(err, null);
-        else {
-            var filesFound = files.filter(file => {
-                if (file.search(RegExp('.' + type)) !== -1) return file;
-                else if (type === 'jpeg')
-                    if (file.search(RegExp('.jpg')) !== -1) return file;
-                    else if (type === 'jpg') if (file.search(RegExp('.jpeg')) !== -1) return file;
-            });
-            return cb(null, filesFound);
-        }
+
+        var filesFound = files.filter(file => {
+            if (file.search(RegExp('.' + type)) !== -1) return file;
+            else if (type === 'jpeg')
+                if (file.search(RegExp('.jpg')) !== -1) return file;
+                else if (type === 'jpg') if (file.search(RegExp('.jpeg')) !== -1) return file;
+        });
+        return cb(null, filesFound);
     });
 }

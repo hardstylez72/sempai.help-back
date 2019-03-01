@@ -5,9 +5,7 @@ module.exports = async (req, ctx) => {
     try {
         const track = _.get(req, 'body.data', false);
         logger.info(`Проверка трека: ${track} на принадлежность к избранному пользователя ${mark.sessionInfo}`);
-        if (!track) {
-            throw new Error('Входные данные некорректны');
-        }
+        if (!track) throw new Error('Входные данные некорректны');
 
         const trackId = await seq.models.tracks.find({
             attributes: ['id'],
@@ -21,9 +19,7 @@ module.exports = async (req, ctx) => {
                 login: mark.sessionInfo,
             },
         });
-        if (!(trackId && userId)) {
-            return { included: false };
-        }
+        if (!(trackId && userId)) return { included: false };
 
         const result = await seq.models.tastes.findOne({
             where: {
@@ -32,9 +28,7 @@ module.exports = async (req, ctx) => {
                 user_id: userId.dataValues.id,
             },
         });
-        if (!result) {
-            return { included: false };
-        }
+        if (!result) return { included: false };
 
         logger.info(`Успешно считано ${result.length} файлов favorite из БД`);
         return { included: false };

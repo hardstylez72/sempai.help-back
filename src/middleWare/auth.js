@@ -22,9 +22,7 @@ const authHandler = () => {
             }
         }
 
-        if (req.url === '/api/login/') {
-            return next();
-        }
+        if (req.url === '/api/login/') return next();
 
         return res.end(JSON.stringify({ success: '0', error: { message: 'Авторизируйтесь' } }));
     };

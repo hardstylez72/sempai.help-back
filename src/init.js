@@ -14,9 +14,7 @@ const MUSIC_STYLES = ['ELECTRONIC', 'DUBSTEP', 'DUB', 'KAWAI', 'CASUAL', 'TRIP-H
 
 MUSIC_STYLES.forEach(style => {
     const isExist = fs.existsSync(BASE_PATH + '/' + style);
-    if (!isExist) {
-        fs.mkdirSync(BASE_PATH + '/' + style);
-    }
+    if (!isExist) fs.mkdirSync(BASE_PATH + '/' + style);
 });
 
 module.exports.init = async (config, logger) => {
@@ -71,7 +69,7 @@ const connectDB = async () => {
 const initSequilize = async logger => {
     try {
         await connectDB();
-        sequelize.import('./database/models.js');
+        sequelize['import']('./database/models.js');
         await sequelize.sync({ force: false });
         await sequelize.models.users.create({
             login: process.env.SITE_ADMIN_NAME,

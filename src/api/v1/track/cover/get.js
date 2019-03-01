@@ -17,14 +17,11 @@ module.exports = async (req, ctx) => {
         const files = await fs.readdirSync(pathWhithCover);
 
         const imgs = files.filter(el => {
-            if (el.indexOf('.png') !== -1 || el.indexOf('.jpeg') !== -1 || el.indexOf('.jpg') !== -1 || el.indexOf('.gif') !== -1) {
-                return true;
-            }
+            if (el.indexOf('.png') !== -1 || el.indexOf('.jpeg') !== -1 || el.indexOf('.jpg') !== -1 || el.indexOf('.gif') !== -1) return true;
+
             return false;
         });
-        if (imgs.length === 0) {
-            return null;
-        }
+        if (imgs.length === 0) return null;
 
         let prefix = '';
         if (imgs[0].indexOf('.png') !== -1) prefix = 'png';

@@ -19,9 +19,7 @@ const io = socketIO(server);
 
 const TEST_DIR = process.env.CONTENT_PATH;
 
-if (!fs.existsSync(TEST_DIR)) {
-    fs.mkdirSync(TEST_DIR);
-}
+if (!fs.existsSync(TEST_DIR)) fs.mkdirSync(TEST_DIR);
 
 io.use(async (req, next) => {
     try {
@@ -55,9 +53,8 @@ io.on('connection', socket => {
 
     socket.on('START_UPLOAD', data => {
         try {
-            if (data.name.indexOf('.zip') === -1) {
-                return errorHandler(socket, fileMap, data, 'Неверный формат загружаемого контента');
-            }
+            if (data.name.indexOf('.zip') === -1) return errorHandler(socket, fileMap, data, 'Неверный формат загружаемого контента');
+
             fileMap.set(data.name, {
                 size: data.size,
                 curSize: 0,
@@ -89,7 +86,7 @@ io.on('connection', socket => {
         try {
             const curStat = fileMap.get(data.name);
             curStat.stream.close();
-            fileMap.delete(data.name);
+            fileMap['delete'](data.name);
         } catch (err) {
             errorHandler(socket, fileMap, data, err);
         }
@@ -99,7 +96,7 @@ io.on('connection', socket => {
         try {
             const curStat = fileMap.get(data.name);
             curStat.stream.close();
-            fileMap.delete(data.name);
+            fileMap['delete'](data.name);
             unzipFiles(socket, data, curStat);
         } catch (err) {
             logger.error(`Ошибка при завершении загрузки архива с музыкой ${err.message}`);
@@ -110,21 +107,16 @@ io.on('connection', socket => {
 
 const errorHandler = (socket, fileMap, data, err) => {
     const issueData = fileMap.get(data.name);
-    if (_.has(issueData, 'stream')) {
-        issueData.stream.close();
-    }
+    if (_.has(issueData, 'stream')) issueData.stream.close();
 
-    if (_.has(issueData, 'localPath')) {
+    if (_.has(issueData, 'localPath'))
         fs.unlink(issueData.localPath, err => {
-            if (err) {
-                logger.error(`Ошибка при удалении буферного архива. Ошибка: ${err.message}`);
-            }
+            if (err) logger.error(`Ошибка при удалении буферного архива. Ошибка: ${err.message}`);
+
             logger.info('Успешное удаление буферного архива');
         });
-    }
-    if (_.has(err.message)) {
-        err = err.message;
-    }
+
+    if (_.has(err.message)) err = err.message;
 
     socket.emit('UPLOAD_ERROR', `При загрузке кастомного контента произошла ошибка: ${err}`);
 };
@@ -133,9 +125,8 @@ const unzipFiles = (socket, data, curStat) => {
     const uploadedFiles = [];
     const localPathToReadZip = curStat.localPath;
     const newPath = data.name.replace('.zip', '');
-    if (!fs.existsSync(localPathToReadZip.replace('.zip', ''))) {
-        fs.mkdirSync(localPathToReadZip.replace('.zip', ''));
-    }
+    if (!fs.existsSync(localPathToReadZip.replace('.zip', ''))) fs.mkdirSync(localPathToReadZip.replace('.zip', ''));
+
     const localPathToExtractZip = TEST_DIR + '/' + curStat.path + '/' + newPath;
     const stream = fs.createReadStream(localPathToReadZip);
     stream.on('error', err => {

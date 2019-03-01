@@ -33,9 +33,8 @@ router.get('/:base64path', async (req, res) => {
                         'Content-type': 'audio/*',
                     };
                     res.writeHead(206, head);
-                    if (currentFile !== path && currentFile) {
-                        fs.createReadStream(currentFile).close();
-                    }
+                    if (currentFile !== path && currentFile) fs.createReadStream(currentFile).close();
+
                     file.pipe(res);
                     currentFile = path;
                 } else {
@@ -46,12 +45,8 @@ router.get('/:base64path', async (req, res) => {
                     res.writeHead(200, head);
                     fs.createReadStream(path).pipe(res);
                 }
-            } else {
-                console.log(err.message);
-            }
-        } else {
-            console.log(err);
-        }
+            } else console.log(err.message);
+        } else console.log(err);
     } catch (err) {
         console.log(err);
     }
@@ -83,9 +78,8 @@ router.get('/download/:base64path', async (req, res) => {
                         'Content-Type': 'audio/flac',
                     };
                     res.writeHead(206, head);
-                    if (currentFile !== path && currentFile) {
-                        fs.createReadStream(currentFile).close();
-                    }
+                    if (currentFile !== path && currentFile) fs.createReadStream(currentFile).close();
+
                     file.pipe(res);
                     currentFile = path;
                 } else {
@@ -96,12 +90,8 @@ router.get('/download/:base64path', async (req, res) => {
                     res.writeHead(200, head);
                     fs.createReadStream(path).pipe(res);
                 }
-            } else {
-                console.log(err.message);
-            }
-        } else {
-            console.log(err);
-        }
+            } else console.log(err.message);
+        } else console.log(err);
     } catch (err) {
         console.log(err);
     }
@@ -117,9 +107,8 @@ router.post('/cover/', async (req, res) => {
             const pathWhithCover = pathToFile.slice(0, lastChar + 1);
             const files = await fs.readdirSync(pathWhithCover);
             const imgs = files.filter(el => {
-                if (el.indexOf('.png') !== -1 || el.indexOf('.jpeg') !== -1 || el.indexOf('.jpg') !== -1 || el.indexOf('.gif') !== -1) {
-                    return true;
-                }
+                if (el.indexOf('.png') !== -1 || el.indexOf('.jpeg') !== -1 || el.indexOf('.jpg') !== -1 || el.indexOf('.gif') !== -1) return true;
+
                 return false;
             });
             if (imgs.length !== 0) {
@@ -132,9 +121,7 @@ router.post('/cover/', async (req, res) => {
                 let imgData = await fs.readFileSync(img, 'base64');
                 imgData = `data:image/${prefix};base64,` + imgData;
                 res.send(JSON.stringify({ success: '1', data: imgData }));
-            } else {
-                res.send(JSON.stringify({ success: '1', data: '' }));
-            }
+            } else res.send(JSON.stringify({ success: '1', data: '' }));
         }
     } catch (err) {
         res.send(JSON.stringify({ success: '0' }));

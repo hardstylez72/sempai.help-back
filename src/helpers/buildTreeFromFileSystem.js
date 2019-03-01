@@ -8,9 +8,7 @@ const exists = util.promisify(fs.exists);
 const CONTENT_PATH = '/media/bozdo/Новый том3/music';
 
 const buildTree = async (path, options, userCallBack = null) => {
-    if (!(await exists(path))) {
-        throw new Error(`${path} is not path`);
-    }
+    if (!(await exists(path))) throw new Error(`${path} is not path`);
 
     const tree = {
         name: 'Content',
@@ -24,13 +22,9 @@ const buildTree = async (path, options, userCallBack = null) => {
 };
 
 const buildPath = async (absPath, depth, tree, index, options, userCallBack) => {
-    if (!tree.root) {
-        tree = tree[index];
-    }
+    if (!tree.root) tree = tree[index];
 
-    if (!(await lstat(absPath)).isDirectory()) {
-        return Promise.reject(`${absPath} is not a folder`);
-    }
+    if (!(await lstat(absPath)).isDirectory()) return Promise.reject(`${absPath} is not a folder`);
 
     depth++;
     tree.children = (await readdir(absPath)).map(el => {
@@ -39,9 +33,7 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
         };
     });
 
-    if (tree.children.length === 0) {
-        return;
-    }
+    if (tree.children.length === 0) return;
 
     for (let i = 0; i < tree.children.length; i++) {
         const cur = tree.children[i].name;
@@ -60,18 +52,11 @@ const buildPath = async (absPath, depth, tree, index, options, userCallBack) => 
 
             userData = userCallBack(data);
 
-            if (userData) {
-                tree.children[i] = userData;
-            } else {
-                enrichment(absPath, isDir, cur, tree.children, i, depth);
-            }
-        } else {
-            enrichment(absPath, isDir, cur, tree.children, i, depth);
-        }
+            if (userData) tree.children[i] = userData;
+            else enrichment(absPath, isDir, cur, tree.children, i, depth);
+        } else enrichment(absPath, isDir, cur, tree.children, i, depth);
 
-        if (!isDir) {
-            continue;
-        }
+        if (!isDir) continue;
 
         await buildPath(fullPath, depth, tree.children, i, options, userCallBack);
     }

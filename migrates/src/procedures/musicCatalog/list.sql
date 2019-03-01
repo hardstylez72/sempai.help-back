@@ -1,9 +1,13 @@
-CREATE OR REPLACE PROCEDURE musicCatalog_list(data json)
-LANGUAGE SQL
-AS $$
-begin
+--liquibase formatted sql
+--changeset hardstylez72:tracks.get_music_catalog_list endDelimiter:go runOnChange:true
 
-create temp table tmp_tracks( "name"        varchar(2048)
+CREATE OR REPLACE FUNCTION tracks.get_music_catalog_list(data json)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+begin
+create temp table tmp_tracks(
+                     "name"        varchar(2048)
 					, path_depth   integer
 					, is_directory bool
 					, "path"       varchar(2048)
@@ -48,7 +52,6 @@ insert into tracks.tracks ("name"
 		           		  , "updatedAt"
 		           from tmp_tracks
 		           on conflict do nothing;
-
-commit;
-end $$;
-
+end;
+$function$
+;

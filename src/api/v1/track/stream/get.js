@@ -6,16 +6,12 @@ module.exports = async (req, res, ctx) => {
     try {
         const jsonData = Buffer(req.params.data, 'base64').toString('utf-8');
         const data = JSON.parse(jsonData);
-        if (!_.has(data, 'path')) {
-            return null;
-        }
+        if (!_.has(data, 'path')) return null;
 
         const pathToFile = _.get(data, 'path', null);
         const isPathExist = await fs.existsSync(pathToFile);
 
-        if (!isPathExist) {
-            return null;
-        }
+        if (!isPathExist) return null;
 
         const stat = fs.statSync(pathToFile);
         const path = pathToFile;

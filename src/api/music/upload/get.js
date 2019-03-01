@@ -18,9 +18,8 @@ router.post('/', async (req, res) => {
                     uploader_id: userId.dataValues.id,
                 },
             });
-            if (result) {
-                return res.send(JSON.stringify({ success: '1', data: result }));
-            }
+            if (result) return res.send(JSON.stringify({ success: '1', data: result }));
+
             return res.send(JSON.stringify({ success: '1', data: [] }));
         }
         return res.send(JSON.stringify({ success: '0', data: [] }));

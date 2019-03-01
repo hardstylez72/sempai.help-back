@@ -20,15 +20,13 @@ const autoFileGarbageCollector = (store, ctx) => {
                 count++;
                 const now = new moment();
                 let startTime = _.get(val, 'startTime', false);
-                if (!startTime) {
-                    return;
-                }
+                if (!startTime) return;
 
                 const diff = moment.duration(now.diff(startTime)).asMinutes();
                 if (diff.toString() > process.env.MAX_UPLOAD_TIME_IN_MINUTES) {
                     deleteFile(val.pathToSaveZip, ctx);
-                    remove(val.pathToSaveZip.replace('.zip', '')).catch(console.log);
-                    store.delete(key);
+                    remove(val.pathToSaveZip.replace('.zip', ''))['catch'](console.log);
+                    store['delete'](key);
                 }
             });
             if (count === 0) {
@@ -54,12 +52,12 @@ module.exports = async (req, ctx) => {
     const isFirstChunk = !fileInfo;
 
     if (_.get(data, 'data.cmd', null) === 'ABORT') {
-        if (store.get(data.data.name)) {
+        if (store.get(data.data.name))
             store.set(data.data.name, {
                 isAborted: true,
                 ...store.get(data.data.name),
             });
-        }
+
         return;
     }
 
@@ -69,18 +67,15 @@ module.exports = async (req, ctx) => {
 
     try {
         if (isFirstChunk) {
-            if (!isValid(data)) {
-                throw new Error('Ошибка при загрузке файлов');
-            }
+            if (!isValid(data)) throw new Error('Ошибка при загрузке файлов');
+
             prepareFirstChunk(data, file, ctx);
             fileInfo = store.get(data.name);
             progress = 0;
         }
 
         const isAborted = await processChunk(data, file, ctx);
-        if (isAborted) {
-            return { isAborted: true };
-        }
+        if (isAborted) return { isAborted: true };
 
         if (Number(data.curSize) >= Number(data.size)) {
             //  logger.info(`Заканчивается загрузка файла ${data.name} размером ${data.size}`);
@@ -89,9 +84,7 @@ module.exports = async (req, ctx) => {
             return { progress: progress, fileList: fileList };
         }
 
-        if (fileInfo) {
-            progress = Math.round((100 * fileInfo.curSize) / fileInfo.size);
-        }
+        if (fileInfo) progress = Math.round((100 * fileInfo.curSize) / fileInfo.size);
 
         return {
             progress: progress,
@@ -105,13 +98,9 @@ module.exports = async (req, ctx) => {
 
 const isValid = body => {
     const data = body;
-    if (data.name.indexOf('.zip') === -1) {
-        return false;
-    }
+    if (data.name.indexOf('.zip') === -1) return false;
 
-    if (store.get(data.name)) {
-        return false;
-    }
+    if (store.get(data.name)) return false;
 
     return true;
 };
@@ -144,8 +133,8 @@ const processChunk = async (body, file, ctx) => {
 
     if (newFileInfo.isAborted) {
         await deleteFile(fileInfo.pathToSaveZip, ctx);
-        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
-        store.delete(newFileInfo.name);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', ''))['catch'](logger.error);
+        store['delete'](newFileInfo.name);
         return { isAborted: true };
     }
 
@@ -169,27 +158,26 @@ const processLastChunk = async (body, file, ctx) => {
     const data = body;
 
     const fileInfo = store.get(data.name);
-    const result = await unzipFiles(fileInfo, ctx).catch(async err => {
+    const result = await unzipFiles(fileInfo, ctx)['catch'](async err => {
         logger.error(err);
         await deleteFile(fileInfo.pathToSaveZip, ctx);
-        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', ''))['catch'](logger.error);
         throw err;
     });
     const newFileInfo = store.get(data.name);
 
     const anyNewFiles = result.files.some(el => el.success);
-    if (!anyNewFiles || newFileInfo.isAborted) {
-        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
-    }
+    if (!anyNewFiles || newFileInfo.isAborted) await remove(fileInfo.pathToSaveZip.replace('.zip', ''))['catch'](logger.error);
+
     await deleteFile(fileInfo.pathToSaveZip, ctx);
 
-    store.delete(data.name);
+    store['delete'](data.name);
 
     try {
         const parentPath = result.path.slice(0, result.path.lastIndexOf('/'));
         const actualContent = result.files
             .map(el => {
-                if (el.success) {
+                if (el.success)
                     return {
                         name: el.file,
                         path: result.path.replace('.zip', `/${el.file}`),
@@ -198,7 +186,6 @@ const processLastChunk = async (body, file, ctx) => {
                         isDirectory: false,
                         userId: ctx.mark.user.id,
                     };
-                }
             })
             .filter(el => el !== undefined);
         actualContent.push({
@@ -213,7 +200,7 @@ const processLastChunk = async (body, file, ctx) => {
         await update(actualContent, ctx);
     } catch (e) {
         await deleteFile(fileInfo.pathToSaveZip, ctx);
-        await remove(fileInfo.pathToSaveZip.replace('.zip', '')).catch(logger.error);
+        await remove(fileInfo.pathToSaveZip.replace('.zip', ''))['catch'](logger.error);
         throw e;
     }
 
@@ -226,9 +213,8 @@ const unzipFiles = async (data, ctx) => {
         const uploadedFiles = [];
         const localPathToReadZip = data.pathToSaveZip;
         const newPath = localPathToReadZip.replace('.zip', '');
-        if (!fs.existsSync(newPath)) {
-            fs.mkdirSync(newPath);
-        }
+        if (!fs.existsSync(newPath)) fs.mkdirSync(newPath);
+
         const localPathToExtractZip = localPathToReadZip.replace('.zip', '');
         const stream = fs.createReadStream(localPathToReadZip);
         stream.on('error', err => {

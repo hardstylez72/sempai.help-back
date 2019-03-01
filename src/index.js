@@ -11,9 +11,7 @@ const init = require('src/init').init;
 const config = require('src/config').config;
 
 const onError = error => {
-    if (error.syscall !== 'listen') {
-        throw error;
-    }
+    if (error.syscall !== 'listen') throw error;
 
     const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
@@ -21,11 +19,9 @@ const onError = error => {
         case 'EACCES':
             logger.error(bind + ' requires elevated privileges');
             process.exit(1);
-            break;
         case 'EADDRINUSE':
             logger.error(bind + ' is already in use');
             process.exit(1);
-            break;
         default:
             throw error;
     }

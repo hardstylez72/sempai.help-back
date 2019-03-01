@@ -7,7 +7,7 @@
     "tabWidth": 4,
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
-    "filepath": ".",
+    "semi": true,
     "overrides": [
         {
             "files": ["*.js", "*.json"],

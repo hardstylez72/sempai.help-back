@@ -4,11 +4,9 @@ module.exports = async (req, ctx) => {
         const pathName = getPathName(req);
         let data = null;
 
-        if (pathName === null) {
-            data = await getRootFolderContent(seq);
-        } else {
-            data = await getFolderContent(seq, pathName);
-        }
+        if (pathName === null) data = await getRootFolderContent(seq);
+        else data = await getFolderContent(seq, pathName);
+
         return data;
     } catch (err) {
         logger.error(`Произошла ошибка при считывании каталога файлов: ${err.message}`);
@@ -32,9 +30,8 @@ const getRootFolderContent = async seq => {
                and t.is_deleted <> true;`);
 
     const rows = data[0].map(row => {
-        if (row.isDirectory) {
-            row.children = [];
-        }
+        if (row.isDirectory) row.children = [];
+
         return row;
     });
 
@@ -59,9 +56,8 @@ const getFolderContent = async (seq, path) => {
                and t.is_deleted <> true;`);
 
     const rows = data[0].map(row => {
-        if (row.isDirectory) {
-            row.children = [];
-        }
+        if (row.isDirectory) row.children = [];
+
         return row;
     });
 
