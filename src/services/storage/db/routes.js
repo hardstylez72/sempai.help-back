@@ -1,3 +1,1 @@
-module.exports = {
-    musicCatalog: require('./musicCatalog/routes'),
-};
+module.exports = { musicCatalog: require('./musicCatalog/routes'), };

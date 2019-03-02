@@ -4,9 +4,9 @@ const socketIO = require('socket.io');
 const fs = require('fs');
 const unzip = require('unzip');
 const _ = require('lodash');
-const logger = require('./src/init').logger;
+const { logger, } = require('./src/init');
 const seq = require('./src/init').sequelize.models;
-const redis = require('./src/init').redis;
+const { redis, } = require('./src/init');
 const util = require('util');
 const dirTree = require('directory-tree');
 
@@ -19,27 +19,32 @@ const io = socketIO(server);
 
 const TEST_DIR = process.env.CONTENT_PATH;
 
-if (!fs.existsSync(TEST_DIR)) fs.mkdirSync(TEST_DIR);
+if (!fs.existsSync(TEST_DIR)) {
+    fs.mkdirSync(TEST_DIR);
+}
 
 io.use(async (req, next) => {
     try {
         let userToken = _.get(req, 'client.request.headers.cookie', false);
+
         if (userToken) {
-            userToken = userToken.split(';').filter(el => el.indexOf('token=') !== -1);
+            userToken = userToken.split(';').filter(el => -1 !== el.indexOf('token='));
             userToken = userToken[0].split('=');
             userToken = userToken[1];
             const tokenExist = await redis.get(userToken);
+
             if (tokenExist) {
-                req.ctx = {
-                    sessionInfo: tokenExist,
-                };
+                req.ctx = { sessionInfo: tokenExist, };
                 logger.info('Успешное прохождение авторизации при подключении к сокету');
+
                 return next();
             }
         }
+
         return next(new Error('Ошибка при авторизации'));
     } catch (err) {
         logger.error('Ошибка при авторизации при подключении к сокету');
+
         return next(new Error('Ошибка при авторизации'));
     }
 });
@@ -53,15 +58,17 @@ io.on('connection', socket => {
 
     socket.on('START_UPLOAD', data => {
         try {
-            if (data.name.indexOf('.zip') === -1) return errorHandler(socket, fileMap, data, 'Неверный формат загружаемого контента');
+            if (-1 === data.name.indexOf('.zip')) {
+                return errorHandler(socket, fileMap, data, 'Неверный формат загружаемого контента');
+            }
 
             fileMap.set(data.name, {
-                size: data.size,
-                curSize: 0,
-                stream: fs.createWriteStream(TEST_DIR + '/' + data.path + '/' + data.name),
+                size     : data.size,
+                curSize  : 0,
+                stream   : fs.createWriteStream(TEST_DIR + '/' + data.path + '/' + data.name),
                 localPath: TEST_DIR + '/' + data.path + '/' + data.name,
-                name: data.name,
-                path: data.path,
+                name     : data.name,
+                path     : data.path,
             });
         } catch (err) {
             errorHandler(socket, fileMap, data, err);
@@ -70,12 +77,14 @@ io.on('connection', socket => {
 
     socket.on('UPLOADING', data => {
         const curStat = fileMap.get(data.name);
+
         try {
             curStat.stream.write(data.data, 'binary');
             curStat.curSize = data.curSize;
             fileMap.set(data.name, curStat);
             logger.info(`${curStat.name} UPLOADED: ${curStat.curSize} из ${data.size}`);
             const progress = Math.round((100 * curStat.curSize) / data.size);
+
             socket.emit('PROGRESS', progress);
         } catch (err) {
             errorHandler(socket, fileMap, data, err);
@@ -85,6 +94,7 @@ io.on('connection', socket => {
     socket.on('UPLOAD_ABORTED', data => {
         try {
             const curStat = fileMap.get(data.name);
+
             curStat.stream.close();
             fileMap['delete'](data.name);
         } catch (err) {
@@ -95,6 +105,7 @@ io.on('connection', socket => {
     socket.on('UPLOAD_FINISHED', data => {
         try {
             const curStat = fileMap.get(data.name);
+
             curStat.stream.close();
             fileMap['delete'](data.name);
             unzipFiles(socket, data, curStat);
@@ -107,16 +118,24 @@ io.on('connection', socket => {
 
 const errorHandler = (socket, fileMap, data, err) => {
     const issueData = fileMap.get(data.name);
-    if (_.has(issueData, 'stream')) issueData.stream.close();
 
-    if (_.has(issueData, 'localPath'))
+    if (_.has(issueData, 'stream')) {
+        issueData.stream.close();
+    }
+
+    if (_.has(issueData, 'localPath')) {
         fs.unlink(issueData.localPath, err => {
-            if (err) logger.error(`Ошибка при удалении буферного архива. Ошибка: ${err.message}`);
+            if (err) {
+                logger.error(`Ошибка при удалении буферного архива. Ошибка: ${err.message}`);
+            }
 
             logger.info('Успешное удаление буферного архива');
         });
+    }
 
-    if (_.has(err.message)) err = err.message;
+    if (_.has(err.message)) {
+        err = err.message;
+    }
 
     socket.emit('UPLOAD_ERROR', `При загрузке кастомного контента произошла ошибка: ${err}`);
 };
@@ -125,30 +144,44 @@ const unzipFiles = (socket, data, curStat) => {
     const uploadedFiles = [];
     const localPathToReadZip = curStat.localPath;
     const newPath = data.name.replace('.zip', '');
-    if (!fs.existsSync(localPathToReadZip.replace('.zip', ''))) fs.mkdirSync(localPathToReadZip.replace('.zip', ''));
+
+    if (!fs.existsSync(localPathToReadZip.replace('.zip', ''))) {
+        fs.mkdirSync(localPathToReadZip.replace('.zip', ''));
+    }
 
     const localPathToExtractZip = TEST_DIR + '/' + curStat.path + '/' + newPath;
     const stream = fs.createReadStream(localPathToReadZip);
+
     stream.on('error', err => {
         const log = `Распаковка архива ${localPathToReadZip} завершена с ошибкой ${err.message}`;
+
         logger.info(log);
+
         return errorHandler(socket, fileMap, data, log);
     });
     stream
         .pipe(unzip.Parse())
         .on('entry', entry => {
             const fileName = entry.path;
+
             logger.info(`Успешно распакован файл ${fileName}`);
-            if (fileName && fileName.match(/\.mp3|mp4|gif|png|jpeg|jpg|bmp/) !== null) {
+            if (fileName && null !== fileName.match(/\.mp3|mp4|gif|png|jpeg|jpg|bmp/)) {
                 logger.info(`При распаковке ${fileName} будет загружен на диск`);
                 const wrStream = fs.createWriteStream(localPathToExtractZip + '/' + fileName);
+
                 wrStream.on('close', () => {
-                    uploadedFiles.push({ file: fileName, success: true });
+                    uploadedFiles.push({
+                        file   : fileName,
+                        success: true,
+                    });
                 });
                 entry.pipe(wrStream);
             } else {
                 logger.warn(`При распаковке файл ${fileName} не может быть загружен. Неизвестное расширение`);
-                uploadedFiles.push({ file: fileName, success: false });
+                uploadedFiles.push({
+                    file   : fileName,
+                    success: false,
+                });
                 entry.autodrain();
             }
         })
@@ -162,6 +195,7 @@ const unzipFiles = (socket, data, curStat) => {
                 })
                 .catch(err => {
                     const log = `Ошибка при удалении буферного архива. Ошибка: ${err.message}`;
+
                     logger.error(log);
                     errorHandler(socket, fileMap, data, log);
                 });
@@ -172,19 +206,16 @@ const unzipFiles = (socket, data, curStat) => {
 
             try {
                 const userId = await seq.users.find({
-                    attributes: ['id'],
-                    where: {
-                        name: socket.ctx.sessionInfo,
-                    },
+                    attributes: ['id', ],
+                    where     : { name: socket.ctx.sessionInfo, },
                 });
 
-                const bulk = files.map(el => {
-                    return {
-                        name: el.name,
-                        path: el.path,
-                        uploader_id: userId.dataValues.id,
-                    };
-                });
+                const bulk = files.map(el => ({
+                    name       : el.name,
+                    path       : el.path,
+                    uploader_id: userId.dataValues.id,
+                }));
+
                 await seq.tracks.bulkCreate(bulk);
             } catch (err) {
                 logger.error(`Ошибка при записи кастомного контента в бд ${err.message}`);

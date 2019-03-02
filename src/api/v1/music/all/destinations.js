@@ -1,4 +1,4 @@
 module.exports = {
-    get: require('./get'),
+    get    : require('./get'),
     refresh: require('./refresh'),
 };

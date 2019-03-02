@@ -1,3 +1,1 @@
-module.exports = {
-    update: require('./update'),
-};
+module.exports = { update: require('./update'), };

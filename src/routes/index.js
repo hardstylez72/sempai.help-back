@@ -1,10 +1,11 @@
 module.exports = initRoutes = (app, logger) => {
     const createError = require('http-errors');
-    const destinations = require('../api/destinations');
+
+    require('../api/routes');
     const multer = require('multer');
-    const config = require('../config/index').config;
+    const { config, } = require('../config/index');
     const storage = multer.memoryStorage();
-    const fileUpload = multer({ storage: storage });
+    const fileUpload = multer({ storage, });
     const login = require('../api/login');
 
     app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
@@ -14,9 +15,8 @@ module.exports = initRoutes = (app, logger) => {
                 ...req.ctx,
                 mark: req.mark,
             });
-            return;
         } catch (err) {
-            return;
+
         }
     });
 
@@ -24,20 +24,25 @@ module.exports = initRoutes = (app, logger) => {
         try {
             const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
 
-            const result = await apiMethod(req, { ...req.ctx, mark: req.mark });
+            const result = await apiMethod(req, {
+                ...req.ctx,
+                mark: req.mark,
+            });
             const response = {
                 success: true,
-                data: result,
+                data   : result,
             };
+
             return res.send(JSON.stringify(response));
         } catch (err) {
             const response = {
                 success: false,
-                error: {
+                error  : {
                     message: err.message,
-                    stack: err.stack,
+                    stack  : err.stack,
                 },
             };
+
             return res.send(JSON.stringify(response));
         }
     });
@@ -46,12 +51,13 @@ module.exports = initRoutes = (app, logger) => {
 
     app.use((req, res, next) => {
         const data = {
-            url: req.originalUrl,
-            method: req.method,
-            body: req.body,
+            url    : req.originalUrl,
+            method : req.method,
+            body   : req.body,
             headers: req.headers,
             cookies: req.cookies,
         };
+
         logger.warn(`Ошибка 404 ${JSON.stringify(data)}}`);
 
         next(createError(404));
@@ -59,15 +65,16 @@ module.exports = initRoutes = (app, logger) => {
 
     app.use((err, req, res, next) => {
         const data = {
-            url: req.originalUrl,
-            method: req.method,
-            body: req.body,
+            url    : req.originalUrl,
+            method : req.method,
+            body   : req.body,
             headers: req.headers,
             cookies: req.cookies,
         };
+
         logger.warn(`Ошибка 500 ${JSON.stringify(data)}`);
         res.locals.message = err.message;
-        res.locals.error = req.app.get('env') === 'development' ? err : {};
+        res.locals.error = 'development' === req.app.get('env') ? err : {};
         res.status(err.status || 500);
     });
 };
@@ -75,5 +82,6 @@ module.exports = initRoutes = (app, logger) => {
 const getApiMethod = (...params) => {
     const path = '../' + params.reduce((acc, cur) => acc + '/' + cur) + '.js';
     const func = require(path);
+
     return func;
 };

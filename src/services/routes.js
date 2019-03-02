@@ -1,3 +1,1 @@
-module.exports = {
-    storage: require('./storage/routes'),
-};
+module.exports = { storage: require('./storage/routes'), };
