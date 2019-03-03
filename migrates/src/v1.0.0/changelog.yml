@@ -2,16 +2,32 @@ databaseChangeLog:
 
   - include:
      relativeToChangelogFile: true
+     file: create-shema-users.sql
+
+  - include:
+     relativeToChangelogFile: true
      file: create-table-users.sql
 
   - include:
      relativeToChangelogFile: true
-     file: create-table-tracks.sql
+     file: create-table-users.sessions.sql
 
   - include:
      relativeToChangelogFile: true
-     file: create-table-tastes.sql
+     file: create-shema-content.sql
 
   - include:
      relativeToChangelogFile: true
-     file: create-table-links.sql
+     file: create-table-content.tracks.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-shema-relations.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-relations.users_to_tracks.sql
+
+  - include:
+     relativeToChangelogFile: true
+     file: create-table-content.notes.sql

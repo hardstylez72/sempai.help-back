@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Добавил и настроил eslint, убрал priettier">
+    <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Добавил хранимые процедуры">
+      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/content/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/content/music/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/content/music/general/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/helpers/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-content.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.notes.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/musicCatalog/list.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/procedures/content/music/general/update.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-links.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tastes.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-relations.users_to_tracks.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tracks.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/music/all/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/all/get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/music/favorite/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/favorite/get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/track/favorite/check.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/track/favorite/check.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/models.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -59,52 +93,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
+      <file leaf-file-name="changelog.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+            <state relative-caret-position="60">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/init.js">
+      <file leaf-file-name="changelog.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrates/src/procedures/changelog.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/index.js">
+      <file leaf-file-name="exeption_constructor.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+            <state relative-caret-position="270">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/routes.js">
+      <file leaf-file-name="save.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/routes.js">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="update.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="get.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/favorite/get.js">
+      <file leaf-file-name="refresh.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/refresh.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="120">
+              <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -112,35 +150,38 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+            <state relative-caret-position="105">
+              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/stream/upload.js">
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="476">
+              <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="destinations.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/destinations.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+            <state relative-caret-position="375">
+              <caret line="25" column="19" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="19" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/routes.js">
+      <file leaf-file-name=".eslintrc.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.eslintrc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="180">
+              <caret line="229" column="73" selection-start-line="229" selection-start-column="73" selection-end-line="229" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -149,19 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.env</find>
-      <find>host</find>
-      <find>CONTENT_PATH</find>
-      <find>postgres</find>
-      <find>views</find>
-      <find>morgan</find>
-      <find>eslint-plugin-prettier</find>
-      <find>node</find>
-      <find>pollingConnectionStatusTimeoutMs</find>
-      <find>retryConnectionTimeoutMs</find>
-      <find>retryCount</find>
-      <find>ctx</find>
-      <find>pg</find>
       <find>_</find>
       <find>updateContent</find>
       <find>$</find>
@@ -179,6 +207,19 @@
       <find>node/no</find>
       <find>no-missing</find>
       <find>require-a</find>
+      <find>complexity</find>
+      <find>seq</find>
+      <find>content</find>
+      <find>get_music_catalog_list</find>
+      <find>logger,</find>
+      <find>Произошла ошибка при считывании каталога файлов</find>
+      <find>tracks.tracks</find>
+      <find>, t.path_depth as depth</find>
+      <find>Считывание каталога файлов favorite из БД</find>
+      <find>Произошла ошибка при считывании каталога файлов favorite</find>
+      <find>is_directory</find>
+      <find>uuidv1</find>
+      <find>array-b</find>
     </findStrings>
     <replaceStrings>
       <replace>success</replace>
@@ -206,56 +247,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.env.prod" />
-        <option value="$PROJECT_DIR$/prod/.env" />
-        <option value="$PROJECT_DIR$/docker-compose.prod.yml" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/init.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/docker-compose.dev.yml" />
-        <option value="$PROJECT_DIR$/.env.example" />
-        <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/src/modules/logger.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/redis/index.js" />
-        <option value="$PROJECT_DIR$/src/middleWare/index.js" />
-        <option value="$PROJECT_DIR$/src/middleWare/auth.js" />
-        <option value="$PROJECT_DIR$/src/api/login.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/musicCatalog/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/musicService.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/stream/upload.js" />
-        <option value="$PROJECT_DIR$/migrates/v.1.0.0/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/v.1.0.0/create-table-users.sql" />
-        <option value="$PROJECT_DIR$/migrates/changelog.yml" />
         <option value="$PROJECT_DIR$/migrates/.env" />
         <option value="$PROJECT_DIR$/migrates/liquibase-postgressql/Dockerfile" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/migrates/src/v.1.0.0/changelog.yml" />
         <option value="$PROJECT_DIR$/migrates/liquibase-postgressql/src/run.sh" />
         <option value="$PROJECT_DIR$/migrates/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tracks.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-links.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tastes.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/changelog.yml" />
         <option value="$PROJECT_DIR$/migrates/src/procedures/musicCatalog/list.sql" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" />
         <option value="$PROJECT_DIR$/.prettierrc" />
         <option value="$PROJECT_DIR$/.eslintrc.json" />
-        <option value="$PROJECT_DIR$/src/init.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/all/get.js" />
-        <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/services/storage/db/index.js" />
-        <option value="$PROJECT_DIR$/.eslintrc.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/favorite/get.js" />
         <option value="$PROJECT_DIR$/src/api/routes.js" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
         <option value="$PROJECT_DIR$/src/api/v1/routes.js" />
+        <option value="$PROJECT_DIR$/.eslintignore" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/content/music/general/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/content/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/content/music/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-users.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-content.sql" />
+        <option value="$PROJECT_DIR$/docker-compose.dev.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-database-sempai.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tracks.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tastes.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql" />
+        <option value="$PROJECT_DIR$/src/api/v1/music/favorite/get.js" />
+        <option value="$PROJECT_DIR$/src/api/v1/track/favorite/check.js" />
+        <option value="$PROJECT_DIR$/src/api/v1/music/all/get.js" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/content/music/general/update.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-links.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-relations.users_to_tracks.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" />
+        <option value="$PROJECT_DIR$/src/init.js" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/helpers/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql" />
+        <option value="$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql" />
+        <option value="$PROJECT_DIR$/.eslintrc.js" />
+        <option value="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" />
+        <option value="$PROJECT_DIR$/src/config/index.js" />
+        <option value="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" />
+        <option value="$PROJECT_DIR$/src/api/login.js" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -280,10 +321,11 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1281" />
-    <option name="width" value="1279" />
-    <option name="height" value="1039" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2560" />
+    <option name="y" value="-1" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -323,12 +365,33 @@
               <item name="migrates" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="procedures" type="462c0819:PsiDirectoryNode" />
-              <item name="musicCatalog" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
-              <item name="prod" type="462c0819:PsiDirectoryNode" />
+              <item name="migrates" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="procedures" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="migrates" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="procedures" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="authorization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="migrates" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="procedures" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="session" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
@@ -352,18 +415,13 @@
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
-              <item name="favorite" type="462c0819:PsiDirectoryNode" />
+              <item name="middleWare" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
@@ -396,18 +454,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/content/music/general" />
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/content" />
       <recent name="$PROJECT_DIR$/migrates/src" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/api/v1/music/get.js" />
-      <recent name="$PROJECT_DIR$/api/v1/music/all" />
-      <recent name="$PROJECT_DIR$/api/music" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/api" />
-      <recent name="$PROJECT_DIR$/migrates/src/procedures" />
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/helpers" />
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/users/authorization" />
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/users/session" />
+      <recent name="$PROJECT_DIR$/migrates/src/procedures/users" />
       <recent name="$PROJECT_DIR$/migrates/src/v1.0.0" />
-      <recent name="$PROJECT_DIR$/migrates" />
-      <recent name="$PROJECT_DIR$/migrates/liquibase-postgressql" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -506,7 +564,7 @@
       <workItem from="1550381201337" duration="33750000" />
       <workItem from="1550432393402" duration="14349000" />
       <workItem from="1551009482560" duration="34696000" />
-      <workItem from="1551117579543" duration="35796000" />
+      <workItem from="1551117579543" duration="57694000" />
     </task>
     <task id="LOCAL-00001" summary="Авторизация 50%">
       <created>1535919351788</created>
@@ -641,11 +699,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551559444952</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Добавил lint-staged">
+      <created>1551592409578</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1551592409578</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="583706000" />
+    <option name="totallyTimeSpent" value="605604000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -657,24 +722,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1281" y="0" width="1279" height="1039" extended-state="4" />
+    <frame x="2560" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49710068" weight="0.32747254" />
       <window_info id="DB Browser" />
       <window_info anchor="bottom" id="DB Execution Console" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.16958599" side_tool="true" visible="true" weight="0.2788145" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.74933755" weight="0.32527474" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.25197682" side_tool="true" visible="true" weight="0.32456142" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7480232" visible="true" weight="0.32456142" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48966613" weight="0.32417583" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.830414" visible="true" weight="0.2788145" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8239325" weight="0.27850878" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23510806" />
       <window_info id="Project Explorer" />
       <window_info id="Job Explorer" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Console" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49920928" weight="0.32894737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.88535035" weight="0.43578485" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8798102" weight="0.43530703" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -684,7 +750,6 @@
       <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49920928" weight="0.32894737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +777,9 @@
     <MESSAGE value="Добавил liquibase" />
     <MESSAGE value="Добавил eslint" />
     <MESSAGE value="Добавил и настроил eslint, убрал priettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил и настроил eslint, убрал priettier" />
+    <MESSAGE value="Добавил lint-staged" />
+    <MESSAGE value="Добавил хранимые процедуры" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил хранимые процедуры" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -763,268 +830,28 @@
           <option name="timeStamp" value="1039" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js</url>
+          <url>file://$PROJECT_DIR$/src/api/v1/music/all/get.js</url>
+          <line>69</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1047" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/api/v1/music/favorite/get.js</url>
           <line>6</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1041" />
+          <option name="timeStamp" value="1049" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/api/v1/music/favorite/get.js</url>
+          <line>17</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1050" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1044" />
+      <option name="time" value="1057" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/services/storage/redis/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="579" column="16" selection-start-line="579" selection-start-column="16" selection-end-line="579" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/response.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="1007" column="6" selection-start-line="1007" selection-start-column="6" selection-end-line="1007" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/middleWare/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/musicService.js" />
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/liquibase-postgressql/src/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/liquibase-postgressql/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="66" lean-forward="true" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-links.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tracks.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tastes.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/refresh.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/musicCatalog/list.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="1322" column="61" selection-start-line="1322" selection-start-column="61" selection-end-line="1322" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.prettierrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prod/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="140" column="21" lean-forward="true" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/addlink.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-652">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/destinations.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/imgUpload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1395" />
@@ -1042,20 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1097,17 +910,293 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/v1/track/favorite/delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/content/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/content/music/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/content/music/general/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-database-sempai.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/storage/db/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="62" lean-forward="true" selection-start-column="62" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/v1/track/favorite/check.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/v1/music/favorite/get.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        <state relative-caret-position="405">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-users.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.notes.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-relations.users_to_tracks.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="30" column="15" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/content/music/general/update.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="50" column="41" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/middleWare/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/helpers/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-content.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintrc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="229" column="73" selection-start-line="229" selection-start-column="73" selection-end-line="229" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/v1/music/all/refresh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        <state relative-caret-position="105">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>

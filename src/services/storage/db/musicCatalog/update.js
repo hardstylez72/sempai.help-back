@@ -5,5 +5,5 @@ module.exports = async (actualContent, ctx) => {
 
     const content = JSON.stringify(actualContent);
 
-    await db.query('select tracks.get_music_catalog_list($1);', [content, ]);
+    await db.query('select content.get_music_catalog_list($1);', [ content, ]);
 };

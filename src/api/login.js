@@ -23,17 +23,17 @@ router.post('/', async (req, res) => {
             }));
         }
 
-        // Todo: смотрим в  в бд
         const password = _.get(req, 'body.data.pwd', false);
         const login = _.get(req, 'body.data.login', false);
 
         if (password && login) {
             const user = await db.query(
-                `
-              select u.id
+                `select u.id
                  , u."login"
                  , u.role_id
                  , u.is_deleted
+                 , u.created_at
+		         , u.updated_at
                 from users.users u
                 where u."password" = $1
                   and u."login" = $2;

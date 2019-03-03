@@ -3,5 +3,5 @@ databaseChangeLog:
   - include:
      file: v1.0.0/changelog.yml
 
-  - includeAll:
-     path: procedures/
+  - include:
+     file: procedures/changelog.yml

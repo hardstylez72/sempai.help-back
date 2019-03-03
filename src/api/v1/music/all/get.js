@@ -1,17 +1,18 @@
 const getPathName = req => req.body.data;
 
-const getRootFolderContent = async seq => {
-    const files = await seq.query(`
+const getRootFolderContent = async ctx => {
+    const { db, } = ctx;
+    const files = await db.query(`
             select t.name
                  , t.parent_path as parent
                  , t.path
-                 , t."is_directory" as "isDirectory"
+                 , t.is_directory as "isDirectory"
                  , t.path_depth as depth
-              from tracks.tracks t
+              from content.tracks t
              where t.path_depth = 1
                and t.is_deleted <> true;`);
 
-    const rows = files[0].map(row => {
+    const rows = files.rows.map(row => {
         if (row.isDirectory) {
             row.children = [];
         }
@@ -28,18 +29,19 @@ const getRootFolderContent = async seq => {
     };
 };
 
-const getFolderContent = async (seq, path) => {
-    const files = await seq.query(`
+const getFolderContent = async (path, ctx) => {
+    const { db, } = ctx;
+    const files = await db.query(`
             select t.name
                  , t.parent_path as parent
                  , t.path
                  , t."is_directory" as "isDirectory"
                  , t.path_depth as depth
-              from tracks.tracks t
+              from content.tracks t
              where t.parent_path = '${path}'
                and t.is_deleted <> true;`);
 
-    const rows = files[0].map(row => {
+    const rows = files.rows.map(row => {
         if (row.isDirectory) {
             row.children = [];
         }
@@ -51,16 +53,16 @@ const getFolderContent = async (seq, path) => {
 };
 
 module.exports = async (req, ctx) => {
-    const { logger, seq, } = ctx;
+    const { logger, } = ctx;
 
     try {
         const pathName = getPathName(req);
         let tracks = null;
 
         if (null === pathName) {
-            tracks = await getRootFolderContent(seq);
+            tracks = await getRootFolderContent(ctx);
         } else {
-            tracks = await getFolderContent(seq, pathName);
+            tracks = await getFolderContent(pathName, ctx);
         }
 
         return tracks;

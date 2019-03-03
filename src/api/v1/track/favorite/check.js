@@ -1,6 +1,7 @@
 const _ = require('lodash');
 
 module.exports = async (req, ctx) => {
+    return { included: false, };
     const { logger, seq, Seq, mark, } = ctx;
 
     try {

@@ -1,21 +1,19 @@
 
 module.exports = async (files, ctx) => {
-    const { logger, seq, Seq, mark, } = ctx;
+    return [];
+    const { logger, db, mark, } = ctx;
 
     try {
         logger.info('Считывание каталога файлов favorite из БД');
-        const result = await seq.query(
-            `
+        const result = await db.query(`
         select 
-            tracks.tracks."name"
-            ,tracks.tracks."path" 
-        from tracks.tracks
-          join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
+            t."name"
+          , t."path" 
+        from content.tracks t
+          join tastes.tastes on tastes.tastes.track_id = t.id
           join users.users on users.users.id = tastes.tastes.user_id
-          where users.users."login" = '${mark.sessionInfo}' and tastes.tastes.deleted <> true
-            `,
-            { type: Seq.QueryTypes.SELECT, }
-        );
+          where users.users."login" = $1 and tastes.tastes.deleted <> true
+            `, [mark.sessionInfo, ]);
 
         logger.info(`Успешно считано ${result.length} файлов favorite из БД`);
 

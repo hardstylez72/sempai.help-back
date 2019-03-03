@@ -23,6 +23,7 @@ module.exports = {
             retryConnectionTimeoutMs: 2000,
             retryCount              : 100,
         },
+        contentPath: process.env.CONTENT_PATH,
         MAX_COUNT_OF_FILES_CAN_BE_DOWNLOADED_WITH_MULTER: 1,
     },
 };
