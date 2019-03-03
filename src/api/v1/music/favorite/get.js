@@ -1,5 +1,5 @@
 
-module.exports = async (data, ctx) => {
+module.exports = async (files, ctx) => {
     const { logger, seq, Seq, mark, } = ctx;
 
     try {
@@ -8,7 +8,7 @@ module.exports = async (data, ctx) => {
             `
         select 
             tracks.tracks."name"
-            ,tracks.tracks."path"
+            ,tracks.tracks."path" 
         from tracks.tracks
           join tastes.tastes on tastes.tastes.track_id = tracks.tracks.id
           join users.users on users.users.id = tastes.tastes.user_id
