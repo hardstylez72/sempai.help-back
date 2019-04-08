@@ -3,11 +3,3 @@ databaseChangeLog:
   - include:
      relativeToChangelogFile: true
      file: content/changelog.yml
-
-  - include:
-     relativeToChangelogFile: true
-     file: users/changelog.yml
-
-  - include:
-     relativeToChangelogFile: true
-     file: helpers/changelog.yml

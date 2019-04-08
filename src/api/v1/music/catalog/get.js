@@ -52,7 +52,8 @@ const getFolderContent = async (path, ctx) => {
     return rows;
 };
 
-module.exports = async (req, ctx) => {
+module.exports = async req => {
+    const {ctx} = req;
     const { logger, } = ctx;
 
     try {

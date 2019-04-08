@@ -1,6 +1,7 @@
 const { buildTree, } = require('../../../../helpers/buildTreeFromFileSystem');
 
-module.exports = async (req, ctx) => {
+module.exports = async req => {
+    const {ctx} = req;
     const { logger, storage, config, } = ctx;
     const { update, } = storage.db.musicCatalog;
 

@@ -1,1 +1,1 @@
-module.exports = { catalog: require('./catalog/routes'), };
+module.exports = { authorization: require('./authorization/routes'), };

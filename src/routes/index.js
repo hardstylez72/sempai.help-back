@@ -1,33 +1,29 @@
 module.exports = initRoutes = (app, logger) => {
     const createError = require('http-errors');
 
-    require('../api/routes');
+    const apiRoot = require('../api/routes');
     const multer = require('multer');
     const { config, } = require('../config/index');
     const storage = multer.memoryStorage();
     const fileUpload = multer({ storage, });
-    const login = require('../api/login');
 
     app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
         try {
-            const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
-            const result = await apiMethod(req, res, {
-                ...req.ctx,
-                mark: req.mark,
-            });
+            const apiMethod = getApiMethod(apiRoot, req.params);
+            req.ctx.res = res;
+            const result = await apiMethod(req);
         } catch (err) {
-
+            logger.error(`Error while processing API: ${req.originalUrl}`);
+            logger.error(err);
         }
     });
 
     app.post('/:api/:version/:object/:subject/:method', fileUpload.array('files', config.MAX_COUNT_OF_FILES_CAN_BE_DOWNLOADED_WITH_MULTER), async (req, res, next) => {
         try {
-            const apiMethod = getApiMethod(req.params.api, req.params.version, req.params.object, req.params.subject, req.params.method);
+            const apiMethod = getApiMethod(apiRoot, req.params);
 
-            const result = await apiMethod(req, {
-                ...req.ctx,
-                mark: req.mark,
-            });
+            req.ctx.res = res;
+            const result = await apiMethod(req);
             const response = {
                 success: true,
                 data   : result,
@@ -35,6 +31,8 @@ module.exports = initRoutes = (app, logger) => {
 
             return res.send(JSON.stringify(response));
         } catch (err) {
+            logger.error(`Error while processing API: ${req.originalUrl}`);
+            logger.error(err);
             const response = {
                 success: false,
                 error  : {
@@ -46,8 +44,6 @@ module.exports = initRoutes = (app, logger) => {
             return res.send(JSON.stringify(response));
         }
     });
-
-    app.use('/api/login', login);
 
     app.use((req, res, next) => {
         const data = {
@@ -79,9 +75,10 @@ module.exports = initRoutes = (app, logger) => {
     });
 };
 
-const getApiMethod = (...params) => {
-    const path = '../' + params.reduce((acc, cur) => acc + '/' + cur) + '.js';
-    const func = require(path);
+const getApiMethod = (apiRoot, params) => {
+    const { version, object, subject, method, } = params;
 
-    return func;
+    const result = apiRoot[version][object][subject][method];
+
+    return result;
 };

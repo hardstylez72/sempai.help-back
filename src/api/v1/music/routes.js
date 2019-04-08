@@ -1,1 +1,1 @@
-module.exports = { all: require('./all/destinations.js'), };
+module.exports = { catalog: require('./catalog/routes'), };

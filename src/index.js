@@ -42,6 +42,7 @@ const serverStart = async logger => {
         server.listen(port);
         server.on('error', onError);
         server.on('listening', onListening);
+        app.enable('trust proxy')
         app.use((req, res, next) => {
             req.ctx = ctx;
 

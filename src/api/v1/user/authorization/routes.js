@@ -1,1 +1,3 @@
-module.exports = { authorization: require('./authorization/routes'), };
+module.exports = {
+    login  : require('./login'),
+};

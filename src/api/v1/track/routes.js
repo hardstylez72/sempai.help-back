@@ -1,1 +1,1 @@
-module.exports = { authorization: require('./authorization/routes'), };
+module.exports = { stream: require('./stream/routes'), };

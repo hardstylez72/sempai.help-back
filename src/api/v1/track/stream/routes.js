@@ -1,1 +1,1 @@
-module.exports = { stream: require('./stream/routes'), };
+module.exports = { get: require('./get'), };

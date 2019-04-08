@@ -1,1 +1,4 @@
-module.exports = { authorization: require('./authorization/routes'), };
+module.exports = {
+    authorization: require('./authorization/index'),
+    ...require('./index'),
+};

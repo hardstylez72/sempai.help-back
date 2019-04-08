@@ -1,5 +1,6 @@
 const authHandler = () => async (req, res, next) => {
-    const { redis, libs, } = req.ctx;
+    const { libs, storage} = req.ctx;
+    const { cache } = storage;
     const { _, uuidv1, } = libs;
 
     if ('prod' !== process.env.NODE_ENV) {
@@ -8,23 +9,21 @@ const authHandler = () => async (req, res, next) => {
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     }
 
-    req.mark = { requestId: uuidv1(), };
+    req.ctx.user ={ requestId: uuidv1(), };
+
     const userToken = _.get(req, 'cookies.token', false);
 
     if (userToken) {
-        const token = await redis.get(userToken);
+        const user = await cache.get(userToken, req.ctx);
 
-        if (token) {
-            const userInfo = JSON.parse(token);
-
-            req.mark.sessionInfo = userInfo.login;
-            req.mark.user = userInfo;
+        if (user) {
+            req.ctx.user = user;
 
             return next();
         }
     }
 
-    if ('/api/login/' === req.url) {
+    if ('/api/v1/user/authorization/login' === req.url) {
         return next();
     }
 

@@ -1,11 +1,10 @@
 const fs = require('fs');
-const _ = require('lodash');
-const moment = require('moment');
+const _    = require('lodash');
+const moment =      require('moment');
 const uuidv1 = require('uuid/v1');
 const storage = require('src/services/storage/routes');
-
-const DatabaseConnection = require('src/services/storage/db/index');
-const RedisConnection = require('src/services/storage/redis/index');
+const DatabaseConnection = require('src/services/storage/db/driver');
+const RedisConnection =    require('src/services/storage/cache/driver');
 
 const BASE_PATH = process.env.CONTENT_PATH;
 const MUSIC_STYLES = [ 'ELECTRONIC', 'DUBSTEP', 'DUB', 'KAWAI', 'CASUAL', 'TRIP-HOP', 'HIP-HOP', 'BRUTAL', 'CLOUD', 'RAGGE', ];
@@ -25,6 +24,7 @@ module.exports.init = async (config, logger) => {
     const redis = new RedisConnection(config.redis, logger);
 
     return {
+        config,
         logger,
         db   : db.pool,
         redis: redis.pool,
