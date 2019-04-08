@@ -1,9 +1,0 @@
-databaseChangeLog:
-
-  - include:
-     relativeToChangelogFile: true
-     file: session/changelog.yml
-
-  - include:
-     relativeToChangelogFile: true
-     file: authorization/changelog.yml
