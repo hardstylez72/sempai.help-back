@@ -1,35 +1,48 @@
 const fs = require('fs');
-const _    = require('lodash');
-const moment =      require('moment');
+const _ = require('lodash');
+const moment = require('moment');
 const uuidv1 = require('uuid/v1');
 const storage = require('src/services/storage/routes');
-const DatabaseConnection = require('src/services/storage/db/driver');
-const RedisConnection =    require('src/services/storage/cache/driver');
+const { PostgresClient } = require('src/modules/clients/postgres');
+const { RedisClient } = require('src/modules/clients/redis');
+const { config } = require('src/config');
+const { init: initORM } = require('src/orm/typeORM');
 
-const BASE_PATH = process.env.CONTENT_PATH;
-const MUSIC_STYLES = [ 'ELECTRONIC', 'DUBSTEP', 'DUB', 'KAWAI', 'CASUAL', 'TRIP-HOP', 'HIP-HOP', 'BRUTAL', 'CLOUD', 'RAGGE', ];
+const { Logger } = require('src/modules/logger');
 
-MUSIC_STYLES.forEach(style => {
-    const isExist = fs.existsSync(BASE_PATH + '/' + style);
+const log = new Logger('initialization');
 
-    if (!isExist) {
-        fs.mkdirSync(BASE_PATH + '/' + style);
-    }
-});
+module.exports.init = async () => {
+    const { basePath, music } = config.content;
+    const { styles } = music;
+    await initORM();
+    styles.forEach((style) => {
+        const isExist = fs.existsSync(`${basePath}/${style}`);
 
-module.exports.init = async (config, logger) => {
-    const db = new DatabaseConnection(config.database, logger);
+        if (!isExist) {
+            fs.mkdirSync(`${basePath}/${style}`);
+        }
+    });
 
-    await db.init();
-    const redis = new RedisConnection(config.redis, logger);
+
+    const logger = log;
+
+    const { redis: redisConfig } = config;
+
+    const redis = new RedisClient(
+        redisConfig.host,
+        redisConfig.port,
+        redisConfig.password,
+        redisConfig.timeoutMs,
+        redisConfig.retryTimeoutMs,
+    );
 
     return {
         config,
         logger,
-        db   : db.pool,
-        redis: redis.pool,
+        redis,
         storage,
-        libs : {
+        libs: {
             moment,
             _,
             uuidv1,

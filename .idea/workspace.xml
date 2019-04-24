@@ -2,42 +2,85 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43865138-6808-406f-8f58-f106f4217605" name="Default Changelist" comment="Добавил хранимые процедуры">
-      <change afterPath="$PROJECT_DIR$/src/api/v1/track/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/track/stream/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/user/authorization/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/user/authorization/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/user/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/storage/cache/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/storage/db/user/authorization/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/storage/db/user/authorization/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/storage/db/user/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/storage/db/user/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/angular-settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/tslint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/procedures/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/procedures/content/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/procedures/content/music/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/procedures/content/music/general/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/procedures/content/music/general/update.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/changelog.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-shema-content.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-shema-relations.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-shema-users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-table-content.notes.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-table-content.tracks.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-table-relations.users_to_tracks.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-table-users.sessions.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/migrations/src/v1.0.0/create-table-users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/clients/postgres.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/clients/redis.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/moment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/entities/User/Role.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/entities/User/Session.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/entities/User/SessionIp.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/entities/User/User.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/migrations/Users1556116394043.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orm/typeORM.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/few.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/helpers/changelog.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/music/all/destinations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/catalog/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/music/all/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/catalog/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/catalog/update.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/music/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/music/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/procedures/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/content/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/procedures/content/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/content/music/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/procedures/content/music/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/content/music/general/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/procedures/content/music/general/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/procedures/content/music/general/update.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/procedures/content/music/general/update.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/changelog.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-content.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-shema-content.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-shema-relations.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-shema-users.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.notes.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-table-content.notes.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-table-content.tracks.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-relations.users_to_tracks.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-table-relations.users_to_tracks.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-table-users.sessions.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/src/v1.0.0/create-table-users.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket.io.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/music/upload/get.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/serverStats/get.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/track/stream/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/track/stream/get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/user/authorization/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/user/authorization/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleWare/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleWare/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/storage/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/db/driver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/storage/db/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/db/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/storage/redis/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/cache/driver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleWare/enrichment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleWare/enrichment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleWare/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleWare/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/logger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routing/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/cache/driver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/cache/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/cache/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/driver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/musicCatalog/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/musicCatalog/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/musicCatalog/update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/user/authorization/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/user/authorization/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/user/authorization/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/user/authorization/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/user/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/storage/db/user/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/database/user/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/storage/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/storage/routes.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -93,95 +136,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/user/authorization/login.js">
+      <file leaf-file-name="typeORM.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/orm/typeORM.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/storage/cache/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/middleWare/auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/catalog/update.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/api/v1/music/catalog/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create-table-users.sessions.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/init.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+            <state relative-caret-position="295">
+              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#103#147#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/authorization/index.js">
+      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/src/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            <state relative-caret-position="400">
+              <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="30" />
+              <folding>
+                <element signature="e#112#147#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/routes.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routing/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+              <folding>
+                <element signature="e#203#274#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/api/v1/user/authorization/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/v1/track/stream/get.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.d.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/@types/express/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="88" column="30" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -190,21 +236,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$</find>
-      <find>PG_DATABASE</find>
-      <find>CURRENT_DIR</find>
-      <find>tmp</find>
-      <find>no-eval</find>
-      <find>accessor-pairs</find>
-      <find>no-invalid-regexp</find>
-      <find>require</find>
-      <find>jsdoc</find>
-      <find>curly</find>
-      <find>init</find>
-      <find>process</find>
-      <find>node/no</find>
-      <find>no-missing</find>
-      <find>require-a</find>
       <find>complexity</find>
       <find>seq</find>
       <find>content</find>
@@ -220,6 +251,21 @@
       <find>array-b</find>
       <find>is-token-ok=0</find>
       <find>user</find>
+      <find>type</find>
+      <find>4</find>
+      <find>logger</find>
+      <find>jsdoc</find>
+      <find>MAX_COUNT_OF_FILES_CAN_BE_DOWNLOADED_WITH_MULTER</find>
+      <find>log</find>
+      <find>pool</find>
+      <find>new Promise</find>
+      <find>PG_TIMEOUT_MS</find>
+      <find>^</find>
+      <find>extract-zip</find>
+      <find>schema</find>
+      <find>RolesIds</find>
+      <find>categories</find>
+      <find>http</find>
     </findStrings>
     <replaceStrings>
       <replace>success</replace>
@@ -236,6 +282,9 @@
       <replace>logger.error</replace>
       <replace>.env.prod</replace>
       <replace>tmp_tracks</replace>
+      <replace>log</replace>
+      <replace>maxCountOfFilesCanBeDownloadedWithMulter</replace>
+      <replace>client</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/../sempai.help-front</dir>
@@ -249,57 +298,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-database-sempai.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tracks.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-tastes.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/favorite/get.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/track/favorite/check.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/all/get.js" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/content/music/general/update.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-links.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-relations.users_to_tracks.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/helpers/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/users/session/changelog.yml" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql" />
-        <option value="$PROJECT_DIR$/.eslintrc.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/musicCatalog/update.js" />
-        <option value="$PROJECT_DIR$/src/config/index.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/all/refresh.js" />
-        <option value="$PROJECT_DIR$/src/api/login.js" />
+        <option value="$PROJECT_DIR$/src/modules/databaseClient/postgresDriver.ts" />
+        <option value="$PROJECT_DIR$/src/modules/databaseClient/databaseClient.ts" />
+        <option value="$PROJECT_DIR$/src/modules/databaseClients/postgres.ts" />
+        <option value="$PROJECT_DIR$/src/modules/databaseClients/redis.ts" />
+        <option value="$PROJECT_DIR$/src/modules/logger.ts" />
+        <option value="$PROJECT_DIR$/src/middleWare/enrichment.js" />
+        <option value="$PROJECT_DIR$/src/modules/moment.ts" />
+        <option value="$PROJECT_DIR$/ormconfig.json" />
+        <option value="$PROJECT_DIR$/src/orm/driver/index.ts" />
+        <option value="$PROJECT_DIR$/src/orm/models/Users.ts" />
+        <option value="$PROJECT_DIR$/src/orm/migrations/v1.0/index.ts" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/migrates/src/procedures/changelog.yml" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/user/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/catalog/get.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/catalog/update.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/user/authorization/login.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/track/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/track/stream/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/track/stream/get.js" />
-        <option value="$PROJECT_DIR$/src/routes/index.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/redis/cache/index.js" />
-        <option value="$PROJECT_DIR$/src/init.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/cache/index.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/user/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/routes.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/user/authorization/routes.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/user/authorization/index.js" />
-        <option value="$PROJECT_DIR$/src/services/storage/db/user/index.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql" />
+        <option value="$PROJECT_DIR$/src/middleWare/index.js" />
+        <option value="$PROJECT_DIR$/src/entities/User.ts" />
+        <option value="$PROJECT_DIR$/src/modules/cache.ts" />
         <option value="$PROJECT_DIR$/src/middleWare/auth.js" />
+        <option value="$PROJECT_DIR$/test/a.ts" />
+        <option value="$PROJECT_DIR$/test/a.js" />
+        <option value="$PROJECT_DIR$/test/b.js" />
+        <option value="$PROJECT_DIR$/test/few.js" />
+        <option value="$PROJECT_DIR$/src/init.ts" />
+        <option value="$PROJECT_DIR$/src/middleWare/auth.ts" />
+        <option value="$PROJECT_DIR$/src/config/index.js" />
+        <option value="$PROJECT_DIR$/src/modules/clients/redis.ts" />
+        <option value="$PROJECT_DIR$/ormconfig.js" />
+        <option value="$PROJECT_DIR$/ormconfig.ts" />
+        <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/orm/entities/Users.ts" />
+        <option value="$PROJECT_DIR$/node_modules/typeorm/index.d.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/Shema.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/Roles.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/Roles.ts" />
+        <option value="$PROJECT_DIR$/src/orm/migrations/v1.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/SessionIp.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/User.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/Session.ts" />
+        <option value="$PROJECT_DIR$/src/modules/clients/postgres.ts" />
+        <option value="$PROJECT_DIR$/src/orm/migrations/Users1556116394043.ts" />
+        <option value="$PROJECT_DIR$/src/orm/entities/User/Role.ts" />
+        <option value="$PROJECT_DIR$/src/config/index.ts" />
+        <option value="$PROJECT_DIR$/src/routing/index.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/orm/typeORM.ts" />
+        <option value="$PROJECT_DIR$/build/src/init.js" />
+        <option value="$PROJECT_DIR$/src/init.js" />
+        <option value="$PROJECT_DIR$/src/index.ts" />
+        <option value="$PROJECT_DIR$/src/api/v1/track/stream/get.js" />
+        <option value="$PROJECT_DIR$/src/routing/index.ts" />
         <option value="$PROJECT_DIR$/src/api/v1/user/authorization/login.js" />
-        <option value="$PROJECT_DIR$/src/api/v1/music/catalog/routes.js" />
       </list>
     </option>
   </component>
@@ -324,10 +373,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2570" />
-    <option name="y" value="2" />
-    <option name="width" value="1910" />
-    <option name="height" value="1038" />
+    <option name="x" value="2560" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -335,7 +383,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,12 +393,12 @@
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
-              <item name="migrates" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
-              <item name="migrates" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -378,7 +425,33 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="v1" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
+              <item name="track" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="track" type="462c0819:PsiDirectoryNode" />
+              <item name="stream" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="v1" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="authorization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
@@ -386,43 +459,89 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="8.10.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sempai.help-front" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/orm/entities/User" />
+      <recent name="$PROJECT_DIR$/src/orm/entities" />
       <recent name="$PROJECT_DIR$/src/api/v1/user/authorization" />
       <recent name="$PROJECT_DIR$/src/services/storage/cache" />
       <recent name="$PROJECT_DIR$/src/api/v1/track/stream" />
-      <recent name="$PROJECT_DIR$/src/api/v1/track" />
-      <recent name="$PROJECT_DIR$/src/services/storage/db" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/services/storage/cache" />
-      <recent name="$PROJECT_DIR$/src/services/storage" />
-      <recent name="$PROJECT_DIR$/migrates/src/procedures/content/music/general" />
-      <recent name="$PROJECT_DIR$/migrates/src/procedures/content" />
-      <recent name="$PROJECT_DIR$/migrates/src" />
+      <recent name="$PROJECT_DIR$/src/orm/entities/User" />
+      <recent name="$PROJECT_DIR$/src/modules/clients" />
+      <recent name="$PROJECT_DIR$/src/modules" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/orm/migrations" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -437,13 +556,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.Unnamed">
-    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" node-parameters="-r dotenv" path-to-js-file="$PROJECT_DIR$/src/index.js" working-dir="$PROJECT_DIR$">
+  <component name="RunManager" selected="Node.js.tsc bundle">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" node-parameters="-r dotenv" path-to-js-file="$PROJECT_DIR$/src/index.ts" working-dir="$PROJECT_DIR$">
       <envs>
         <env name="NODE_PATH" value="." />
       </envs>
     </configuration>
     <configuration name="get.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" node-parameters="-r dotenv" path-to-js-file="$PROJECT_DIR$/src/api/serverStats/get.js" working-dir="$PROJECT_DIR$/src/api/serverStats" />
+    <configuration name="tsc bundle" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="build/src/index.js" working-dir="$PROJECT_DIR$/">
+      <envs>
+        <env name="NODE_PATH" value="./build" />
+      </envs>
+      <method>
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/tsconfig.json" />
+      </method>
+    </configuration>
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings>
@@ -463,14 +590,30 @@
       <node-interpreter value="project" />
       <envs />
     </configuration>
+    <configuration name="Class A" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test/few.js</test-file>
+      <test-names>
+        <name value="Class A" />
+      </test-names>
+    </configuration>
     <list>
       <item itemvalue="Node.js.Unnamed" />
+      <item itemvalue="Node.js.tsc bundle" />
       <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Mocha.Class A" />
       <item itemvalue="Node.js.get.js" />
       <item itemvalue="npm.lint" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.Class A" />
         <item itemvalue="npm.lint" />
         <item itemvalue="Node.js.get.js" />
         <item itemvalue="Docker.Dockerfile" />
@@ -523,6 +666,10 @@
       <workItem from="1551009482560" duration="34696000" />
       <workItem from="1551117579543" duration="59203000" />
       <workItem from="1554016737825" duration="16838000" />
+      <workItem from="1555682671577" duration="14217000" />
+      <workItem from="1555710780686" duration="27510000" />
+      <workItem from="1555842902549" duration="37270000" />
+      <workItem from="1556109848287" duration="14851000" />
     </task>
     <task id="LOCAL-00001" summary="Авторизация 50%">
       <created>1535919351788</created>
@@ -674,10 +821,42 @@
     <option name="localTasksCounter" value="22" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="623951000" />
+  <component name="TestHistory">
+    <history-entry file="Class_A - 2019.04.22 at 12h 50m 26s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 50m 59s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 51m 22s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 51m 38s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 52m 03s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 52m 20s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 12h 56m 36s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 13h 06m 19s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 13h 19m 03s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="Class_A - 2019.04.22 at 18h 40m 46s.xml">
+      <configuration name="Class A" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
   </component>
-  <component name="TodoView" selected-index="4">
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="717799000" />
+  </component>
+  <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -687,25 +866,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="165" y="460" width="1910" height="1038" extended-state="1" />
+    <frame x="2560" y="0" width="1920" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49710068" weight="0.32747254" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49657354" weight="0.3267544" />
       <window_info id="DB Browser" order="2" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.123476416" side_tool="true" visible="true" weight="0.30329672" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7480232" weight="0.32456142" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48966613" weight="0.32417583" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8223511" weight="0.27850878" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23635401" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.13020559" side_tool="true" weight="0.3026316" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.74749607" weight="0.32456142" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48919347" weight="0.3234649" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8170796" weight="0.27850878" />
+      <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49446493" weight="0.32894737" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23510806" />
       <window_info id="Project Explorer" order="2" />
       <window_info id="Job Explorer" order="2" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Console" order="7" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49867514" weight="0.32857144" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.87652355" visible="true" weight="0.30329672" />
-      <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49920928" weight="0.32894737" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8697944" visible="true" weight="0.3026316" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -714,10 +893,44 @@
       <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49867514" weight="0.32857144" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Console" order="8" />
+      <window_info anchor="bottom" id="DB Execution Console" order="9" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48919347" weight="0.3234649" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.74749607" weight="0.32456142" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49657354" weight="0.3267544" />
+      <window_info anchor="bottom" id="TypeScript" order="14" sideWeight="0.49446493" weight="0.32894737" />
+      <window_info id="DB Browser" order="3" />
+      <window_info id="Project Explorer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49867514" weight="0.32857144" />
+      <window_info id="Job Explorer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23510806" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8697944" weight="0.3026316" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.8170796" visible="true" weight="0.27850878" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.13020559" side_tool="true" weight="0.3026316" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/middleWare/auth.js" />
+        <option value="$PROJECT_DIR$/src/init.js" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -799,363 +1012,403 @@
           <option name="timeStamp" value="1047" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/routes/index.js</url>
+          <url>file://$PROJECT_DIR$/built/index.js</url>
+          <line>39</line>
+          <option name="timeStamp" value="1087" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/node_modules/tslint/lib/error.d.ts</url>
+          <line>21</line>
+          <option name="timeStamp" value="1119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/few.js</url>
+          <line>5</line>
+          <option name="timeStamp" value="1168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/few.js</url>
+          <line>12</line>
+          <option name="timeStamp" value="1169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/few.js</url>
+          <line>13</line>
+          <option name="timeStamp" value="1170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/few.js</url>
           <line>15</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1071" />
+          <option name="timeStamp" value="1171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/a.js</url>
+          <line>5</line>
+          <option name="timeStamp" value="1172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>mock:///home/hs/Desktop/workspace/sempai.help-back/src/index.ts</url>
+          <line>222</line>
+          <option name="timeStamp" value="1185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/api/v1/user/authorization/login.js</url>
-          <line>32</line>
+          <line>16</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1085" />
+          <option name="timeStamp" value="1190" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1087" />
+      <option name="time" value="1192" />
     </breakpoint-manager>
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="sempai.help-back" type="b2602c69:ProjectViewProjectNode" />
+        <item name="sempai.help-back" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/favorite/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/helpers/exeption_constructor.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/authorization/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/authorization/validate.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/session/save.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/users/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/procedures/changelog.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/music/upload/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/logger.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/init.ts" />
+    <entry file="file://$PROJECT_DIR$/src/middleWare/auth.ts" />
     <entry file="file://$PROJECT_DIR$/src/middleWare/enrichment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        <state relative-caret-position="105">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/stream/upload.js">
+    <entry file="file://$PROJECT_DIR$/src/middleWare/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1575">
-          <caret line="21" column="41" lean-forward="true" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+        <state relative-caret-position="135">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/changelog.yml">
+    <entry file="file://$PROJECT_DIR$/test/few.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-content.sql">
+    <entry file="file://$PROJECT_DIR$/test/a.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/src/modules/clients/redis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ormconfig.ts" />
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/driver/sqljs/SqljsConnectionOptions.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-relations.sql">
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/connection/ConnectionOptions.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="90">
+          <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.notes.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-content.tracks.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-shema-users.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="63" lean-forward="true" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/authorization/login.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/track/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" selection-start-column="44" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/track/stream/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="970" column="4" selection-start-line="970" selection-start-column="4" selection-end-line="970" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/cache/driver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="57" selection-start-column="57" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/cache/routes.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/catalog/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/track/stream/get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/user/authorization/session.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/user/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/user/authorization/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/authorization/routes.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/driver/postgres/PostgresConnectionCredentialsOptions.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="20" />
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/init.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/driver/postgres/PostgresConnectionOptions.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/connection/BaseConnectionOptions.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrates/src/v1.0.0/create-table-users.sessions.sql">
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/db/user/authorization/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2730">
+          <caret line="182" column="8" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/tslib/tslib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/src/entities/User.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/src/orm/entities/Users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/src/v1.0.0/create-table-users.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/decorator/columns/PrimaryGeneratedColumn.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/entity-schema/EntitySchema.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/entity-schema/EntitySchemaOptions.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/entities/User/Shema.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/src/v1.0.0/create-table-users.sessions.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/entities/User/SessionIp.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/entities/User/Session.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/pg/lib/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="119" column="21" selection-start-line="119" selection-start-column="21" selection-end-line="119" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/metadata-builder/EntityMetadataValidator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/entities/User/User.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/repository/SaveOptions.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="57" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="28" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/src/orm/entities/User/Role.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typeorm/repository/Repository.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <caret line="91" column="7" lean-forward="true" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/migrations/Users1556116394043.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/clients/postgres.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/clients/redis.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/logger.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/moment.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/entities/User/Role.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/middleWare/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+    <entry file="file://$PROJECT_DIR$/src/config/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+        <state relative-caret-position="195">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/orm/typeORM.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#103#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/src/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/routes.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/express/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="88" column="30" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="e#112#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/v1/track/stream/get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routing/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+          <folding>
+            <element signature="e#203#274#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/v1/user/authorization/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/storage/cache/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/catalog/update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/v1/music/catalog/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="75">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
         </state>
       </provider>
     </entry>

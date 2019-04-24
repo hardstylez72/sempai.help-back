@@ -1,32 +1,31 @@
-module.exports = initRoutes = (app, logger) => {
+const apiRoot = require('../api/routes');
+const multer = require('multer');
+const { config } = require('../config/index');
+const storage = multer.memoryStorage();
+const fileUpload = multer({ storage });
+import { Response, NextFunction, Application } from 'express';
+import {SempaiRequest } from '../index';
+
+const init = (app: Application, logger) => {
     const createError = require('http-errors');
 
-    const apiRoot = require('../api/routes');
-    const multer = require('multer');
-    const { config, } = require('../config/index');
-    const storage = multer.memoryStorage();
-    const fileUpload = multer({ storage, });
-
-    app.get('/:api/:version/:object/:subject/:method/:data', async (req, res, next) => {
+    app.get('/:api/:version/:object/:subject/:method/:data', async (req: SempaiRequest, res: Response, next: NextFunction) => {
         try {
             const apiMethod = getApiMethod(apiRoot, req.params);
-            req.ctx.res = res;
-            const result = await apiMethod(req);
+            await apiMethod(req, res);
         } catch (err) {
             logger.error(`Error while processing API: ${req.originalUrl}`);
             logger.error(err);
         }
     });
 
-    app.post('/:api/:version/:object/:subject/:method', fileUpload.array('files', config.MAX_COUNT_OF_FILES_CAN_BE_DOWNLOADED_WITH_MULTER), async (req, res, next) => {
+    app.post('/:api/:version/:object/:subject/:method', fileUpload.array('files', config.maxCountOfFilesCanBeDownloadedWithMulter), async (req: SempaiRequest, res:Response, next:NextFunction) => {
         try {
             const apiMethod = getApiMethod(apiRoot, req.params);
-
-            req.ctx.res = res;
-            const result = await apiMethod(req);
+            const result = await apiMethod(req, res);
             const response = {
                 success: true,
-                data   : result,
+                data: result,
             };
 
             return res.send(JSON.stringify(response));
@@ -35,9 +34,9 @@ module.exports = initRoutes = (app, logger) => {
             logger.error(err);
             const response = {
                 success: false,
-                error  : {
+                error: {
                     message: err.message,
-                    stack  : err.stack,
+                    stack: err.stack,
                 },
             };
 
@@ -47,9 +46,9 @@ module.exports = initRoutes = (app, logger) => {
 
     app.use((req, res, next) => {
         const data = {
-            url    : req.originalUrl,
-            method : req.method,
-            body   : req.body,
+            url: req.originalUrl,
+            method: req.method,
+            body: req.body,
             headers: req.headers,
             cookies: req.cookies,
         };
@@ -61,24 +60,28 @@ module.exports = initRoutes = (app, logger) => {
 
     app.use((err, req, res, next) => {
         const data = {
-            url    : req.originalUrl,
-            method : req.method,
-            body   : req.body,
+            url: req.originalUrl,
+            method: req.method,
+            body: req.body,
             headers: req.headers,
             cookies: req.cookies,
         };
 
         logger.warn(`Ошибка 500 ${JSON.stringify(data)}`);
         res.locals.message = err.message;
-        res.locals.error = 'development' === req.app.get('env') ? err : {};
+        res.locals.error = req.app.get('env') === 'development' ? err : {};
         res.status(err.status || 500);
     });
 };
 
 const getApiMethod = (apiRoot, params) => {
-    const { version, object, subject, method, } = params;
+    const {
+        version, object, subject, method,
+    } = params;
 
     const result = apiRoot[version][object][subject][method];
 
     return result;
 };
+
+export { init };

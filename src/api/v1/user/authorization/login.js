@@ -1,6 +1,8 @@
-module.exports = async req => {
+
+
+module.exports = async (req, res) => {
     const { ctx, } = req;
-    const { logger, libs, res, storage, } = ctx;
+    const { libs, storage, } = ctx;
     const { _, uuidv1, } = libs;
     const validateCredentials = storage.db.user.authorization.validate;
     const saveUserSession = storage.db.user.authorization.saveSession;
@@ -12,7 +14,7 @@ module.exports = async req => {
     const login = _.get(req, 'body.data.login', null);
     const ip = _.get(req, 'headers.x-forwarded-for', null);
 
-    const isUserLogged = await storage.cache.get(userToken, req.ctx);
+    // const isUserLogged = await storage.cache.get(userToken, req.ctx);
 
     if (isUserLogged) {
         res.cookie('token-valid', true);

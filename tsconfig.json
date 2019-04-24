@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./build/src",
+    "allowJs": true,
+    "target": "es6",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "inlineSources": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+  "include": [
+    "./src/**/*"
+  ]
+}

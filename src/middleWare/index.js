@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const authHandler = require('./auth');
 
 module.exports = {
-    initMiddleWare(app, logger) {
+    initMiddleWare(app) {
         app.set('view engine', 'jade');
         app.use(express.json())
             .use(express.urlencoded({ extended: true, }))

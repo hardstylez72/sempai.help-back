@@ -1,9 +1,8 @@
 const _ = require('lodash');
 const fs = require('fs');
 
-module.exports = async req => {
+module.exports = async (req, res) => {
     const { ctx} = req;
-    const {res } = ctx;
     const { logger, } = ctx;
 
     try {

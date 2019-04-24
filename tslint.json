@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "ter-indent": [true, 4],
+    "no-unused-vars": ["warn"],
+    "no-multi-spaces": false,
+    "no-console": false,
+    "max-line-length": false,
+    "import-name": false,
+    "completed-docs": [true, "enums", "functions", "methods", "classes",
+      {
+          "properties": {
+          "locations": "all",
+          "privacies": "public"
+        }
+      }
+    ],
+    "valid-jsdoc": [
+      true,
+      {
+        "requireParamType": true,
+        "requireParamDescription": true,
+        "requireReturn": true,
+        "requireReturnType": true,
+        "requireReturnDescription": false
+      }
+    ]
+  }
+}

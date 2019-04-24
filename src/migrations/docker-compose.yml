@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  sempai-migrates:
+    env_file:
+      - ../.env
+    image: "hardstylez72/liquibase-postgres:latest"
+    volumes:
+      - ./src:/workspace
+    network_mode: 'host'
